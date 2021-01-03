@@ -22,20 +22,29 @@ namespace ParsMarkt
             var res =await GetAsync<IList<AboutUsViewModel>>();
             return res;
         }
-
-        public Task<AboutUsViewModel> PostAsync(AboutUsViewModel viewModel)
+        public async Task<AboutUsViewModel> GetByIdAsync(int id) 
         {
-            throw new NotImplementedException();
+            var res = await GetByIdAsync<AboutUsViewModel>(id);
+            return res;
+              
         }
 
-        public Task<AboutUsViewModel> PutAsync(AboutUsViewModel viewModel, int id)
+        public async Task<AboutUsViewModel> PostAsync(AboutUsViewModel viewModel)
         {
-            throw new NotImplementedException();
+            var res = await PostAsync<AboutUsViewModel, AboutUsViewModel>(viewModel);
+            return res;
         }
 
-        public Task<AboutUsViewModel> DeleteAsync(int id)
+        public async Task<AboutUsViewModel> PutAsync(AboutUsViewModel viewModel)
         {
-            throw new NotImplementedException();
+            var res = await PutAsync<AboutUsViewModel, AboutUsViewModel>(viewModel);
+            return res;
+        }
+
+        public async Task<AboutUsViewModel> DeleteAsync(int id)
+        {
+            var res = await DeleteAsync<AboutUsViewModel>(id);
+            return res;
         }
     }
 }
