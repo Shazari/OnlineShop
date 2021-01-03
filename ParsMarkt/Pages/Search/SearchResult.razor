@@ -1,0 +1,225 @@
+﻿@page "/SearchResult"
+<!--  ==========  -->
+
+<div class="sidebar-item widget_search">
+    <!-- <div class="underlined">
+        <h3><span class="light">Search</span></h3>
+    </div> -->
+
+    <form class="form" action="#" id="searchform" method="get" role="search">
+        <input type="text" id="appendedInputButton" class="input-block-level" name="s" placeholder="جستجو در نوشته ها ...">
+        <button type="submit">
+            <i class="icon-search"></i>
+        </button>
+    </form>
+</div>
+@if (Result != null)
+{
+
+<div class="darker-stripe">
+    <div class="container">
+        <div class="row">
+            <div class="span12">
+                <ul class="breadcrumb">
+                    <li>
+                        <a href="index.html">وبمارکت</a>
+                    </li>
+                    <li><span class="icon-chevron-right"></span></li>
+                    <li>
+                        <a href="shop.html">بلاگ</a>
+                    </li>
+                    <li><span class="icon-chevron-right"></span></li>
+                    <li>
+                        <a href="blog-search.html">نتابج جستجو</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+                <div class="container">
+                    <div class="push-up top-equal blocks-spacer">
+                        <div class="row">
+
+                            <!--  ==========  -->
+                            <!--  = Main Title =  -->
+                            <!--  ==========  -->
+
+                            <div class="span12">
+                                <div class="title-area">
+                                    <h1 class="inline"><span class="light">بلاگ</span> وبمارکت</h1>
+                                    <h2 class="inline tagline">- جایی که آدمهای باهوش، حرفهای احمقانه میزنند!</h2>
+                                </div>
+                            </div>
+
+                            <!--  ==========  -->
+                            <!--  = Main content =  -->
+                            <!--  ==========  -->
+                            <section class="span8 blog">
+
+
+                                <!--  ==========  -->
+                                <!--  = Single Result =  -->
+                                <!--  ==========  -->
+                                @if (Result.Any())
+                                {
+                                    if (Result.Count > 1)
+                                    {
+                                        foreach (var item in Result)
+                                        {
+
+                            <article class="post format-standard">
+                                <div class="post-inner">
+                                    <div class="post-title">
+                                        <h2><a href="#"><span class="light">نتیجه</span> جستجو #1</a></h2>
+                                        <div class="metadata">
+                                            16 فروردین 1392 /
+                                            <a href="">بدون نظر</a> /
+                                            ارسال شده در : <a rel="category tag" title="View all posts in aciform" href="#">Webmarket</a>
+                                        </div>
+                                    </div>
+
+                                    <p class="push-down-0">
+                                        لورم ایپسوم متنی است که ساختگی برای طراحی و چاپ آن مورد است. صنعت چاپ زمانی لازم بود شرایطی شما باید فکر ثبت نام و طراحی، لازمه خروج می باشد. در ضمن قاعده همفکری ها جوابگوی سئوالات زیاد شاید باشد، آنچنان که لازم بود طراحی گرافیکی خوب بود...
+                                    </p>
+                                </div>
+                            </article> }
+                                    }
+                                    else
+                                    {
+
+                                        foreach (var item in Result)
+                                        {
+                            <article class="post format-standard">
+                                <div class="post-inner">
+                                    <div class="post-title">
+                                        <h2><a href="#"><span class="light">نتیجه</span> جستجو #2</a></h2>
+                                        <div class="metadata">
+                                            16 فروردین 1392 /
+                                            <a href="http://localhost/themeforest/wp-theme/2008/09/layout-test/#comments">بدون نظر</a> /
+                                            ارسال شده در : <a rel="category tag" title="View all posts in aciform" href="#">Webmarket</a>
+                                        </div>
+                                    </div>
+
+                                    <p class="push-down-0">
+                                        لورم ایپسوم متنی است که ساختگی برای طراحی و چاپ آن مورد است. صنعت چاپ زمانی لازم بود شرایطی شما باید فکر ثبت نام و طراحی، لازمه خروج می باشد. در ضمن قاعده همفکری ها جوابگوی سئوالات زیاد شاید باشد، آنچنان که لازم بود طراحی گرافیکی خوب بود...
+                                    </p>
+                                </div>
+                            </article>
+                                        }
+
+                                    }
+
+                                }
+
+
+                                <!--  ==========  -->
+                                <!--  = Single Result =  -->
+                                <!--  ==========  -->
+                                <!--  ==========  -->
+                                <!--  = Single Result =  -->
+                                <!--  ==========  -->
+                                <article class="post format-standard">
+                                    <div class="post-inner">
+                                        <div class="post-title">
+                                            <h2><a href="#"><span class="light">نتیجه</span> جستجو #3</a></h2>
+                                            <div class="metadata">
+                                                16 فروردین 1392 /
+                                                <a href="http://localhost/themeforest/wp-theme/2008/09/layout-test/#comments">بدون نظر</a> /
+                                                ارسال شده در : <a rel="category tag" title="View all posts in aciform" href="#">Webmarket</a>
+                                            </div>
+                                        </div>
+
+                                        <p class="push-down-0">
+                                            لورم ایپسوم متنی است که ساختگی برای طراحی و چاپ آن مورد است. صنعت چاپ زمانی لازم بود شرایطی شما باید فکر ثبت نام و طراحی، لازمه خروج می باشد. در ضمن قاعده همفکری ها جوابگوی سئوالات زیاد شاید باشد، آنچنان که لازم بود طراحی گرافیکی خوب بود...
+                                        </p>
+                                    </div>
+                                </article>
+
+
+                                <!--  ==========  -->
+                                <!--  = Single Result =  -->
+                                <!--  ==========  -->
+                                <article class="post format-standard">
+                                    <div class="post-inner">
+                                        <div class="post-title">
+                                            <h2><a href="#"><span class="light">نتیجه</span> جستجو #4</a></h2>
+                                            <div class="metadata">
+                                                16 فروردین 1392 /
+                                                <a href="http://localhost/themeforest/wp-theme/2008/09/layout-test/#comments">بدون نظر</a> /
+                                                ارسال شده در : <a rel="category tag" title="View all posts in aciform" href="#">Webmarket</a>
+                                            </div>
+                                        </div>
+
+                                        <p class="push-down-0">
+                                            لورم ایپسوم متنی است که ساختگی برای طراحی و چاپ آن مورد است. صنعت چاپ زمانی لازم بود شرایطی شما باید فکر ثبت نام و طراحی، لازمه خروج می باشد. در ضمن قاعده همفکری ها جوابگوی سئوالات زیاد شاید باشد، آنچنان که لازم بود طراحی گرافیکی خوب بود...
+                                        </p>
+                                    </div>
+                                </article>
+
+
+                                <!--  ==========  -->
+                                <!--  = Single Result =  -->
+                                <!--  ==========  -->
+                                <article class="post format-standard">
+                                    <div class="post-inner">
+                                        <div class="post-title">
+                                            <h2><a href="#"><span class="light">نتیجه</span> جستجو #5</a></h2>
+                                            <div class="metadata">
+                                                16 فروردین 1392 /
+                                                <a href="http://localhost/themeforest/wp-theme/2008/09/layout-test/#comments">بدون نظر</a> /
+                                                ارسال شده در : <a rel="category tag" title="View all posts in aciform" href="#">Webmarket</a>
+                                            </div>
+                                        </div>
+
+                                        <p class="push-down-0">
+                                            لورم ایپسوم متنی است که ساختگی برای طراحی و چاپ آن مورد است. صنعت چاپ زمانی لازم بود شرایطی شما باید فکر ثبت نام و طراحی، لازمه خروج می باشد. در ضمن قاعده همفکری ها جوابگوی سئوالات زیاد شاید باشد، آنچنان که لازم بود طراحی گرافیکی خوب بود...
+                                        </p>
+                                    </div>
+                                </article>
+
+
+
+                                <hr />
+
+                                <!--  ==========  -->
+                                <!--  = Pagination =  -->
+                                <!--  ==========  -->
+                                <div class="pagination">
+                                    <ul>
+                                        <li><a href="#" class="btn btn-primary"><span class="icon-chevron-left"></span></a></li>
+                                        <li><a href="#">1</a></li>
+                                        <li class="active"><a href="#">2</a></li>
+                                        <li><a href="#">3</a></li>
+                                        <li><a href="#">4</a></li>
+                                        <li><a href="#">5</a></li>
+                                        <li><a href="#" class="btn btn-primary"><span class="icon-chevron-right"></span></a></li>
+                                    </ul>
+                                </div> <!-- /pagination -->
+
+                            </section> <!-- /main content -->
+                            <!--  ==========  -->
+                            <!--  = Sidebar =  -->
+                            <!--  ==========  -->
+                            <aside class="span4 right-sidebar">
+
+                                <!--  ==========  -->
+                                <!--  = Search Widget =  -->
+                                <!--  ==========  -->
+                                
+
+                            
+                   
+
+
+                            </aside> <!-- /sidebar -->
+
+                        </div>
+                    </div>
+                </div> <!-- /container -->
+}
+else
+{
+    <h4>Not Found</h4>
+}

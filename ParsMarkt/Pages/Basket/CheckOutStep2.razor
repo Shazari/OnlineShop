@@ -1,0 +1,145 @@
+﻿@page "/CheckOutStep2"
+
+<div class="container">
+    <div class="row">
+
+        <!--  ==========  -->
+        <!--  = Main content =  -->
+        <!--  ==========  -->
+        <section class="span12">
+
+            <div class="checkout-container">
+                <div class="row">
+                    <div class="span10 offset1">
+
+                        <!--  ==========  -->
+                        <!--  = Header =  -->
+                        <!--  ==========  -->
+                        <header>
+                            <div class="row">
+                                <div class="span2">
+                                    <NavLink href="ParsMarket"><img src="/images/logo-bw.png" alt="Webmarket Logo" width="48" height="48" /></NavLink>
+                                    @*<a href="index.html"><img src="images/logo-bw.png" alt="Webmarket Logo" width="48" height="48" /></a>*@
+                                </div>
+                                <div class="span6">
+                                    <div class="center-align">
+                                        <h1><span class="light">آدرس ارسال و</span> پرداخت</h1>
+                                    </div>
+                                </div>
+                                <div class="span2">
+                                    <div class="right-align">
+                                        <img src="/images/buttons/security.jpg" alt="Security Sign" width="92" height="65" />
+                                    </div>
+                                </div>
+                            </div>
+                        </header>
+
+                        <!--  ==========  -->
+                        <!--  = Steps =  -->
+                        <!--  ==========  -->
+                        <div class="checkout-steps">
+                            <div class="clearfix">
+                                <div class="step done">
+                                    <div class="step-badge"><i class="icon-ok"></i></div>
+                                    <a href="checkout-step-1.html">سبد خرید</a>
+                                </div>
+                                <div class="step active">
+                                    <div class="step-badge">2</div>
+                                    آدرس ارسال
+                                </div>
+                                <div class="step">
+                                    <div class="step-badge">2</div>
+                                    شیوه پرداخت
+                                </div>
+                                <div class="step">
+                                    <div class="step-badge">4</div>
+                                    تایید و پرداخت
+                                </div>
+                            </div>
+                        </div> <!-- /steps -->
+                        <!--  ==========  -->
+                        <!--  = Shipping addr form =  -->
+                        <!--  ==========  -->
+
+                        <EditForm Model="@Order" OnValidSubmit="@SubmitValidForm" class="form-horizontal form-checkout">
+                            <div class="control-group">
+                                <label class="control-label" for="firstName">نام<span class="red-clr bold">*</span></label>
+                                <div class="controls">
+                                    
+                                    <InputText @bind-Value="Order.Person.FirstName" type="text" id="firstName" class="span4" required></InputText>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label" for="lastName">نام خانوادگی<span class="red-clr bold">*</span></label>
+                                <div class="controls">
+                                    <InputText @bind-Value="Order.Person.LastName" id="lastName" class="span4" required />
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label" for="telephone">تلفن<span class="red-clr bold">*</span></label>
+                                <div class="controls">
+                                    <InputNumber @bind-Value="Order.Person.PhoneNumber" id="telephone" class="span4" required />
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label" for="email">ایمیل<span class="red-clr bold">*</span></label>
+                                <div class="controls">
+                                    <InputText @bind-Value="Order.Person.EmailAddress" id="email" class="span4" required />
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label" for="addr1">ادرس 1<span class="red-clr bold">*</span></label>
+                                <div class="controls">
+                                    <InputText @bind-Value="Order.Person.Address" id="addr1" class="span4" required />
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label" for="addr2">آدرس 2</label>
+                                
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label" for="city">شهر<span class="red-clr bold">*</span></label>
+                                <div class="controls">
+                                    <InputText @bind-Value="Order.Person.City" type="text" id="city" class="span4" />
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label" for="zip">کد پستی<span class="red-clr bold">*</span></label>
+                                <div class="controls">
+                                    <InputNumber @bind-Value="Order.Person.PostCode" type="text" id="zip" class="span4" />
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label" for="zip">کشور<span class="red-clr bold">*</span></label>
+                                <div class="controls">
+                                    <InputText @bind-Value="Order.Person.Countries" type="text" id="zip" class="span4" />
+                                </div>
+                            </div>
+                            <input type="submit" class="btn btn-primary" value="ادامه" />
+                        </EditForm>
+
+                        <hr />
+
+                        <!--<p class="right-align">
+                            در مرحله بعدی شما شیوه پرداخت را انتخاب میکنید &nbsp; &nbsp;
+                            <NavLink href="/CheckOutStep3" class="btn btn-primary higher bold">ادامه</NavLink>-->
+                        @*<a href="checkout-step-3.html " class="btn btn-primary higher bold">ادامه</a>*@
+                        <!--</p>-->
+
+
+                    </div>
+                </div>
+            </div>
+
+
+        </section> <!-- /main content -->
+
+    </div>
+</div> <!-- /container -->
+
+
+
+
+@code {
+
+}

@@ -1,0 +1,42 @@
+﻿@page "/EditRole/{Id:int}"
+@inject NavigationManager navigate
+@inject IRoleServices RoleService
+@using ViewModels
+<h3>ویرایش نقش های کاربران</h3>
+<div class="row span4">
+    <EditForm Model="@Role" OnValidSubmit="@UpdateRole">
+        <div class="form-control span4">
+            <lable class="control-lable">نام </lable>
+            <div class ="controls">
+                <InputText type="text" @bind-Value="@Role.Name"></InputText>
+            </div
+        </div>
+        <hr />
+        <div class="form-control span4">
+            <lable class="control-labl">عنوان نقش </lable>
+            <div class="controls">
+                <InputText type="text" @bind-Value="@Role.Title"></InputText>
+            </div>
+        </div>
+        <input type="submit" value="ویرایش" class="btn btn-warning" />
+
+    </EditForm>
+</div>
+@code {
+
+    [Parameter]
+    public int Id { get; set; }
+
+    public RoleViewModel Role;
+    protected override async Task OnInitializedAsync()
+    {
+        Role = new RoleViewModel();
+        Role = await RoleService.GetAsyncById(Id);
+
+    }
+    async Task UpdateRole()
+    {
+        await RoleService.PutAsync(Role);
+        navigate.NavigateTo("/UsersManagement");
+    }
+}

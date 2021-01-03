@@ -1,0 +1,92 @@
+﻿
+<div class="navbar navbar-static-top" id="stickyNavbar">
+    <div class="navbar-inner">
+        <div class="container">
+            <div class="row">
+                <div class="span9">
+                    <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+
+                    <!--  ==========  -->
+                    <!--  = Menu =  -->
+                    <!--  ==========  -->
+                    <div class="nav-collapse collapse">
+                        <ul class="nav" id="mainNavigation">
+
+                            @if (List != null)
+                            {
+                                foreach (var item in List.Where(menu => menu.Parent == null))
+                                {
+                                    <li class="dropdown">
+                                        <NavLink Match="NavLinkMatch.All" class="nav-link" href="@(item.PageUrl)">
+                                            <span class="oi oi-plus" aria-hidden="true">@(item.Name)</span>
+                                        </NavLink>
+
+                                        <ul class="dropdown-menu">
+                                            @foreach (var SubMenu in List.Where(menu => menu.Parent != null))
+                                            {
+                                                if (SubMenu.Parent.Id == item.Id)
+                                                {
+
+                                                    <li class="dropdown active">
+                                                        <NavLink class="nav-link" href="@(SubMenu.PageUrl)">
+                                                            <span class="oi oi-plus" aria-hidden="true">@(SubMenu.Name)</span>
+                                                        </NavLink>
+                                                        <ul class="dropdown-menu">
+                                                            @foreach (var SubSubMenu in List.Where(menu => menu.Parent != null))
+                                                            {
+                                                                if (SubSubMenu.Parent.Id == SubMenu.Id)
+                                                                {
+                                                                    <li class="active">
+                                                                        <NavLink class="nav-link" href="@(SubSubMenu.PageUrl)">
+                                                                            <span class="oi oi-plus" aria-hidden="true">@(SubSubMenu.Name)</span>
+                                                                        </NavLink>
+                                                                    </li>
+                                                                }
+                                                            }
+                                                        </ul>
+                                                    </li>
+                                                }
+                                            }
+                                            
+                                        </ul>
+                                    </li>
+
+
+
+
+
+
+                                }
+
+                            }
+                            else
+                            {
+                                <h6>wait</h6>
+                            }
+
+                        </ul>
+
+
+
+
+
+                        <!--  ==========  -->
+                        <!--  = Search form =  -->
+                        <!--  ==========  -->
+                        <Search></Search>
+                    </div><!-- /.nav-collapse -->
+                </div>
+
+                <!--  ==========  -->
+                <!--  = Cart =  -->
+              <ParsMarkt.Pages.Basket.BasketView/>
+
+                <!--  =====End Cart=====  -->
+            </div>
+        </div>
+    </div>
+</div>

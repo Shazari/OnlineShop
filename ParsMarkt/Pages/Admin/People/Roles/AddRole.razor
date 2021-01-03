@@ -1,0 +1,41 @@
+﻿@page "/AddRole"
+@inject IRoleServices RoleService
+@inject NavigationManager Navigate
+@using ViewModels
+<h3>افزودن نقش کاربران</h3>
+<div class="row span4">
+    <EditForm Model="@Role" OnValidSubmit="@AddNewRole">
+        <div class="form-control span4">
+            <lable class="control-label">نام</lable>
+            <div class="controls">
+                <InputText type="text" class="form-control" @bind-Value="@Role.Name"></InputText>
+            </div>
+            
+        </div>
+
+        <div class="form-control span4">
+            <lable class="control-label">عنوان</lable>
+            <div class="controls">
+                <InputText type="text" class="form-control" @bind-Value="@Role.Title"></InputText>
+            </div>
+            </div>
+            <input type="submit" value="افزودن" class="btn btn-success" />
+</EditForm>
+    </div>
+    @code {
+
+        public RoleViewModel Role;
+
+        protected override async Task OnInitializedAsync()
+        {
+            Role = new RoleViewModel();
+
+        }
+
+        public async Task AddNewRole()
+        {
+            await RoleService.PostAsync(Role);
+            Navigate.NavigateTo("/UsersManagement");
+        }
+
+    }

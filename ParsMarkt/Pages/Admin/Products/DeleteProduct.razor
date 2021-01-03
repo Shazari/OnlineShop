@@ -1,0 +1,28 @@
+﻿@page "/ProductDelete/{Id:int}"
+@inject IProductServices ProductService
+@inject NavigationManager navigate
+<h2>delet p</h2>
+ <p>
+   @(Product.Name)
+     <hr />
+     @(Product.Id)
+ </p>
+<button class="btn btn-danger" @onclick="() => Delete()">Delete</button>
+@code {
+    [Parameter] public int Id { get; set; }
+    public ViewModels.ProductViewModel Product;
+
+    protected override async  Task OnInitializedAsync()
+    {
+        Product = new ViewModels.ProductViewModel();
+        Product = await ProductService.GetAsyncById(Id);
+
+
+    }
+    async Task Delete()
+    {
+        await ProductService.DeleteAsync(Id);
+
+        navigate.NavigateTo("/ProductsManagement");
+    }
+}

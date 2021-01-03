@@ -1,0 +1,223 @@
+﻿@page "/ProductsManagement"
+@inject HttpClient Http
+
+
+<div class="container">
+    <div class="span12">
+        <ParsMarkt.Pages.Admin.Products.CategoryManagement />
+
+    </div>
+    <hr />
+
+    <div class="row">
+        <label class="btn btn-primary">اضافه کردن محصول</label>
+        <EditForm Model="@Product" OnValidSubmit="@AddProduct">
+            <DataAnnotationsValidator />
+            <ValidationSummary />
+            <div class="span8">
+                <div class="control-group span8">
+                    <label class="">نام محصول</label>
+                    <div class="controls">
+                        <InputText @bind-Value="@Product.Name" class="input-block-level" id="inputEmailRegister" placeholder="@(Resources.DataDictionary.Name)" />
+                    </div>
+                </div>
+                <div class="control-group span8">
+                    <label class="">قیمت</label>
+                    <div class="controls">
+                        <InputNumber @bind-Value="@Product.Price" class="input-block-level" placeholder="price" />
+                    </div>
+                </div>
+
+
+               
+                <div class="control-group span8">
+                    <label class="">توضیحات</label>
+                    <div class="controls">
+                        <InputTextArea @bind-Value="@Product.ShortDescription" class="input-block-level" placeholder="ShortDescription" />
+                    </div>
+                </div>
+                <div class="control-group span8">
+                    <label class="">متن</label>
+                    <div class="controls">
+
+                        <InputTextArea @bind-Value="@Product.LongDescription" class="input-block-level" placeholder="LongDescription" />
+                    </div>
+                </div>
+
+            </div>
+
+
+
+
+            <div class="control-group span4">
+                <div class="card" style="width: 18rem;">
+
+                    <div class="card-header">
+                        تصویر محصول
+                    </div>
+                    <div class="card-body">
+                        @if (imagePath != null)
+                        {
+                            <img style="margin:8px auto;width:150px;"
+                                 src="@imagePath" />
+                        }
+
+
+                        <div class="control-group span12">
+                            <input type="file" @ref="inputRefrence" @onchange="async()=>await OpenFileAsync()" />
+                            <div class="">
+                                <ul>
+                                    <li>File Name:@fileName</li>
+                                </ul>
+                                <label class="custom-file-label" for="validatedCustomFile"></label>
+                                <div class="">عکس محصول را انتخاب کنید</div>
+                                @if (!string.IsNullOrWhiteSpace(message))
+                                {
+                                    <div class="alert alert-success">
+                                        File has been uploaded
+                                    </div>
+                                }
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+
+                <div class="control-group span12">
+                    <div class="card">
+                        <div class="card-header">
+                            انتخاب گروهای محصول
+                        </div>
+                        <div class="card-body">
+                            @{
+                                <ul style="list-style: none;">
+                                    @foreach (var item in categories)
+                                    {
+                                        <li style="padding: 5px 10px 0px 0px;">
+                                            @if (item.Selected)
+                                            {
+                                                <input type="checkbox" id="@item.Id" checked="checked" @onchange="@((e) => CheckboxChanged(e, item.Id))" />
+                                            }
+                                            else
+                                            {
+                                                <input type="checkbox" id="@item.Id" @onchange="@((e) => CheckboxChanged(e, item.Id))" />
+                                            }
+                                            @item.Name
+
+                                        </li>
+                                    }
+                                </ul>
+                            }
+
+                        </div>
+                    </div>
+
+                </div>
+
+
+            </div>
+            <button type="submit" class="span2 btn btn-primary" value=" ثبت محصول">
+                ثبت محصول
+            </button>
+        </EditForm>
+    </div>
+
+    <div class="row">
+        <hr />
+
+
+
+
+    </div>
+
+
+    <lable class="span3 btn">نمایش محصولات</lable>
+
+
+    <div class="col table table-responsive">
+        <table class="table table-bordered table-striped table-hover">
+            <thead>
+                <tr>
+                    <th>
+                        تصویر
+                    </th>
+                    <th>
+                        #
+                    </th>
+
+                    <th>
+                        نام
+                    </th>
+
+
+                    <th>
+                        قیمت
+                    </th>
+                    <th>
+                        توضیحات کوتاه
+                    </th>
+                    <th>
+                        توضیحات بیشتر
+                    </th>
+
+                    <th>
+                        گروه های محصول
+                    </th>
+                    <th>
+                        کد های محصول
+                    </th>
+
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Products)
+                {
+                    <tr>
+                        <td>
+                            <img class="span2" style="min-height:100px;min-width:100px;max-height:100px;max-width:100px;"
+                                 src=@(item.Image) />
+
+                        </td>
+                        <td>
+                            @(item.Id)
+                        </td>
+                        <td>
+                            @(item.Name)
+                        </td>
+
+
+                        <td>
+                            @(item.Price)
+                        </td>
+                        <td>
+                            @(item.ShortDescription)
+                        </td>
+                        <td>
+                            @(item.LongDescription)
+                        </td>
+
+                        <td>
+                            @*@(item.CategoryViewModel)*@
+                        </td>
+                        <td>
+                        </td>
+
+                        <td>
+
+                            <a class="btn btn-xs btn-warning" href="@($"/ProductEdit/{item.Id}")" role="button" data-toggle="modal"><i class="glyphicon glyphicon-pencil"></i>ویرایش</a>
+                            <a class="btn btn-xs btn-danger" href="@($"/ProductDelete/{item.Id}")" role="button" data-toggle="modal"><i class="glyphicon glyphicon-pencil"></i>حذف</a>
+                            <a class="btn btn-xs btn-primary" href="@($"/ShowSigleProduct/{item.Id}")" role="button" data-toggle="modal"><i class="glyphicon glyphicon-trash"></i>نمایش جزییات</a>
+                        </td>
+                    </tr>
+
+                }
+            </tbody>
+        </table>
+
+
+
+
+    </div>
+</div>

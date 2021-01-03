@@ -1,0 +1,50 @@
+﻿@page "/EditMenu/{Id:int}"
+@inject IMenuServices MenuService
+@inject NavigationManager Navigate
+@using ViewModels
+<h3>ویرایش منو</h3>
+<div class="row span4">
+    <EditForm Model="@Menu" OnValidSubmit="@UpdateMenu">
+        <div class="form-control span4">
+            <lable class="control-label"> عنوان منو </lable>
+            <div class="controls">
+                <InputText type="text" class="form-control" @bind-Value="@Menu.Name"></InputText>
+            </div>
+        </div>
+        <div class="form-control span4">
+            <lable class="control-label"> آدرس صفحه </lable>
+            <div class="controls">
+                <InputText type="text" class="form-control" @bind-Value="@Menu.PageUrl"></InputText>
+            </div>
+        </div>
+
+        @*<div class="form-control">
+                <lable> زیر منو </lable>
+                <InputText class="form-control" @bind-Value="@Menu.Parent.Name"></InputText>
+            </div>*@
+        <input type="submit" value="ویرایش" class="btn btn-warning" />
+    </EditForm>
+</div>
+@code {
+    public EditeMenu()
+    {
+
+    }
+    [Parameter]
+    public int Id { get; set; }
+
+    public MenuViewModel Menu;
+
+    protected override async Task OnInitializedAsync()
+    {
+        //Menu = new MenuViewModel();
+        Menu = await MenuService.GetByIdAsync(Id);
+
+    }
+
+    async Task UpdateMenu()
+    {
+        await MenuService.PutAsync(Menu);
+        Navigate.NavigateTo("/MenusManagement");
+    }
+}

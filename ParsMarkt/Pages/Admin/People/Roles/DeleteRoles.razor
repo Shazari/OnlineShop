@@ -1,0 +1,32 @@
+﻿@page "/DeleteRole/{Id:int}"
+@inject NavigationManager navigate
+@inject IRoleServices RoleService
+<h3>حذف نقش </h3>
+<div class="container">
+   
+    <hr />
+  
+
+    <hr />
+    <input @onclick="()=>Delete()" type="submit" class="btn btn-danger" value="حذف" />
+
+</div>
+   
+
+    
+
+@code {
+    [Parameter]
+    public int Id { get; set; }
+    public ViewModels.RoleViewModel Role;
+    protected override async Task OnInitializedAsync()
+    {
+        Role = new ViewModels.RoleViewModel();
+        Role =await RoleService.GetAsyncById(Id);
+    }
+    async Task Delete()
+    {
+       await RoleService.DeleteAsync(Id);
+        navigate.NavigateTo("/UsersManagement");
+    }
+}

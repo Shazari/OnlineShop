@@ -1,0 +1,15 @@
+﻿@page "/DeleteUser/{Id:int}"
+<h1>del</h1>
+<p>
+    @(User.FirstName)
+   <hr />
+    @(User.LastName)
+</p>
+<hr />
+<p>
+    @(User.EmailAddress)
+</p>
+<button type="submit" @onclick="()=>Delele()" class="btn btn-danger">DeleteUser</button>
+@code {
+
+}

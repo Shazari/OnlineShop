@@ -1,0 +1,75 @@
+﻿@page "/EditUser/{Id:int}"
+
+<div class="span12">
+
+
+    <div class="span3">
+        <p class="btn btn-info">ویرایش کاربران</p>
+    </div>
+    <hr />
+    <div class="alert alert-info">
+
+    </div>
+    <div class="span9">
+        <EditForm Model="@User" OnValidSubmit="@EditUserAsync" class="was-validated">
+            <ValidationSummary />
+         
+            <div class="span6 form-control">
+                <label class="span2">شماره</label>
+                <InputNumber @bind-Value="@User.Id"></InputNumber>
+            </div>
+            <div class="span6 form-control">
+                <label class="span2 control-label">نام</label>
+                <InputText @bind-Value="@User.FirstName" class="controls" type="text"></InputText>
+            </div>
+            <div class="span6 form-control">
+                <label class="span2 control-label">نام خانوادگی</label>
+                <InputText @bind-Value="@User.LastName" class="controls" type="text"></InputText>
+            </div>
+            <div class="span6 form-control">
+                <label class="span2">ایمیل</label>
+                <InputText @bind-Value="@User.EmailAddress" class="controls" type="text"></InputText>
+            </div>
+            <div class="span6 form-control">
+                <label class="span2">رمز</label>
+                <InputText @bind-Value="@User.Password" class="controls" type="text"></InputText>
+            </div>
+            <div class="span6 form-control">
+                <label class="span2">موبایل</label>
+                <InputNumber @bind-Value="@User.PhoneNumber" class="controls" type="number"></InputNumber>
+            </div>
+            <div class="span6 form-control">
+                <label class="span2">شهر</label>
+                <InputText @bind-Value="@User.City" class="controls" type="text"></InputText>
+            </div>
+            <div class="span6 form-control">
+                <label class="span2">آدرس</label>
+                <InputText @bind-Value="@User.Address" class="controls" type="text"></InputText>
+            </div>
+
+            <div class="span6 form-control">
+                <label class="span2">کد پستی</label>
+                <InputNumber @bind-Value="@User.PostCode" class="controls" type="number"></InputNumber>
+            </div>
+            <div class="span6 form-control">
+                <label class="span2">وضعیت</label>
+                <InputCheckbox @bind-Value="@User.IsActive" class="controls"></InputCheckbox>
+            </div>
+            <div class="span6 form-control">
+                <label class="span2">مدیر</label>
+                <InputCheckbox @bind-Value="@User.IsAdmin" class="controls"></InputCheckbox>
+            </div>
+            <div class="span6 form-control">
+                <label class="span2">کشور</label>
+                <InputText @bind-Value="@User.Countries" class="controls" type="text"></InputText>
+            </div>
+
+            <input class="span1 btn btn-primary" type="submit" value="ویرایش" />
+
+
+        </EditForm>
+    </div>
+
+</div>
+
+

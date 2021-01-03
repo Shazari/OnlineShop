@@ -1,0 +1,152 @@
+﻿
+<header id="header">
+    <div class="container">
+        <div class="row">
+
+            <!--  ==========  -->
+            <!--  = Logo =  -->
+            <!--  ==========  -->
+            <div class="span7">
+                <a class="brand" href="">
+                    <img src="images/LogoInstagram.png" alt="market Logo" width="48" height="48" />
+                    <span class="pacifico">پارس مارکت </span>
+                    <span class="tagline">ووپرتال</span>
+                </a>
+            </div>
+
+            <!--  ==========  -->
+            <!--  = Social Icons =  -->
+            <!--  ==========  -->
+            <div class="span5">
+                <div class="topmost-line">
+                    <div class="lang-currency">
+                        <div class="dropdown js-selectable-dropdown">
+                            <a data-toggle="dropdown" class="selected" href="#"><span class="js-change-text"><i class="famfamfam-flag-gb"></i> انگلیسی (EN)</span> <b class="caret"></b></a>
+                            <!-- for all available country flags look the styles in lib/components/_flags.scss -->
+                            <ul class="dropdown-menu js-possibilities" role="menu" aria-labelledby="dLabel">
+                                <li><a href="#"><i class="famfamfam-flag-gb"></i> English (EN)</a></li>
+                                <li><a href="#"><i class="famfamfam-flag-ir"></i> فارسی (FA)</a></li>
+                                <li><a href="#"><i class="famfamfam-flag-de"></i> Deutsch (DE)</a></li>
+
+                            </ul>
+                        </div>
+                        <div class="dropdown js-selectable-dropdown">
+                            <a data-toggle="dropdown" class="selected" href="#"><span class="js-change-text">USD ($)</span> <b class="caret"></b></a>
+                            <ul class="dropdown-menu js-possibilities" role="menu" aria-labelledby="dLabel">
+                                <li><a href="#">USD ($)</a></li>
+                                <li><a href="#">EUR (€)</a></li>
+
+                                <li><a href="#">GBP (£)</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="top-right">
+                    <div class="icons">
+                        <a href="http://www.facebook.com/ProteusNet"><span class="zocial-facebook"></span></a>
+                        <a href="skype:primozcigler?call"><span class="zocial-skype"></span></a>
+                        <a href="https://twitter.com/proteusnetcom"><span class="zocial-twitter"></span></a>
+                        <a href="http://eepurl.com/xFPYD"><span class="zocial-rss"></span></a>
+                        <a href="#"><span class="zocial-wordpress"></span></a>
+                        <a href="#"><span class="zocial-android"></span></a>
+                        <a href="#"><span class="zocial-html5"></span></a>
+                        <a href="#"><span class="zocial-windows"></span></a>
+                        <a href="#"><span class="zocial-apple"></span></a>
+                    </div>
+                    <div class="register">
+                        <a href="#loginModal" role="button" data-toggle="modal">ورود</a> یا
+                        <a href="#registerModal" role="button" data-toggle="modal">ثبت نام</a>
+                    </div>
+                </div>
+            </div> <!-- /social icons -->
+        </div>
+    </div>
+</header>
+
+
+@*<ParsMarkt.Shared.Acounting.Acounting></ParsMarkt.Shared.Acounting.Acounting>*@
+
+
+<div id="loginModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h3 id="loginModalLabel"><span class="light">@(Resources.InformationMessages.LoginInSite)</span></h3>
+    </div>
+    <div class="modal-body">
+        <EditForm Model="@loginViewModel" OnInvalidSubmit="Login">
+           
+          
+            <div class="control-group">
+                <label class="control-label hidden shown-ie8" for="inputEmail">@(Resources.DataDictionary.Email)</label>
+                <div class="controls">
+                    <InputText @bind-Value="@loginViewModel.EmailAddress"  type="text" class="input-block-level" id="inputEmail" placeholder="@(Resources.DataDictionary.Email)"/>
+                </div>
+                
+            </div>
+            <div class="control-group">
+                <label class="control-label hidden shown-ie8" for="inputPassword">@(Resources.DataDictionary.Password)</label>
+                <div class="controls">
+                    <InputText @bind-Value="@loginViewModel.Password"  type="password" class="input-block-level" id="inputPassword" placeholder="@(Resources.DataDictionary.Password)"/>
+                </div>
+            </div>
+            <div class="control-group">
+                <div class="controls">
+                    <label class="checkbox">
+                        <InputCheckbox @bind-Value="@loginViewModel.RememberMe"  type="checkbox"/>
+                        @(loginMessage)
+                        @(Resources.DataDictionary.RememberMe)
+                    </label>
+                </div>
+            </div>
+            <button  type="submit" class="btn btn-primary input-block-level bold higher">
+                @(Resources.Buttons.Login)
+            </button>
+        </EditForm>
+        <p class="center-align push-down-0">
+            <a href="#" data-dismiss="modal">@(Resources.LinkCaptions.ForgotPassword)</a>
+        </p>
+    </div>
+</div>
+
+<!--  = Register =  -->
+<div id="registerModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="registerModalLabel" aria-hidden="true">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h3 id="registerModalLabel"><span class="light">@(Resources.InformationMessages.RegisterInSite) </span> </h3>
+    </div>
+    <div class="modal-body">
+        <EditForm Model="@registerViewModel" OnValidSubmit="@HandleValidSubmit" >
+       
+            <div class="control-group">
+                <label class="control-label hidden shown-ie8" for="inputEmailRegister">@(Resources.DataDictionary.Email)</label>
+                <div class="controls">
+                    <InputText @bind-Value="@registerViewModel.EmailAddress"  type="email" class="input-block-level" id="inputEmailRegister" placeholder="@(Resources.DataDictionary.Email)"/>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label hidden shown-ie8" for="inputPasswordRegister">@(Resources.DataDictionary.Password)</label>
+                <div class="controls">
+                    <InputText @bind-Value="@registerViewModel.Password" type="password" class="input-block-level" id="inputPasswordRegister" placeholder="@(Resources.DataDictionary.Password)"/>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label hidden shown-ie8" for="inputConfirmPasswordRegister">@(Resources.DataDictionary.ConfirmPassword)</label>
+                <div class="controls">
+                    <InputText @bind-Value="@registerViewModel.ConfirmPassword" type="password" class="input-block-level" id="inputConfirmPasswordRegister" placeholder="@(Resources.DataDictionary.ConfirmPassword)"/>
+                </div>
+            </div>
+            
+            <button type="submit" class="btn btn-danger input-block-level bold higher">
+                @(Resources.Buttons.Register)
+            </button>
+        </EditForm>
+        <p class="center-align push-down-0">
+            <a data-toggle="modal" role="button" href="#loginModal" data-dismiss="modal">@(registerdeMessage)</a>
+        </p>
+
+    </div>
+</div>
+
+
+
+

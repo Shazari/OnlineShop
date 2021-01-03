@@ -1,0 +1,41 @@
+﻿@page "/DeleteMenu/{Id:int}"
+@inject IMenuServices MenuService
+@inject NavigationManager Navigate
+@using ViewModels
+
+<h3>حذف منو</h3>
+<div class="container">
+    
+    <hr />
+  
+    <hr />
+
+
+    <input type="submit" class="btn btn-danger" value="حذف" @onclick="()=>Delete()" />
+</div>
+
+
+@code {
+    public DeleteMenu()
+    {
+
+    }
+
+    [Parameter]
+    public int Id { get; set; }
+
+    public MenuViewModel Menu;
+
+    protected override async Task OnInitializedAsync()
+    {
+
+        Menu = await MenuService.GetByIdAsync(Id);
+        
+    }
+
+   public async Task Delete()
+    {
+        await MenuService.DeleteAsync(Id);
+        Navigate.NavigateTo("/MenusManagement");
+    }
+}

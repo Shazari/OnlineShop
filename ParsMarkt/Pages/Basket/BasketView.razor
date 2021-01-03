@@ -1,0 +1,76 @@
+﻿
+      <div class="span3">
+    <div class="cart-container" id="cartContainer">
+        <div class="cart">
+            <p class="items">سبد خرید <span class="dark-clr">@(GetCount())</span></p>
+            <p class="dark-clr hidden-tablet">@(GetTotal())</p>
+            <NavLink class="btn btn-danger" href="CheckOutStep1">
+
+                <i class="icon-shopping-cart"></i>
+            </NavLink>
+        </div>
+        <div class="open-panel">
+
+
+            @if (BasketItems != null)
+            {
+
+
+                @foreach (var item in BasketItems)
+                {
+                    <div class="item-in-cart clearfix">
+                        <div class="image">
+
+                            <img class="image" src=@(item.Product.Image) width="124" height="124" alt="cart item" />
+                        </div>
+                        <div class="desc">
+                            <strong>
+                                <NavLink href=@($"/ProductDetails/{item.Product.Id}")> @(item.Product.Name)</NavLink>
+                            </strong>
+                            @*<ParsMarkt.Pages.Basket.BasketCounter BasketVC="@(item)" ></ParsMarkt.Pages.Basket.BasketCounter>*@
+
+                            <span class="light-clr qty">
+                                <button type="button" class="btn btn-primary btn-sm" @onclick="()=>Plus(item)">+</button>
+                             
+
+                                تعداد@(item.Count)
+                                &nbsp;
+                                <button type="button" class="btn btn-primary btn-sm" @onclick="()=>Minus(item)">-</button>
+                                <a href="#" class="icon-remove-sign" title="Remove Item"></a>
+                            </span>
+                        </div>
+                        <div class="price">
+                            <strong>"@(GetSubTotal(item)) 
+                            </strong>
+                        </div>
+                    </div>
+                }
+
+            }
+            else
+            {
+                <h1>Wait</h1>
+            }
+            <div class="summary">
+                <div class="line">
+                    <div class="row-fluid">
+                        <div class="span6">هزینه ارسال :</div>
+                        <div class="span6 align-right">$4.99</div>
+                    </div>
+                </div>
+                <div class="line">
+                    <div class="row-fluid">
+                        <div class="span6">جمع کل :</div>
+                        <div class="span6 align-right size-16"> @(GetTotal())</div>
+                    </div>
+                </div>
+            </div>
+            <div class="proceed">
+                <NavLink href="/CheckOutStep1" class="btn btn-danger pull-right bold higher">تصویه حساب <i class="icon-shopping-cart"></i></NavLink>
+                @* <a href="checkout-step-1.html" class="btn btn-danger pull-right bold higher">تصویه حساب <i class="icon-shopping-cart"></i></a>*@
+                <small>هزینه ارسال بر اساس منطقه جغرافیایی محاسبه میشود. <a href="#">اطلاعات بیشتر</a></small>
+            </div>
+        </div>
+    </div>
+</div> <!-- /cart -->
+

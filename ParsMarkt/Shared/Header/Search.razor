@@ -1,0 +1,15 @@
+﻿
+<EditForm Model="@Content" OnValidSubmit="@SearchResultAsync" class="navbar-form pull-right">
+
+<button type="submit" @onclick="()=>SearchResultAsync()"><span class="icon-search"></span>
+    </button>
+<input @bind-value="Content" type="text" class="span1" id="navSearchInput">
+
+</EditForm>
+@*@if (Result.Any())
+{
+    
+   // <SearchResult ContentValue=@(Result)></SearchResult>
+}*@
+@code{
+}

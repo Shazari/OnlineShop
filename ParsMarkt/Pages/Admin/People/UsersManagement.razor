@@ -1,0 +1,129 @@
+﻿@page "/UsersManagement"
+<div class="span3">
+    
+    <a class="btn btn-large btn-primary" href="@($"/AddNewUser")" role="button" data-toggle="modal">افزودن کاربر</a>
+</div>
+    
+<hr />
+@if (Users!=null)
+	{
+		 
+	
+    <div class="col table table-responsive">
+        <table class="table table-bordered table-striped table-hover">
+            <thead>
+                <tr>
+                    <th>
+                        #
+                    </th>
+                    <th>
+                        نام
+                    </th>
+                    <th>
+                        فامیلی
+                    </th>
+                    <th>
+                        ایمیل
+                    </th>
+
+                    <th>
+                        تلفن
+                    </th>
+                    <th>
+
+                        رمز ورود
+                    </th>
+                    <th>
+                        آدرس
+                    </th>
+                    <th>
+                        شهر
+                    </th>
+                    <th>
+                        کد پستی
+                    </th>
+                    <th>
+                        کشور
+                    </th>
+                    <th>
+                        تاریخ ثبت نام
+                    </th>
+                    <th>
+                        وضعیت
+                    </th>
+                    <th>
+                        نوع کاربر
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Users)
+                {
+                <tr>
+                    <td>
+                        #
+                    </td>
+                    <td>
+                        @(item?.FirstName)
+                    </td>
+                    <td>
+                        @(item?.LastName)
+                    </td>
+                    <td>
+                        @(item?.EmailAddress)
+                    </td>
+                    <td>
+                        @(item?.PhoneNumber)
+                    </td>
+                    <td>
+                        @(item?.Password)
+                    </td>
+                    <td>
+                        @(item?.Address)
+                    </td>
+                    <td>
+                        @(item?.City)
+                    </td>
+                    <td>
+                        @(item?.PostCode)
+                    </td>
+                    <td>
+                        @(item?.Countries)
+                    </td>
+                    
+                    <td>
+                        @(item?.IsActive)
+                    </td>
+                   
+                    <td>
+                        @(item?.IsAdmin)
+                    </td>
+
+                    <td>
+
+                        <div class="span2">
+                            <a class="btn btn-xs btn-warning" href="@($"/EditUser/{item.Id}")" role="button" data-toggle="modal"><i class="glyphicon glyphicon-pencil"></i>یرایش</a>
+                        </div>
+                        <div class="span2">
+                            <a class="btn btn-xs btn-danger" href="@($"/DeleteUser/{item.Id}")" role="button" data-toggle="modal"><i class="glyphicon glyphicon-trash"></i>حذف</a>
+                        </div>
+
+
+                    </td>
+                </tr>
+
+                }
+            </tbody>
+        </table>
+
+
+
+
+    </div>
+}
+<div>
+    <ParsMarkt.Pages.Admin.People.RolesManagement/>
+</div>
+    @code {
+
+    }

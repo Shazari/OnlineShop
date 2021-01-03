@@ -1,0 +1,27 @@
+﻿@page "/EditCategory/{Id:int}"
+<h3>EditCategory</h3>
+
+<EditForm Model="@Category" OnValidSubmit="@SubmitEdit" >
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+    <div class="control-group">
+        <label class="control-label hidden shown-ie8" for="inputEmailRegister">@(Resources.DataDictionary.Name)</label>
+        <div class="controls">
+            <InputText @bind-Value="@Category.Name" class="input-block-level" id="inputEmailRegister" placeholder="@(Resources.DataDictionary.Name)" />
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label hidden shown-ie8">@(Resources.DataDictionary.Description)</label>
+        <div class="controls">
+            <InputText @bind-Value="@Category.Description" class="input-block-level" placeholder="@(Resources.DataDictionary.Description)" />
+        </div>
+    </div>
+
+
+    <button type="submit" class="btn btn-danger input-block-level bold higher">
+   ویرایش
+    </button>
+</EditForm>
+@code {
+
+}

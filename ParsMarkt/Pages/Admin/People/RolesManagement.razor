@@ -1,0 +1,41 @@
+﻿
+<h3>RolesManagement</h3>
+
+
+<div class="row">
+    <a href="/AddRole" class="btn btn-primary">  افزودن نقش جدید</a>
+    <div class="table-responsive">
+
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>
+                        Name
+                    </th>
+                    <th>Title</th>
+                    <th>
+                        
+                    </th>
+                </tr>
+            </thead>
+            @foreach (var item in Roles)
+            {
+        <tr>
+            <td>#</td>
+            <td>
+                @(item.Name)
+            </td>
+            <td>
+                @(item.Title)
+            </td>
+            <td>
+                <a href="/DeleteRole/@(item.Id)" class="btn btn-danger">حذف</a>
+                <a href="/EditRole/@(item.Id)" class="btn btn-warning">ویرایش</a>
+            </td>
+        </tr>
+            }
+        </table>
+
+    </div>
+</div>

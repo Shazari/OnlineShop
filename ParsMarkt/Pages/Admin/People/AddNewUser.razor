@@ -1,0 +1,77 @@
+﻿@page "/AddNewUser"
+
+<h3>افزودن کاربر جدید</h3>
+<EditForm Model="@User" OnValidSubmit="@AddUser" class="form-horizontal form-checkout">
+    <div class="control-group">
+        <label class="control-label" for="firstName">نام<span class="red-clr bold">*</span></label>
+        <div class="controls">
+            <InputText @bind-Value="@User.FirstName" type="text" id="firstName" class="span4" required></InputText>
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label" for="lastName">نام خانوادگی<span class="red-clr bold">*</span></label>
+        <div class="controls">
+            <InputText @bind-Value="@User.LastName" type="text" id="lastName" class="span4" required />
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label" for="telephone">تلفن<span class="red-clr bold">*</span></label>
+        <div class="controls">
+            <InputNumber @bind-Value="@User.PhoneNumber" type="tel" id="telephone" class="span4" required />
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label" for="email">ایمیل<span class="red-clr bold">*</span></label>
+        <div class="controls">
+            <InputText @bind-Value="@User.EmailAddress" type="email" id="email" class="span4" required />
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label" for="addr1">گذرواژه<span class="red-clr bold">*</span></label>
+        <div class="controls">
+            <InputText @bind-Value="@User.Password" type="text" id="addr1" class="span4" required />
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label" for="addr1">ادرس 1<span class="red-clr bold">*</span></label>
+        <div class="controls">
+            <InputText @bind-Value="@User.Address" type="text" id="addr1" class="span4" required />
+        </div>
+    </div>
+
+    <div class="control-group">
+        <label class="control-label" for="city">شهر<span class="red-clr bold">*</span></label>
+        <div class="controls">
+            <InputText @bind-Value="@User.City" type="text" id="city" class="span4" />
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label" for="zip">کد پستی<span class="red-clr bold">*</span></label>
+        <div class="controls">
+            <InputNumber @bind-Value="@User.PostCode" type="text" id="zip" class="span4" />
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label" for="zip">کشور<span class="red-clr bold">*</span></label>
+        <div class="controls">
+            <InputText @bind-Value="@User.Countries" type="text" id="zip" class="span4" />
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label" for="zip">وضعیت<span class="red-clr bold">*</span></label>
+        <div class="controls">
+            <InputCheckbox @bind-Value="@User.IsActive" type="text" id="zip" class="span4" />
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label" for="zip">مدیر<span class="red-clr bold">*</span></label>
+        <div class="controls">
+            <InputCheckbox @bind-Value="@User.IsAdmin" type="text" id="zip" class="span4" />
+        </div>
+    </div>
+
+    <input type="submit" class="btn btn-success" value="ثبت" />
+    
+
+</EditForm>
+

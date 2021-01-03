@@ -1,0 +1,150 @@
+﻿
+
+
+<a class="btn btn-primary btn-plus" href="#AddCategoryModal" role="button" data-toggle="modal"><i class="glyphicon glyphicon-plus"></i>افزودن گروه محصولات</a>
+<div class="col table table-responsive">
+    <table class="table table-bordered table-striped table-hover">
+        <thead>
+            <tr>
+                <th>
+                    #
+                </th>
+                <th>
+                    نام گروه
+                </th>
+
+                <th>
+                    توضیحات
+                </th>
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Categories)
+            {
+                <tr>
+                    <td>
+                        #
+                    </td>
+                    <td>
+                        @(item.Name)
+                    </td>
+                    <td>
+                        @(item.Description)
+                    </td>
+                    <td>
+                        
+                        <a class="btn btn-xs btn-warning" href=@($"/EditCategory/{item.Id}") role="button" data-toggle="modal"><i class="glyphicon glyphicon-pencil"></i>ویرایش</a>
+                        <a class="btn btn-xs btn-danger" href=@($"/DeleteCategory/{item.Id}") role="button" data-toggle="modal"><i class="glyphicon glyphicon-trash"></i>حذف</a>
+                        <a class="btn btn-xs btn-primary" href=@($"/ShowCategory/{item.Id}") role="button" data-toggle="modal"><i class="glyphicon glyphicon-trash"></i>نمایش</a>
+                    </td>
+                </tr>
+
+            }
+        </tbody>
+    </table>
+
+
+
+
+</div>
+<div id="AddCategoryModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="registerModalLabel" aria-hidden="true">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h3 id="registerModalLabel"><span class="light">اضافه کردن گروه محصول </span> </h3>
+    </div>
+    <div class="modal-body">
+        <EditForm Model="@categoryViewModel" OnValidSubmit="@AddCategory">
+            <DataAnnotationsValidator/>
+            
+            <div class="control-group">
+                <label class="control-label hidden shown-ie8" for="inputEmailRegister">@(Resources.DataDictionary.Name)</label>
+                <div class="controls">
+                    <InputText @bind-Value="@categoryViewModel.Name"  class="input-block-level" id="inputEmailRegister" placeholder="@(Resources.DataDictionary.Name)" />
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label hidden shown-ie8" >@(Resources.DataDictionary.Description)</label>
+                <div class="controls">
+                    <InputText @bind-Value="@categoryViewModel.Description" class="input-block-level"  placeholder="@(Resources.DataDictionary.Description)" />
+                </div>
+            </div>
+            
+
+            <button type="submit" class="btn btn-danger input-block-level bold higher">
+                ثبت 
+            </button>
+        </EditForm>
+        <p class="center-align push-down-0">
+           
+        </p>
+
+    </div>
+</div>
+<div id="EditModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="registerModalLabel" aria-hidden="true">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h3 id="registerModalLabel"><span class="light">ویرایش گروه محصول </span> </h3>
+    </div>
+    <div class="modal-body">
+        <EditForm Model="@categoryViewModel" OnValidSubmit="@EditSubmitCategory">
+            <DataAnnotationsValidator />
+            <ValidationSummary />
+           
+            <div class="control-group">
+                <label class="control-label hidden shown-ie8" >@(Resources.DataDictionary.Name)</label>
+                <div class="controls">
+                    <InputText @bind-Value="@categoryViewModel.Name" class="input-block-level"  placeholder="@(Resources.DataDictionary.Name)" />
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label hidden shown-ie8" >@(Resources.DataDictionary.Description)</label>
+                <div class="controls">
+                    <InputText @bind-Value="@categoryViewModel.Description"  class="input-block-level"  placeholder="@(Resources.DataDictionary.Description)" />
+                </div>
+            </div>
+
+
+            <button type="submit" class="btn btn-danger input-block-level bold higher">
+                ویرایش
+            </button>
+        </EditForm>
+        <p class="center-align push-down-0">
+
+        </p>
+
+    </div>
+</div>
+<div id="DeleteModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="registerModalLabel" aria-hidden="true">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h3 id="registerModalLabel"><span class="light">حذف گروه محصول </span> </h3>
+    </div>
+    <div class="modal-body">
+        <EditForm Model="@categoryViewModel" OnValidSubmit="@RemoveCategory">
+            <DataAnnotationsValidator />
+            <ValidationSummary />
+            <div class="control-group">
+                <label class="control-label hidden shown-ie8" >@(Resources.DataDictionary.Name)</label>
+                <div class="controls">
+                    <InputText @bind-Value="@categoryViewModel.Name"   class="input-block-level" placeholder="@(Resources.DataDictionary.Email)" />
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label hidden shown-ie8" >@(Resources.DataDictionary.Description)</label>
+                <div class="controls">
+                    <InputText @bind-Value="@categoryViewModel.Description"  class="input-block-level"  placeholder="@(Resources.DataDictionary.Password)" />
+                </div>
+            </div>
+
+
+            <button type="submit" class="btn btn-danger input-block-level bold higher">
+                حذف
+            </button>
+        </EditForm>
+        <p class="center-align push-down-0">
+
+        </p>
+
+    </div>
+</div>

@@ -1,0 +1,78 @@
+﻿@page "/MenusManagement"
+@inject IMenuServices MenuService
+@inject NavigationManager Navigate
+@using ViewModels
+
+<h3>مدیریت منو ها</h3>
+<a class="btn btn-primary" href="/AddNewMenu">افزودن منو</a>
+
+<div class="table table-responsive">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>
+                    شماره
+                </th>
+                <th>
+                    نام
+                </th>
+                <th>
+                    آدرس صفحه
+                </th>
+                <th>
+                    تاریخ درج
+                </th>
+               
+                <th>
+                    دستورات
+                </th>
+
+            </tr>
+        </thead>
+        <tbody>
+            @if (Menus!=null)
+            {
+            @foreach (var item in Menus)
+            {
+                <tr>
+                    <td>
+                        @(item?.Id)
+                    </td>
+                    <td>
+                        @(item?.Name)
+                    </td>
+                    <td>
+                        @(item?.PageUrl)
+                    </td>
+                    <td>
+                        @(item?.InsertDateTime)
+                    </td>
+                    
+                    <td>
+                        <a class="btn btn-warning" href="/EditMenu/@(item.Id)">ویرایش منو</a>
+                        <a class="btn btn-danger" href="/DeleteMenu/@(item.Id)">حذف منو</a>
+                    </td>
+                </tr>
+            }
+            }
+            else
+            {
+                <h1>null</h1>
+            }
+
+        </tbody>
+    </table>
+</div>
+
+@code {
+
+    public IList<MenuViewModel> Menus;
+
+    protected override async Task OnInitializedAsync()
+    {
+        Menus = new List<MenuViewModel>();
+        var res = await MenuService.GetAsync();
+        Menus = res.ToList();
+
+    }
+}

@@ -1,0 +1,96 @@
+﻿<div class="navbar navbar-static-top" id="stickyNavbar">
+    <div class="navbar-inner">
+        <div class="container">
+            <div class="row">
+                <div class="span9">
+                    <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+
+                    <!--  ==========  -->
+                    <!--  = Menu =  -->
+                    <!--  ==========  -->
+                    <div class="nav-collapse collapse">
+                        <ul class="nav" id="mainNavigation">
+                            <li class="dropdown">
+                                <NavLink href="AdminHome" class="dropdown-toggle"> خانه <b class="caret"></b> </NavLink>
+
+                            </li>
+                            <li class="dropdown">
+                                <NavLink href="/UsersManagement" class="dropdown-toggle">مدیریت کاربران <b class="caret"></b> </NavLink>
+                                <ul class="dropdown-menu">
+                                    <li class="dropdown">
+                                        <NavLink href="/UsersPasswordManagement"><i class="icon-caret-left pull-right visible-desktop"></i> تغییر رمز عبور</NavLink>
+
+                                    </li>
+                                    
+                                </ul>
+                                <ul class="dropdown-menu">
+
+                                    <li class="dropdown">
+                                        <NavLink href="features.html" class="dropdown-toggle"><i class="icon-caret-left pull-right visible-desktop"></i> همه امکانات</NavLink>
+
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <NavLink href="/OrdersManagement" class="dropdown-toggle"> مدیریت سفارش ها <b class="caret"></b> </NavLink>
+
+                            </li>
+
+                            <li class="dropdown">
+                                <NavLink href="/ProductsManagement" class="dropdown-toggle"> مدیریت محصولات <b class="caret"></b> </NavLink>
+                                <ul class="dropdown-menu">
+                                    <li><NavLink href="Product">مدیریت گروه های محصولات</NavLink></li>
+
+                                </ul>
+                            </li>
+                            <li><NavLink href="/MenusManagement">مدیریت منو ها</NavLink></li>
+                            <li class="dropdown active">
+                                <NavLink href="/ContactsManagement" class="dropdown-toggle">مدیریت پیام ها <b class="caret"></b> </NavLink>
+
+                            </li>
+
+                            <li><NavLink href="/AboutUSManagement">مدیریت درباره ما</NavLink></li>
+
+                        </ul>
+
+                        <!--  ==========  -->
+                        <!--  = Search form =  -->
+                        <!--  ==========  -->
+                        <form class="navbar-form pull-right" action="#" method="get">
+                            <button type="submit"><span class="icon-search"></span></button>
+                            <input type="text" class="span1" name="search" id="navSearchInput">
+                        </form>
+                    </div><!-- /.nav-collapse -->
+                </div>
+
+              
+            </div>
+        </div>
+    </div>
+</div> <!-- /main menu -->
+<!--  ==========  -->
+<!--  = Breadcrumbs =  -->
+<!--  ==========  -->
+<div class="darker-stripe">
+    <div class="container">
+        <div class="row">
+            <div class="span12">
+                <ul class="breadcrumb">
+                    <li>
+                        <NavLink href="/">Webmarket</NavLink>
+                    </li>
+                    <li><span class="icon-chevron-right"></span></li>
+                    <li>
+                        <NavLink href="/adminhome">مدیریت</NavLink>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+ <!-- /container -->
