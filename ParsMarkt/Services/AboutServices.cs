@@ -17,9 +17,10 @@ namespace ParsMarkt
         {
             return "Abouts";        }
 
-        public Task<IList<AboutUsViewModel>> GetAsync()
+        public async Task<IList<AboutUsViewModel>> GetAsync()
         {
-            throw new NotImplementedException();
+            var res =await GetAsync<IList<AboutUsViewModel>>();
+            return res;
         }
 
         public Task<AboutUsViewModel> PostAsync(AboutUsViewModel viewModel)
