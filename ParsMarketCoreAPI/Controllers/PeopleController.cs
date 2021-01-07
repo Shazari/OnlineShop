@@ -39,7 +39,7 @@ namespace ParsMarketCoreAPI.Controllers
             }
             var Person = new PersonViewModel()
             {
-                Id = person.Id,
+               // Id = person.Id,
                 EmailAddress = person.EmailAddress,
                 Address = person.Address,
                 City = person.City,
@@ -72,7 +72,7 @@ namespace ParsMarketCoreAPI.Controllers
         public async Task<IActionResult> PutPerson(PersonViewModel viewModel)
         {
             var person = await UnitOfWork.PersonRepository.GetById(viewModel.Id);
-            person.Id = viewModel.Id;
+            //person.Id = viewModel.Id;
             person.FirstName = viewModel.FirstName;
             person.LastName = viewModel.LastName;
             person.Address = viewModel.Address;
@@ -96,14 +96,14 @@ namespace ParsMarketCoreAPI.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!IsPersonExists(person.Id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
+                //if (!IsExists(person.Id))
+                //{
+                //    return NotFound();
+                //}
+                //else
+                //{
+                //    throw;
+                //}
             }
 
             return NoContent();
@@ -137,14 +137,14 @@ namespace ParsMarketCoreAPI.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!IsPersonExists(person.Id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
+                //if (!IsExists(person.Id))
+                //{
+                //    return NotFound();
+                //}
+                //else
+                //{
+                //    throw;
+                //}
             }
 
             return NoContent();
@@ -162,10 +162,10 @@ namespace ParsMarketCoreAPI.Controllers
                 EmailAddress = viewModel.EmailAddress,
                 Password = viewModel.Password,
                 Address = viewModel.Address,
-                Id = viewModel.Id,
+                //Id = viewModel.Id,
                 City = viewModel.City,
                 Countries = viewModel.Countries,
-                InsertDateTime = DateTime.Now,
+               // InsertDateTime = DateTime.Now,
                 IsActive = viewModel.IsActive,
                 IsAdmin = viewModel.IsAdmin,
                 PhoneNumber = viewModel.PhoneNumber,
@@ -200,9 +200,9 @@ namespace ParsMarketCoreAPI.Controllers
             return personViewMode;
         }
 
-        private bool IsPersonExists(int id)
+        private bool IsExists(int id)
         {
-            return UnitOfWork.PersonRepository.IsPersonExist(id);
+            return UnitOfWork.PersonRepository.IsExist(id);
         }
     }
 }

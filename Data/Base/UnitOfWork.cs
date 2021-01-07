@@ -3,6 +3,9 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using Models;
+using IdentityServer4.EntityFramework.Options;
+using Microsoft.Extensions.Options;
+
 namespace Data.Base
 {
 	public abstract class UnitOfWork :IUnitOfWork
@@ -12,9 +15,11 @@ namespace Data.Base
 		public UnitOfWork(Options options) : base()
 		{
 			Options = options;
-		}
+			
 
-	
+		}
+		
+
 		protected Options Options { get; set; }
 		
 		private ParsMarketDbContext _databaseContext;

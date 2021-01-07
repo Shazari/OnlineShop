@@ -7,7 +7,7 @@ using System.Linq;
 using Models;
 namespace Data
 {
-    public class Repository<T> : IRepository<T> where T : Models.BaseEntity
+    public class Repository<T> : IRepository<T> where T : class
     {
         internal Microsoft.EntityFrameworkCore.DbSet<T> DbSet { get; }
         internal ParsMarketDbContext DatabaseContext { get; }
@@ -88,7 +88,9 @@ namespace Data
 
         bool IRepository<T>.IsExist(int id)
         {
-            return DbSet.Any(e => e.Id == id);
+
+            //var b=DbSet.Any(e => e.Id == id);
+            return true;
         }
 
       

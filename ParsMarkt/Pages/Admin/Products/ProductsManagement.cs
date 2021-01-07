@@ -99,9 +99,9 @@ namespace ParsMarkt.Pages.Admin.Products
                 imagePath = url+'/'+uploadedFileName;
                 message = "file has been uploaded successfully";
             }
-            while (imagePath.Contains("/+"))
+            while (imagePath.Contains("\""))
             {
-                imagePath += imagePath.Replace("/+","/");
+                imagePath = imagePath.Replace("\"","");
             }
             Product.CategoriesId = categories.Where(cat => cat.Selected).Select(cat => cat.Id).ToList();
             Product.Image = imagePath.ToString();

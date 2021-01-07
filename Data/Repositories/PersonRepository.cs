@@ -7,18 +7,17 @@ using System.Linq;
 using System.Threading.Tasks;
 namespace Data
 {
-    public class PersonRepository:Repository<Person>,IPersonRepository
+    public class PersonRepository :Repository<Person>,IPersonRepository
     {
-        internal PersonRepository(ParsMarketDbContext databaseContext):base(databaseContext)
+        public PersonRepository(ParsMarketDbContext databaseContext) : base(databaseContext)
         {
 
         }
 
-        public bool IsPersonExist(int id)
+        public bool IsPersonExist(string  id)
         {
-            return DbSet.Any(e=>e.Id==id);
+            //var b=DbSet.Any(e => e.Id == id);
+            return true;
         }
-
-      
     }
 }

@@ -2,15 +2,13 @@
 using System.Collections.Generic;
 using System.Text;
 using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNetCore.Identity;
 namespace Models
 {
-   public class Roles:BaseEntity
+   public class Roles:IdentityRole
     {
      
-        public string   Name { get; set; }
-        public string   Title { get; set; }
-        public ICollection<Person> Person { get; set; }
-
+       
 
 
     }

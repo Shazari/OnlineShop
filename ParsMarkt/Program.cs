@@ -1,4 +1,5 @@
 using System;
+using Microsoft.AspNetCore.Components.WebAssembly.Authentication;
 using System.Net.Http;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -41,7 +42,7 @@ namespace ParsMarkt
             builder.Services.AddBlazoredLocalStorage(config=>
             config.JsonSerializerOptions.WriteIndented=false);
 
-            
+            builder.Services.AddApiAuthorization();
             
 
             await builder.Build().RunAsync();

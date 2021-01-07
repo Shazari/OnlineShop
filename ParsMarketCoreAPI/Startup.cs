@@ -12,6 +12,12 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Data;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authentication;
+using Models;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 namespace ParsMarketCoreAPI
 {
@@ -28,6 +34,7 @@ namespace ParsMarketCoreAPI
 
         public IConfiguration Configuration { get; }
 
+
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
@@ -43,10 +50,10 @@ namespace ParsMarketCoreAPI
                     });
             });
 
-            
 
 
-                services.AddControllers();
+
+            services.AddControllers();
 
             services.AddControllersWithViews()
                  .AddNewtonsoftJson(options =>
@@ -77,7 +84,47 @@ namespace ParsMarketCoreAPI
 
                          return new UnitOfWork(options: options);
                      });
+            services.AddIdentity<Person, Roles>(options =>
+             {
+                 options.SignIn.RequireConfirmedEmail = true;
+                 options.User.RequireUniqueEmail = true;
 
+                 //options.Password.RequiredLength = 8;
+                 //options.Password.RequireNonAlphanumeric = true;
+                 //options.Password.RequireUppercase = true;
+                 //options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(1d);
+                 //options.Lockout.MaxFailedAccessAttempts = 5;
+
+             })
+                .AddEntityFrameworkStores<ParsMarketDbContext>()
+                .AddDefaultTokenProviders();
+
+            //services.AddDefaultIdentity<Models.Person>
+            //    (
+            //    options=>options.SignIn.RequireConfirmedAccount=true
+            //    ).AddEntityFrameworkStores<ParsMarketDbContext>();
+
+
+
+            services.AddAuthentication(options =>
+            {
+                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+                options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
+            }).AddJwtBearer(options =>
+            {
+                options.SaveToken = true;
+                options.RequireHttpsMetadata = false;
+                options.TokenValidationParameters = new TokenValidationParameters
+                {
+                    ValidateIssuer = true,
+                    ValidateAudience = true,
+                    ValidAudience = Configuration.GetSection(key: "JWT").GetSection(key: "ValidAudience").Value,
+                    ValidIssuer = Configuration.GetSection(key: "JWT").GetSection(key: "ValidIssuer").Value,
+                    IssuerSigningKey =
+                    new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration.GetSection(key: "JWT").GetSection(key: "SecurityKey").Value))
+                };
+            });
 
         }
 
@@ -93,14 +140,14 @@ namespace ParsMarketCoreAPI
             {
                 app.UseDeveloperExceptionPage();
             }
-            
+
             app.UseHttpsRedirection();
 
             app.UseCors("AllowAllOrigins");
 
             app.UseRouting();
             app.UseStaticFiles();
-
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

@@ -1,15 +1,16 @@
-﻿
+﻿using Microsoft.AspNetCore.Identity;
 using System.Collections.Generic;
 using System.Text;
 using System.ComponentModel.DataAnnotations;
+using System;
+
 namespace Models
 {
-    public class Person : BaseEntity
+    public class Person:IdentityUser
     {
-        [Display(ResourceType =typeof(Resources.DataDictionary),
-            Name =nameof(Resources.DataDictionary.Type))]
-        public Roles  Role { get; set; }
-
+        //Insert Date time
+       
+        
         [Display(ResourceType = typeof(Resources.DataDictionary),
             Name = nameof(Resources.DataDictionary.FirstName))]
         [MaxLength(20, ErrorMessageResourceType = typeof(Resources.ErrorMessages),
@@ -90,6 +91,11 @@ namespace Models
 
         public List<Order> Orders { get; set; }
 
-
+        [Display(ResourceType = typeof(Resources.DataDictionary),
+            Name = nameof(Resources.DataDictionary.Type))]
+        public Roles Role { get; set; }
+        
     }
+    
+
 }

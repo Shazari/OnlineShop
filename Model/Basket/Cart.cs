@@ -9,11 +9,12 @@ namespace Models
 {
     public class Cart : BaseEntity
     {
-     
 
-        [Required]
+
+
         [Display(ResourceType = typeof(Resources.DataDictionary),
             Name = nameof(Resources.DataDictionary.Price))]
+        [Column(TypeName = "decimal(18,4)")]
         public decimal Price { get; set; }
 
         [Required(ErrorMessageResourceType = typeof(Resources.ErrorMessages),

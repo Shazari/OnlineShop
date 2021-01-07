@@ -29,9 +29,9 @@ namespace ParsMarketCoreAPI.Controllers
 
             var RoleView = new RoleViewModel
             {
-                Id=Role.Id,
+                //Id=Role.Id,
                 Name=Role.Name,
-                Title=Role.Title
+                Title=Role.NormalizedName
                 
             };
             if (Role == null)
@@ -54,14 +54,14 @@ namespace ParsMarketCoreAPI.Controllers
 
 
             role.Name = viewModel.Name;
-            role.Title = viewModel.Title;
+            role.NormalizedName = viewModel.Title;
 
 
          
-            if (role.Id != viewModel.Id)
-            {
-                return BadRequest();
-            }
+            //if (role.Id != viewModel.Id)
+            //{
+            //    return BadRequest();
+            //}
             await UnitOfWork.RoleRepository.Update(role);
 
             //_context.Entry(person).State = EntityState.Modified;
@@ -72,14 +72,14 @@ namespace ParsMarketCoreAPI.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!IsExists(role.Id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
+                //if (!IsExists(role.Id))
+                //{
+                //    return NotFound();
+                //}
+                //else
+                //{
+                //    throw;
+                //}
             }
 
             return NoContent();
@@ -94,9 +94,9 @@ namespace ParsMarketCoreAPI.Controllers
 
             var Role = new Models.Roles()
             {
-
+                NormalizedName=viewModel.Title,
                Name=viewModel.Name,
-               Title=viewModel.Title
+               //Title=viewModel.Title
 
             };
           

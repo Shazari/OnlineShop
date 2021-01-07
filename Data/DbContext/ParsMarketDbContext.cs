@@ -2,15 +2,20 @@
 using System.Collections.Generic;
 using System.Text;
 using Microsoft.EntityFrameworkCore;
+using IdentityServer4.EntityFramework.Options;
+using Microsoft.Extensions.Options;
 using Models;
+using Microsoft.AspNetCore.ApiAuthorization.IdentityServer;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace Data
 {
-    public class ParsMarketDbContext : DbContext
+    public class ParsMarketDbContext:IdentityDbContext
     {
-        public ParsMarketDbContext(DbContextOptions<ParsMarketDbContext> options) : base(options)
+        public ParsMarketDbContext(
+            DbContextOptions options) : base(options)
         {
-
         }
 
         public DbSet<Cart> Carts { get; set; }
@@ -33,6 +38,7 @@ namespace Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            base.OnModelCreating(modelBuilder);
            // modelBuilder.Entity<Product>().Property(p => p.Image).HasColumnType("image");
             //       modelBuilder.Entity<Menu>()
             //.HasOne(m=>m.Parent)

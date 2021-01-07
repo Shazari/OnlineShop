@@ -22,7 +22,7 @@
                                 {
                                     <li class="dropdown">
                                         <NavLink Match="NavLinkMatch.All" class="nav-link" href="@(item.PageUrl)">
-                                            <span class="oi oi-plus" aria-hidden="true">@(item.Name)</span>
+                                            <span class="oi" aria-hidden="true">@(item.Name)</span>
                                         </NavLink>
 
                                         <ul class="dropdown-menu">
@@ -33,7 +33,7 @@
 
                                                     <li class="dropdown active">
                                                         <NavLink class="nav-link" href="@(SubMenu.PageUrl)">
-                                                            <span class="oi oi-plus" aria-hidden="true">@(SubMenu.Name)</span>
+                                                            <span class="oi" aria-hidden="true">@(SubMenu.Name)</span>
                                                         </NavLink>
                                                         <ul class="dropdown-menu">
                                                             @foreach (var SubSubMenu in List.Where(menu => menu.Parent != null))
@@ -42,7 +42,7 @@
                                                                 {
                                                                     <li class="active">
                                                                         <NavLink class="nav-link" href="@(SubSubMenu.PageUrl)">
-                                                                            <span class="oi oi-plus" aria-hidden="true">@(SubSubMenu.Name)</span>
+                                                                            <span class="oi" aria-hidden="true">@(SubSubMenu.Name)</span>
                                                                         </NavLink>
                                                                     </li>
                                                                 }
