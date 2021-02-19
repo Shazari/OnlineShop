@@ -16,6 +16,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Shared\Component\**" />
+    <Content Remove="Shared\Component\**" />
+    <EmbeddedResource Remove="Shared\Component\**" />
+    <None Remove="Shared\Component\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Blazored.LocalStorage" Version="3.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.Components.Forms" Version="5.0.1" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="5.0.1" />
@@ -24,6 +31,7 @@
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="5.0.1" PrivateAssets="all" />
 	  <PackageReference Include="BlazorInputFile" Version="0.2.0" />
 	  <PackageReference Include="Microsoft.AspNetCore.Hosting" Version="2.2.7" />
+	  <PackageReference Include="Microsoft.Extensions.Http" Version="5.0.0" />
     <PackageReference Include="Microsoft.Extensions.Localization" Version="5.0.1" />
     <PackageReference Include="System.Net.Http.Json" Version="5.0.0" />
     <PackageReference Include="Tewr.Blazor.FileReader" Version="3.0.0.20340" />
@@ -39,7 +47,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Shared\Component\" />
     <Folder Include="wwwroot\images\Products\" />
   </ItemGroup>
 

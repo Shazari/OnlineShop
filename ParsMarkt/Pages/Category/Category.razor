@@ -5,7 +5,7 @@
                 <div class="span12">
                     <ul class="breadcrumb">
                         <li>
-                            <a href="index.html">وبمارکت</a>
+                            <a href="/">وبمارکت</a>
                         </li>
                         <li><span class="icon-chevron-right"></span></li>
                         <li>
@@ -13,7 +13,7 @@
                         </li>
                         <li><span class="icon-chevron-right"></span></li>
                         <li>
-                            <a href="shop-search.html">Search Results for &quot;Horsefeathers&quot;</a>
+                            <a href="#">Search Results for &quot;Horsefeathers&quot;</a>
                         </li>
                     </ul>
                 </div>
@@ -46,6 +46,8 @@
                             </div>
                             <div id="filterOne" class="accordion-body collapse in">
                                 <div class="accordion-inner">
+                                    <ParsMarkt.Shared.Components.ProductsCategory OnChangeCategory="(e)=>IdChanged(e)"/>
+                                    
                                     @foreach (var item in Categories)
                                     {
                                         <a href="#" data-target=".filter--accessories" class="selectable"><i class="box"></i> @(item.Name)</a>

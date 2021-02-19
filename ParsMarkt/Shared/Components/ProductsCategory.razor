@@ -1,0 +1,22 @@
+﻿@inject ICategoryServices categoryService
+
+@using ViewModels
+ 
+<input type="text" @bind="Id" />
+<button type="button" onclick="()=>GetProductByCategoryId()">GetCat</button>
+
+@code {
+
+    [Parameter]
+    public int Id { get; set; }
+
+    [Parameter]
+    public EventCallback<int> OnChangeCategory { get; set; }
+
+    private void GetProductByCategoryId()
+    {
+        Id = Id + 1;
+        OnChangeCategory.InvokeAsync(Id);
+
+    }
+}

@@ -29,5 +29,10 @@ namespace ParsMarkt.Pages.Category
         {
             Categories = await CategoryService.GetAsync();
         }
+        private int id;
+        private void IdChanged(int newId)
+        {
+            id = newId;
+        }
     }
 }
