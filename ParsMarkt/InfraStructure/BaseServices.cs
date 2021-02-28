@@ -17,7 +17,7 @@ namespace ParsMarkt
             Http = http;
             //Client.DefaultRequestHeaders
 
-            BaseUrl = "https://localhost:44380";
+            BaseUrl = "https://localhost:44386";
             RequestUri = $"{ BaseUrl }/{ GetApiUrl() }";
         }
 

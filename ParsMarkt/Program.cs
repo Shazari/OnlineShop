@@ -11,6 +11,8 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Localization;
 using Blazored.LocalStorage;
 using Tewr.Blazor.FileReader;
+using ParsMarkt.Auth;
+using Microsoft.AspNetCore.Components.Authorization;
 
 namespace ParsMarkt
 {
@@ -45,8 +47,9 @@ namespace ParsMarkt
             config.JsonSerializerOptions.WriteIndented=false);
             builder.Services.AddScoped(sp => sp.GetRequiredService<IHttpClientFactory>().CreateClient("Identity.ServerAPI"));
 
-            builder.Services.AddApiAuthorization();
-            
+            builder.Services.AddAuthorizationCore();
+           
+            builder.Services.AddScoped<AuthenticationStateProvider, ApiAuthenticationStateProvider>();
 
             await builder.Build().RunAsync();
         }
