@@ -207,6 +207,19 @@ namespace Data
             }
         }
 
+        private ISliderRepository _sliderRepository;
+        public ISliderRepository SliderRepository 
+        {
+            get
+            {
+                if (_sliderRepository==null)
+                {
+                    _sliderRepository = new SliderRepository(DatabaseContext);
+                }
+                return _sliderRepository ;
+            } 
+        }
+
         public override async System.Threading.Tasks.Task SaveAsync()
         {
             await DatabaseContext.SaveChangesAsync();

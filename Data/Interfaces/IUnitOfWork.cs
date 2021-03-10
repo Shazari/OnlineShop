@@ -19,5 +19,6 @@ namespace Data
         IWeekDayRepository WeekDayRepository { get; }
         IRoleRepository RoleRepository { get; }
         IAboutUsRepository AboutUsRepository { get; }
+        ISliderRepository SliderRepository { get; }
     }
 }

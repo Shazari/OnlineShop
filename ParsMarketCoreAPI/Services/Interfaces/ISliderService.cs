@@ -8,9 +8,9 @@ namespace ParsMarketCoreAPI
 {
    public interface ISliderService
     {
-        Task<List<SliderViewModel>> GetAllSliders();
+        Task<List<Slider>> GetAllSliders();
 
-        Task<List<SliderViewModel>> GetActiveSliders();
+        Task<List<Slider>> GetActiveSliders();
         Task AddSlider(Slider slider);
         Task UpdateSlider(Slider slider);
         Task<Slider> GetSliderById(long id);

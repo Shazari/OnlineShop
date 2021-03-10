@@ -13,31 +13,37 @@ namespace ParsMarketCoreAPI
         {
             UnitOfWork = unitOfWork;
         }
-        public UnitOfWork   UnitOfWork { get; set; }
-        public Task AddSlider(Slider slider)
+        public UnitOfWork UnitOfWork { get; set; }
+
+        public async Task AddSlider(Slider slider)
         {
-           
-            throw new NotImplementedException();
+            await UnitOfWork.SliderRepository.Insert(slider);
+
         }
 
-        public Task<List<SliderViewModel>> GetActiveSliders()
+        public async Task<List<Slider>> GetActiveSliders()
         {
-            throw new NotImplementedException();
+            var res = await UnitOfWork.SliderRepository.GetAllAsync();
+            return res.Where(s => !s.IsDelete).ToList();
         }
 
-        public Task<List<SliderViewModel>> GetAllSliders()
+        public async Task<List<Slider>> GetAllSliders()
         {
-            throw new NotImplementedException();
+            var result = await UnitOfWork.SliderRepository.GetAllAsync();
+            return result.ToList();
         }
 
-        public Task<Slider> GetSliderById(long id)
+        public async Task<Slider> GetSliderById(long id)
         {
-            throw new NotImplementedException();
+            var result = await UnitOfWork.SliderRepository.GetById(id);
+            return result;
         }
 
-        public Task UpdateSlider(Slider slider)
+        public async Task UpdateSlider(Slider slider)
         {
-            throw new NotImplementedException();
+            await UnitOfWork.SliderRepository.Update(slider);
         }
+
+
     }
 }
