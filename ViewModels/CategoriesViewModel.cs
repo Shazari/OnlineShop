@@ -7,7 +7,7 @@ namespace ViewModels
 {
    public class CategoriesViewModel
     {
-        public int Id { get; set; }
+        public long Id { get; set; }
 
         [Required(ErrorMessageResourceType =typeof(Resources.ErrorMessages),ErrorMessageResourceName =nameof(Resources.ErrorMessages.Required))]
         [Display(ResourceType = typeof(Resources.DataDictionary),

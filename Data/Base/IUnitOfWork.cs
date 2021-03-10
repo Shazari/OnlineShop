@@ -13,6 +13,6 @@ namespace Data.Base
 
 		System.Threading.Tasks.Task SaveAsync();
 
-		Repository<T> GetRepository<T>() where T : class;
+		Repository<T> GetRepository<T>() where T : BaseEntity;
 	}
 }

@@ -47,7 +47,7 @@ namespace ParsMarketCoreAPI.Controllers
                 {
                     Name = viewModel.Name,
                     PageUrl = viewModel.PageUrl,
-                    InsertDateTime=DateTime.Now,
+                    CreateDate=DateTime.Now,
                     Parent = null,
 
                 };

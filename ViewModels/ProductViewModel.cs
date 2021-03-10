@@ -10,7 +10,7 @@ namespace ViewModels
     public class ProductViewModel
     {
       
-        public int Id { get; set; }
+        public long Id { get; set; }
 
         [Display(ResourceType = typeof(Resources.DataDictionary),
             Name = nameof(Resources.DataDictionary.ProductName))]
@@ -38,7 +38,7 @@ namespace ViewModels
        
 
         public List<CategoriesViewModel> Categories { get; set; }
-        public List<int> CategoriesId { get; set; }
+        public List<long> CategoriesId { get; set; }
         // public CartItemViewModel CartItem { get; set; }
 
        

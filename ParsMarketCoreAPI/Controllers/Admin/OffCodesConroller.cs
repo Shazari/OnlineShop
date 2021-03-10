@@ -97,7 +97,7 @@ namespace ParsMarketCoreAPI.Controllers
             {
                 Id = viewModel.Id,
                 Title = viewModel.Title,
-                InsertDateTime = DateTime.Now,
+                CreateDate = DateTime.Now,
                 Code = viewModel.Code,
                 Products= (ICollection<Product>)viewModel.Products,
             };
@@ -124,7 +124,7 @@ namespace ParsMarketCoreAPI.Controllers
             return offCode;
         }
 
-        private bool IsExists(int id)
+        private bool IsExists(long id)
         {
             var res = UnitOfWork.OffCodeRepository.IsExist(id);
             return res;

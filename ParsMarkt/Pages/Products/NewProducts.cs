@@ -91,7 +91,7 @@ namespace ParsMarkt.Pages.Products
 
       public void  MoreDetails(ProductViewModel productViewModel)
         {
-            ProductId = productViewModel.Id;
+            ProductId = (int)productViewModel.Id;
             Navigation.NavigateTo($"/ProductDetails/{ProductId}");
         }
 

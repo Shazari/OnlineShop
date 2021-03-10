@@ -112,7 +112,7 @@ namespace ParsMarkt.Pages.Admin.Products
             
         }
 
-        private void CheckboxChanged(ChangeEventArgs e, int key)
+        private void CheckboxChanged(ChangeEventArgs e, long key)
         {
             var i = this.categories.FirstOrDefault(i => i.Id == key);
             if (i != null)

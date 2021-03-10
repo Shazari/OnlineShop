@@ -13,12 +13,12 @@ namespace Models
         }
 
 
-            public string Name { get; set; }
+        public string Name { get; set; }
 
-       //public Guid? ParentId { get; set; }
+        //public Guid? ParentId { get; set; }
         public Menu Parent { get; set; }
 
-            public ICollection<Menu> SubMenus { get; set; }
+        public ICollection<Menu> SubMenus { get; set; }
 
         public string PageUrl { get; set; }
 

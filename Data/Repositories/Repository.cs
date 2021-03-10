@@ -7,7 +7,7 @@ using System.Linq;
 using Models;
 namespace Data
 {
-    public class Repository<T> : IRepository<T> where T : class
+    public class Repository<T> : IRepository<T> where T : BaseEntity
     {
         internal Microsoft.EntityFrameworkCore.DbSet<T> DbSet { get; }
         internal ParsMarketDbContext DatabaseContext { get; }
@@ -34,7 +34,7 @@ namespace Data
 
         }
 
-        public virtual async Task<T> GetById(int id)
+        public virtual async Task<T> GetById(long id)
         {
             var resault = await DbSet.FindAsync(keyValues:id);
             return resault;
@@ -86,10 +86,10 @@ namespace Data
         //    return await DbSet.AnyAsync(e=>e.Id==id);
         //}
 
-        bool IRepository<T>.IsExist(int id)
+        bool IRepository<T>.IsExist(long id)
         {
 
-            //var b=DbSet.Any(e => e.Id == id);
+            var b=DbSet.Any(e => e.Id == id);
             return true;
         }
 

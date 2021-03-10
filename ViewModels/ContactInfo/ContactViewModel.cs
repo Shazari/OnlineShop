@@ -7,7 +7,7 @@ namespace ViewModels
 {
    public class ContactViewModel
     {
-        public int Id { get; set; }
+        public long Id { get; set; }
 
         [Display(ResourceType = typeof(Resources.DataDictionary),
             Name = nameof(Resources.DataDictionary.LastName))]

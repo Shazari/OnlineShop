@@ -8,15 +8,7 @@ namespace Models
 {
     public class Order:BaseEntity
     {
-        
-       
-        [Required]
-
-
-        [Display(ResourceType = typeof(Resources.DataDictionary),
-            Name = nameof(Resources.DataDictionary.RegisterDate))]
-        public DateTime CreateDate { get; set; }
-
+      
 
         [Display(ResourceType = typeof(Resources.DataDictionary),
             Name = nameof(Resources.DataDictionary.IsFinaly))]

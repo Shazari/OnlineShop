@@ -99,7 +99,7 @@ namespace ParsMarketCoreAPI.Controllers
             var contact = new Models.Contact()
             {
                 Email = viewModel.Email,
-                InsertDateTime = viewModel.RegisterDate,
+                CreateDate = viewModel.RegisterDate,
                 Telephone=viewModel.Telephone,
                 Name=viewModel.Name,
                 Text=viewModel.Text
@@ -127,7 +127,7 @@ namespace ParsMarketCoreAPI.Controllers
             return contact;
         }
 
-        private bool IsExists(int id)
+        private bool IsExists(long id)
         {
             var res= UnitOfWork.ContactRepository.IsExist(id);
             return res;

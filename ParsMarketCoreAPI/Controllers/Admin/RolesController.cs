@@ -30,8 +30,8 @@ namespace ParsMarketCoreAPI.Controllers
             var RoleView = new RoleViewModel
             {
                 //Id=Role.Id,
-                Name=Role.Name,
-                Title=Role.NormalizedName
+               // Name=Role.Name,
+               // Title=Role.NormalizedName
                 
             };
             if (Role == null)
@@ -53,8 +53,8 @@ namespace ParsMarketCoreAPI.Controllers
 
 
 
-            role.Name = viewModel.Name;
-            role.NormalizedName = viewModel.Title;
+            //role.Name = viewModel.Name;
+           // role.NormalizedName = viewModel.Title;
 
 
          
@@ -94,8 +94,8 @@ namespace ParsMarketCoreAPI.Controllers
 
             var Role = new Models.Roles()
             {
-                NormalizedName=viewModel.Title,
-               Name=viewModel.Name,
+               // NormalizedName=viewModel.Title,
+               //Name=viewModel.Name,
                //Title=viewModel.Title
 
             };

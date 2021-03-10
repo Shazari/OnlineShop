@@ -6,7 +6,7 @@ using System;
 
 namespace Models
 {
-    public class Person:IdentityUser
+    public class Person:BaseEntity
     {
         //Insert Date time
        

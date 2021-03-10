@@ -84,10 +84,10 @@ namespace ParsMarketCoreAPI.Controllers
             var person = await UnitOfWork.PersonRepository.GetById(order.Person.Id);
             var Order2 = new Order()
             {
-                InsertDateTime = DateTime.Now,
+                CreateDate = DateTime.Now,
                 Person = person,
                 IsFinaly = true,
-                CreateDate = DateTime.Now,
+               
             };
             await UnitOfWork.OrderRepository.Insert(Order2);
             //_context.Order.Add(Order);
@@ -112,7 +112,7 @@ namespace ParsMarketCoreAPI.Controllers
             return Order;
         }
 
-        private bool IsOrderExists(int id)
+        private bool IsOrderExists(long id)
         {
             return UnitOfWork.OrderRepository.IsExist(id);
         }

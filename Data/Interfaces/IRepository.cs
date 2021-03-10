@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 using Models;
 namespace Data
 {
-   public interface IRepository<T> where T:class
+   public interface IRepository<T> where T:BaseEntity
     {
-        Task<T> GetById(int id);
+        Task<T> GetById(long id);
         Task Insert(T entity);
         Task Update(T entity);
         Task Delete(T entity);
         Task<IList<T>> GetAllAsync();
-        bool IsExist(int id);
+        bool IsExist(long id);
     }
 }

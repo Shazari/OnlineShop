@@ -95,7 +95,7 @@ namespace ParsMarketCoreAPI
             {
                 Id = viewModel.Id,
                 Text = viewModel.Text,
-                InsertDateTime = DateTime.Now,
+                CreateDate = DateTime.Now,
                 LinkTitle = viewModel.LinkTitle,
                 Title=viewModel.Title
                 
@@ -123,7 +123,7 @@ namespace ParsMarketCoreAPI
             return default;
         }
 
-        private bool IsExists(int id)
+        private bool IsExists(long id)
         {
             var res = UnitOfWork.AboutUsRepository.IsExist(id);
             return res;

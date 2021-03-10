@@ -147,17 +147,29 @@
   <data name="FirstName" xml:space="preserve">
     <value>First Name</value>
   </data>
+  <data name="ImageName" xml:space="preserve">
+    <value>ImageName</value>
+  </data>
   <data name="IsActive" xml:space="preserve">
     <value>Is Actice</value>
   </data>
   <data name="IsAdmin" xml:space="preserve">
     <value>Is  Admin</value>
   </data>
+  <data name="IsExist" xml:space="preserve">
+    <value>IsExist</value>
+  </data>
   <data name="IsFinaly" xml:space="preserve">
     <value>Is Finaly</value>
   </data>
+  <data name="IsSpecial" xml:space="preserve">
+    <value>IsSpecial</value>
+  </data>
   <data name="LastName" xml:space="preserve">
     <value>LastName</value>
+  </data>
+  <data name="Link" xml:space="preserve">
+    <value>Link</value>
   </data>
   <data name="LongDescription" xml:space="preserve">
     <value>Long Description</value>
@@ -216,6 +228,9 @@
   </data>
   <data name="UserImage" xml:space="preserve">
     <value>UserImage</value>
+  </data>
+  <data name="UserIp" xml:space="preserve">
+    <value>User Ip</value>
   </data>
   <data name="UserName" xml:space="preserve">
     <value>User Name</value>

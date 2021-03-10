@@ -32,7 +32,7 @@ namespace ParsMarketCoreAPI.Controllers
             var categoryView = new CategoriesViewModel
             {
                 Description = category.Description,
-                Name = category.Name,
+                Name = category.Title,
                 Id = category.Id
             };
             if (category == null)
@@ -52,7 +52,7 @@ namespace ParsMarketCoreAPI.Controllers
             var category = await UnitOfWork.CategoryRepository.GetById(viewModel.Id);
 
             category.Description = viewModel.Description;
-            category.Name = viewModel.Name;
+            category.Title = viewModel.Name;
             category.Id = viewModel.Id;
 
 
@@ -93,8 +93,8 @@ namespace ParsMarketCoreAPI.Controllers
             var category = new Models.Category()
             {
                 Id = viewModel.Id,
-                Name = viewModel.Name,
-                InsertDateTime = DateTime.Now,
+                Title = viewModel.Name,
+                CreateDate = DateTime.Now,
                 Description = viewModel.Description
             };
             await UnitOfWork.CategoryRepository.Insert(category);
@@ -120,7 +120,7 @@ namespace ParsMarketCoreAPI.Controllers
             return default;
         }
 
-        private bool IsExists(int id)
+        private bool IsExists(long id)
         {
             var res = UnitOfWork.CategoryRepository.IsExist(id);
             return res;

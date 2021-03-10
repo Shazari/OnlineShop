@@ -9,14 +9,15 @@ namespace Models
         public BaseEntity()
         {
       
-            InsertDateTime = DateTime.Now;
+            CreateDate = DateTime.Now;
 
         }
 
-        public int Id { get; set; }
-
+        public long Id { get; set; }
+        public bool  IsDelete { get; set; }
         //Insert Date time
-        public DateTime InsertDateTime { get; set; }
+        public DateTime CreateDate { get; set; }
+        public DateTime LastUpdateDate { get; set; }
 
     }
 }

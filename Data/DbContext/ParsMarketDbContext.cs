@@ -8,38 +8,47 @@ using Models;
 using Microsoft.AspNetCore.ApiAuthorization.IdentityServer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Design;
+using Data;
+using AutoMapper.Configuration;
 
 namespace Data
 {
-    public class ParsMarketDbContext:IdentityDbContext
+    public class ParsMarketDbContext : IdentityDbContext
     {
         public ParsMarketDbContext(
             DbContextOptions options) : base(options)
         {
         }
 
+        public DbSet<User> users { get; set; }
+        public DbSet<Role> Roles { get; set; }
         public DbSet<Cart> Carts { get; set; }
-       // public DbSet<CartItem> CartItems { get; set; }
+        // public DbSet<CartItem> CartItems { get; set; }
         public DbSet<Person> People { get; set; }
         public DbSet<Product> Products { get; set; }
-       // public DbSet<Role> Roles { get; set; }
+        // public DbSet<Role> Roles { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Menu> Menus { get; set; }
         public DbSet<Order> Orders { get; set; }
-       // public DbSet<CategoryToProduct> CategoryToProducts { get; set; }
+        // public DbSet<CategoryToProduct> CategoryToProducts { get; set; }
         public DbSet<OffCodes> OffCodes { get; set; }
         //public DbSet<CodeProduct> CodeProducts { get; set; }
-        public DbSet<Contact>   Contacts { get; set; }
+        public DbSet<Contact> Contacts { get; set; }
         public DbSet<AboutUs> AboutUs { get; set; }
         public DbSet<DayWeek> DayWeeks { get; set; }
-        
+
+        public DbSet<ProductGallery> productGalleries { get; set; }
+
+        public DbSet<ProductVisit> productVisits { get; set; }
+        public DbSet<ProductSelectedCategory> ProductSelectedCategories { get; set; }
 
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-           // modelBuilder.Entity<Product>().Property(p => p.Image).HasColumnType("image");
+            // modelBuilder.Entity<Product>().Property(p => p.Image).HasColumnType("image");
             //       modelBuilder.Entity<Menu>()
             //.HasOne(m=>m.Parent)
             //.WithMany()
@@ -86,3 +95,16 @@ namespace Data
 
     }
 }
+public class YourDbContextFactory : IDesignTimeDbContextFactory<Data.ParsMarketDbContext>
+{
+
+    public ParsMarketDbContext CreateDbContext(string[] args)
+    {
+        var optionsBuilder = new DbContextOptionsBuilder<ParsMarketDbContext>();
+        optionsBuilder.UseSqlServer("Server=.; Database=DbPars; User Id=sa ; Password=1234512345; Trusted_Connection=True;");
+
+        return new ParsMarketDbContext(optionsBuilder.Options);
+    }
+}
+
+

@@ -7,7 +7,7 @@ namespace ViewModels
 {
    public class OffCodeViewModel
     {
-        public int Id { get; set; }
+        public long Id { get; set; }
         [Display(ResourceType = typeof(Resources.DataDictionary),
             Name = nameof(Resources.DataDictionary.TitleOff))]
         public string Title { get; set; }

@@ -50,7 +50,7 @@ namespace ParsMarketCoreAPI.Controllers
                 var userRoles = await _UserManager.GetRolesAsync(user);
                 var authClaims = new List<Claim>
                     {
-                        new Claim(ClaimTypes.Name,user.UserName),
+                       // new Claim(ClaimTypes.Name,),
                         new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
                     };
                 foreach (var role in userRoles)

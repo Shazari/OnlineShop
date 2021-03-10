@@ -95,7 +95,7 @@ namespace ParsMarketCoreAPI.Controllers
             {
                 Id = viewModel.Id,
                 Day = viewModel.Day,
-                InsertDateTime = DateTime.Now,
+                CreateDate = DateTime.Now,
                 EndTime = viewModel.EndTime,
                 StartTime=viewModel.StartTime
               
@@ -123,7 +123,7 @@ namespace ParsMarketCoreAPI.Controllers
             return WeekDay;
         }
 
-        private bool IsExists(int id)
+        private bool IsExists(long id)
         {
             var res = UnitOfWork.WeekDayRepository.IsExist(id);
             return res;

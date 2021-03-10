@@ -48,7 +48,7 @@ namespace ParsMarkt.Pages.Admin.Products
         private List<OffCodeViewModel> selectedCodes;
 
         [Parameter]
-        public int Id { get; set; }
+        public long Id { get; set; }
 
        
         protected override async Task OnInitializedAsync()
@@ -116,7 +116,7 @@ namespace ParsMarkt.Pages.Admin.Products
             this.StateHasChanged();
 
         }
-        private void CheckboxChanged(ChangeEventArgs e, int key)
+        private void CheckboxChanged(ChangeEventArgs e, long key)
         {
             var i = this.categories.FirstOrDefault(i => i.Id == key);
             if (i != null)

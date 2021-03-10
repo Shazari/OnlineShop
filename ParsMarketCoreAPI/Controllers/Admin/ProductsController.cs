@@ -110,7 +110,7 @@ namespace ParsMarketCoreAPI.Controllers
 
                 Name = viewModel.Name,
                 Image = viewModel.Image,
-                InsertDateTime = DateTime.Now,
+                CreateDate = DateTime.Now,
                 LongDescription = viewModel.LongDescription,
                 Price = viewModel.Price,
                 ShortDescription = viewModel.ShortDescription,
@@ -153,7 +153,7 @@ namespace ParsMarketCoreAPI.Controllers
             return product;
         }
 
-        private bool IsExists(int id)
+        private bool IsExists(long id)
         {
             var res = UnitOfWork.ProductRepository.IsExist(id);
             return res;
