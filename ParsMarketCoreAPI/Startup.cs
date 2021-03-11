@@ -84,7 +84,7 @@ namespace ParsMarketCoreAPI
 
                          return new UnitOfWork(options: options);
                      });
-            services.AddIdentity<Person, Roles>(options =>
+            services.AddIdentity<User, Role>(options =>
              {
                  options.SignIn.RequireConfirmedEmail = true;
                  options.User.RequireUniqueEmail = true;

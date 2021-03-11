@@ -6,5 +6,9 @@ namespace ViewModels
 {
    public class SliderViewModel
     {
+        public long Id { get; set; }
+        public string Title  { get; set; }
+        public string  Link { get; set; }
+
     }
 }
