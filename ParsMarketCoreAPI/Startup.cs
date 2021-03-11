@@ -46,7 +46,7 @@ namespace ParsMarketCoreAPI
                         builder
                             .AllowAnyOrigin()
                             .AllowAnyHeader()
-                            .AllowAnyMethod();
+                            .AllowAnyMethod().Build();
                     });
             });
 
@@ -60,8 +60,9 @@ namespace ParsMarketCoreAPI
                  options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
                  );
 
-           // services.AddTransient<IUserService,UserService>();
+            services.AddTransient<IUserService,UserService>();
             services.AddTransient<ISliderService,SliderService>();
+            services.AddTransient<IProductService, ProductService>();
             services.AddDbContext<Data.ParsMarketDbContext>(options =>
                     options.UseSqlServer(Configuration.GetConnectionString("parsdbcontext")));
 

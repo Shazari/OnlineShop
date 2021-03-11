@@ -21,13 +21,13 @@ namespace ParsMarketCoreAPI.Controllers
 
     [ApiController]
     [Route("[controller]")]
-    public class AuthController : ControllerBase
+    public class AccountsController : ControllerBase
     {
         private readonly UserManager<Person> _UserManager;
         private readonly RoleManager<Roles> _RoleManager;
         private readonly SignInManager<Person> _SignInManager;
         
-        public AuthController
+        public AccountsController
         (UserManager<Person> userManager, RoleManager<Roles> roleManager, SignInManager<Person> signInManager,IConfiguration configuration)
         {
             _UserManager = userManager;
