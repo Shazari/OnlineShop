@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Models
 {
-   public class ProductSelectedCategory
+   public class ProductSelectedCategory:BaseEntity
     {
         public long  Id { get; set; }
         #region Properties
