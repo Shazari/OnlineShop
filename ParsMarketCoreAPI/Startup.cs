@@ -60,7 +60,8 @@ namespace ParsMarketCoreAPI
                  options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
                  );
 
-
+            services.AddTransient<IUserService,UserService>();
+            services.AddTransient<ISliderService,SliderService>();
             services.AddDbContext<Data.ParsMarketDbContext>(options =>
                     options.UseSqlServer(Configuration.GetConnectionString("parsdbcontext")));
 
