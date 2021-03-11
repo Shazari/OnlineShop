@@ -20,6 +20,10 @@ namespace Data
         IRoleRepository RoleRepository { get; }
         IAboutUsRepository AboutUsRepository { get; }
         ISliderRepository SliderRepository { get; }
-      
+        public IProductGalleryRepository ProductGalleryRepository { get; }
+        public IProductVisitRepository ProductVisitRepository { get;  }
+        public IProductSelectedCategoryRepository ProductSelectedCategoryRepository { get; }
+       
+
     }
 }

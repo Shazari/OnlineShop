@@ -172,7 +172,7 @@ namespace Data
         {
             get
             {
-                if (_weekDayRepository==null)
+                if (_weekDayRepository == null)
                 {
                     _weekDayRepository = new WeekDayRepository(DatabaseContext);
                 }
@@ -186,7 +186,7 @@ namespace Data
         {
             get
             {
-                if (_roleRepository==null)
+                if (_roleRepository == null)
                 {
                     _roleRepository = new RoleRepository(DatabaseContext);
                 }
@@ -199,7 +199,7 @@ namespace Data
         {
             get
             {
-                if (_aboutUsReposotory==null)
+                if (_aboutUsReposotory == null)
                 {
                     _aboutUsReposotory = new AboutUsRepository(DatabaseContext);
                 }
@@ -208,16 +208,56 @@ namespace Data
         }
 
         private ISliderRepository _sliderRepository;
-        public ISliderRepository SliderRepository 
+        public ISliderRepository SliderRepository
         {
             get
             {
-                if (_sliderRepository==null)
+                if (_sliderRepository == null)
                 {
                     _sliderRepository = new SliderRepository(DatabaseContext);
                 }
-                return _sliderRepository ;
-            } 
+                return _sliderRepository;
+            }
+        }
+
+        public IProductGalleryRepository _productGalleryRepository;
+        public IProductGalleryRepository ProductGalleryRepository
+        {
+            get
+            {
+                if (_productGalleryRepository == null)
+                {
+                    _productGalleryRepository = new ProductGalleryRepository(DatabaseContext);
+
+                }
+                return _productGalleryRepository;
+            }
+        }
+
+        private IProductVisitRepository _productVisitRepository;
+        public IProductVisitRepository ProductVisitRepository
+        {
+            get
+            {
+                if (_productVisitRepository == null)
+                {
+                    _productVisitRepository = new ProductVisitRepository(DatabaseContext);
+                }
+                return _productVisitRepository;
+            }
+        }
+
+        private IProductSelectedCategoryRepository _productSelectedCategoryRepository;
+        public IProductSelectedCategoryRepository ProductSelectedCategoryRepository
+        {
+            get
+            {
+                if (_productSelectedCategoryRepository == null)
+                {
+                    _productSelectedCategoryRepository = new ProductSelectedCategoryRepository(DatabaseContext);
+                }
+                return _productSelectedCategoryRepository;
+            }
         }
 
         public override async System.Threading.Tasks.Task SaveAsync()
