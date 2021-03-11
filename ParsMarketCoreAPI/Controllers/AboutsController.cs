@@ -17,6 +17,8 @@ namespace ParsMarketCoreAPI
         {
 
         }
+
+
         [HttpGet]
         public async Task<ActionResult<IEnumerable<AboutUsViewModel>>> GetAbout()
         {
