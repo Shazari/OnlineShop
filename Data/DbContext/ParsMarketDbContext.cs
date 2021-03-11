@@ -38,6 +38,7 @@ namespace Data
         public DbSet<AboutUs> AboutUs { get; set; }
         public DbSet<DayWeek> DayWeeks { get; set; }
 
+        public DbSet<Slider> Sliders { get; set; }
         public DbSet<ProductGallery> productGalleries { get; set; }
 
         public DbSet<ProductVisit> productVisits { get; set; }

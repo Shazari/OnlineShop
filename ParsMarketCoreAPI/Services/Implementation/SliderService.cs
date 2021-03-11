@@ -9,11 +9,11 @@ namespace ParsMarketCoreAPI
 {
     public class SliderService : ISliderService
     {
-        public SliderService(UnitOfWork unitOfWork)
+        public SliderService(IUnitOfWork unitOfWork)
         {
             UnitOfWork = unitOfWork;
         }
-        public UnitOfWork UnitOfWork { get; set; }
+        public IUnitOfWork UnitOfWork { get; set; }
 
         public async Task AddSlider(Slider slider)
         {
