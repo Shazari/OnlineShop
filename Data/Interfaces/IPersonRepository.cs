@@ -7,7 +7,8 @@ namespace Data
 {
     public interface IPersonRepository:IRepository<Person>
     {
-        bool IsPersonExist(string id);
+        bool IsPersonExist(long id);
+       bool IsUserExistByEmail(string email);
 
     }
 }

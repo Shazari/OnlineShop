@@ -14,10 +14,16 @@ namespace Data
 
         }
 
-        public bool IsPersonExist(string  id)
+        public bool IsPersonExist(long  id)
         {
-            //var b=DbSet.Any(e => e.Id == id);
-            return true;
+            var b=DbSet.Any(e => e.Id == id);
+            return b;
+        }
+
+        public bool IsUserExistByEmail(string email)
+        {
+            var res = DbSet.Any(e=>e.EmailAddress==email.ToLower().Trim());
+            return res;
         }
     }
 }

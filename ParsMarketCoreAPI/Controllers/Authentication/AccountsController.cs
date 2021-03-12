@@ -26,10 +26,12 @@ namespace ParsMarketCoreAPI.Controllers
         private readonly UserManager<Person> _UserManager;
         private readonly RoleManager<Roles> _RoleManager;
         private readonly SignInManager<Person> _SignInManager;
-        
+        private IUserService _userService;
+
         public AccountsController
-        (UserManager<Person> userManager, RoleManager<Roles> roleManager, SignInManager<Person> signInManager,IConfiguration configuration)
+        (IUserService UserService, UserManager<Person> userManager, RoleManager<Roles> roleManager, SignInManager<Person> signInManager, IConfiguration configuration)
         {
+            _userService = UserService;
             _UserManager = userManager;
             _RoleManager = roleManager;
             _SignInManager = signInManager;
@@ -74,26 +76,27 @@ namespace ParsMarketCoreAPI.Controllers
             return Unauthorized();
         }
 
-        //[HttpPost("signup")]
-        //public async Task<IActionResult> SignUp(RegisterViewModel registerViewModel)
-        //{
-        //    ILogger.LogInformation("try to signup");
-        //    ResultHandler<RegisterViewModel> result = new ResultHandler<RegisterViewModel>();
-        //    var user = IMapper.Map<RegisterViewModel, Person>(registerViewModel);
-        //    if (await _UserManager.FindByEmailAsync(user.Email) != null)
-        //    {
-        //        return Accepted(result);
-        //    }
+        #region Register User
 
-        //    var userCreateResult = await _UserManager.CreateAsync(user, userViewModel.Password);
+        [HttpPost("register")]
+        public async Task<IActionResult> Register([FromBody] RegisterViewModel register)
+        {
+            if (ModelState.IsValid)
+            {
+                var res = await _userService.RegisterUser(register);
+                switch (res)
+                {
+                    case RegisterUserResult.EmailExist:
+                        return JsonResponseStatus.Error(returnData:new { status="EmailExist"});
 
-        //    if (userCreateResult.Succeeded)
-        //    {
+                }
+            }
 
-        //        return Created(string.Empty, result);
-        //    }
 
-        //    return Problem(RestApiMessages.User_ErrorByAdd, null, 500);
-        //}
+            return JsonResponseStatus.Success();
+
+        }
+
+        #endregion
     }
 }

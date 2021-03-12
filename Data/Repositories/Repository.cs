@@ -59,7 +59,8 @@ namespace Data
             {
                 throw new System.ArgumentNullException(paramName: nameof(entity));
             }
-
+            entity.CreateDate = DateTime.Now;
+            entity.LastUpdateDate = entity.CreateDate;
             await Task.Run(() => {
                 DbSet.Add(entity);
             });
