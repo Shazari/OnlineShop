@@ -38,43 +38,43 @@ namespace ParsMarketCoreAPI.Controllers
             Configuration = configuration;
         }
         public IConfiguration Configuration { get; }
-        [HttpPost("signin")]
-        public async Task<IActionResult> SignIn(LoginViewModel loginViewModel)
-        {
-            var user = await _UserManager.FindByEmailAsync(loginViewModel.EmailAddress);
-            if (user == null)
-            {
-            }
+        //[HttpPost("signin")]
+        //public async Task<IActionResult> SignIn(LoginViewModel loginViewModel)
+        //{
+        //    var user = await _UserManager.FindByEmailAsync(loginViewModel.EmailAddress);
+        //    if (user == null)
+        //    {
+        //    }
 
-            var isAuth = await _SignInManager.PasswordSignInAsync(user, loginViewModel.Password, loginViewModel.RememberMe, false);
-            if (isAuth.Succeeded)
-            {
-                var userRoles = await _UserManager.GetRolesAsync(user);
-                var authClaims = new List<Claim>
-                    {
-                       // new Claim(ClaimTypes.Name,),
-                        new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
-                    };
-                foreach (var role in userRoles)
-                {
-                    authClaims.Add(new Claim(ClaimTypes.Role, role));
-                }
-                var authSighinKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration.GetSection(key: "JWT").GetSection(key: "SecurityKey").Value));
-                var token = new JwtSecurityToken(
-                issuer: Configuration.GetSection(key: "JWT").GetSection(key: "ValidIssuer").Value,
-                audience: Configuration.GetSection(key: "JWT").GetSection(key: "ValidAudience").Value,
-                expires: DateTime.Now.AddHours(2),
-                claims: authClaims,
-                signingCredentials: new SigningCredentials(authSighinKey, SecurityAlgorithms.HmacSha256)
-                );
-                return Ok(new
-                {
-                    token = new JwtSecurityTokenHandler().WriteToken(token),
-                    expireDate = DateTime.Now.AddHours(2)
-                });
-            }
-            return Unauthorized();
-        }
+        //    var isAuth = await _SignInManager.PasswordSignInAsync(user, loginViewModel.Password, loginViewModel.RememberMe, false);
+        //    if (isAuth.Succeeded)
+        //    {
+        //        var userRoles = await _UserManager.GetRolesAsync(user);
+        //        var authClaims = new List<Claim>
+        //            {
+        //               // new Claim(ClaimTypes.Name,),
+        //                new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
+        //            };
+        //        foreach (var role in userRoles)
+        //        {
+        //            authClaims.Add(new Claim(ClaimTypes.Role, role));
+        //        }
+        //        var authSighinKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration.GetSection(key: "JWT").GetSection(key: "SecurityKey").Value));
+        //        var token = new JwtSecurityToken(
+        //        issuer: Configuration.GetSection(key: "JWT").GetSection(key: "ValidIssuer").Value,
+        //        audience: Configuration.GetSection(key: "JWT").GetSection(key: "ValidAudience").Value,
+        //        expires: DateTime.Now.AddHours(2),
+        //        claims: authClaims,
+        //        signingCredentials: new SigningCredentials(authSighinKey, SecurityAlgorithms.HmacSha256)
+        //        );
+        //        return Ok(new
+        //        {
+        //            token = new JwtSecurityTokenHandler().WriteToken(token),
+        //            expireDate = DateTime.Now.AddHours(2)
+        //        });
+        //    }
+        //    return Unauthorized();
+        //}
 
         #region Register User
 
@@ -97,6 +97,14 @@ namespace ParsMarketCoreAPI.Controllers
 
         }
 
+        #endregion
+        #region Login
+        [HttpPost("Login")]
+        public async Task<IActionResult> Login()
+        {
+
+            return JsonResponseStatus.Success();
+        }
         #endregion
     }
 }
