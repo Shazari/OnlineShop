@@ -16,6 +16,7 @@ using AutoMapper;
 using System.Text;
 using Resources;
 using Microsoft.Extensions.Configuration;
+using Microsoft.AspNetCore.Authentication;
 
 namespace ParsMarketCoreAPI.Controllers
 {
@@ -113,7 +114,7 @@ namespace ParsMarketCoreAPI.Controllers
                         return JsonResponseStatus.NotFound();
 
                     case LoginUserResult.NotActivated:
-                        return JsonResponseStatus.Error(new { message=Resources.ErrorMessages.UserNotActivated});
+                        return JsonResponseStatus.Error(new { message = Resources.ErrorMessages.UserNotActivated });
 
                     case LoginUserResult.Success:
                         var user = await _userService.GetPersonByEmail(login.EmailAddress);
@@ -129,17 +130,29 @@ namespace ParsMarketCoreAPI.Controllers
 
                             },
                             expires: DateTime.Now.AddDays(20),
-                            signingCredentials:signingCredentials
+                            signingCredentials: signingCredentials
 
                             );
                         var tokenstring = new JwtSecurityTokenHandler().WriteToken(tokenOptions);
 
 
-                        return JsonResponseStatus.Success(new { token=tokenstring,expireTime=30,firstName=user.FirstName,lastName=user.LastName,userId=user.Id});
-                   
+                        return JsonResponseStatus.Success(new { token = tokenstring, expireTime = 30, firstName = user.FirstName, lastName = user.LastName, userId = user.Id });
+
                 }
             }
             return JsonResponseStatus.Error();
+        }
+        #endregion
+        #region LogOut
+        [HttpGet("SignOut")]
+        public async Task<IActionResult> LogOut()
+        {
+            if (User.Identity.IsAuthenticated)
+            {
+                await HttpContext.SignOutAsync();
+                return JsonResponseStatus.Success();
+            }
+            return JsonResponseStatus.Success();
         }
         #endregion
     }
