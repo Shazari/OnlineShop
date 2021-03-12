@@ -14,6 +14,7 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.Extensions.Logging;
 using AutoMapper;
 using System.Text;
+using Resources;
 using Microsoft.Extensions.Configuration;
 
 namespace ParsMarketCoreAPI.Controllers
@@ -59,7 +60,8 @@ namespace ParsMarketCoreAPI.Controllers
         //        {
         //            authClaims.Add(new Claim(ClaimTypes.Role, role));
         //        }
-        //        var authSighinKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration.GetSection(key: "JWT").GetSection(key: "SecurityKey").Value));
+        //        var authSighinKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(
+        //        Configuration.GetSection(key: "JWT").GetSection(key: "SecurityKey").Value));
         //        var token = new JwtSecurityToken(
         //        issuer: Configuration.GetSection(key: "JWT").GetSection(key: "ValidIssuer").Value,
         //        audience: Configuration.GetSection(key: "JWT").GetSection(key: "ValidAudience").Value,
@@ -87,7 +89,7 @@ namespace ParsMarketCoreAPI.Controllers
                 switch (res)
                 {
                     case RegisterUserResult.EmailExist:
-                        return JsonResponseStatus.Error(returnData:new { status="EmailExist"});
+                        return JsonResponseStatus.Error(returnData: new { status = "EmailExist" });
 
                 }
             }
@@ -100,10 +102,44 @@ namespace ParsMarketCoreAPI.Controllers
         #endregion
         #region Login
         [HttpPost("Login")]
-        public async Task<IActionResult> Login()
+        public async Task<IActionResult> Login([FromBody] LoginViewModel login)
         {
+            if (ModelState.IsValid)
+            {
+                var res = await _userService.LoginUser(login);
+                switch (res)
+                {
+                    case LoginUserResult.IncorrectData:
+                        return JsonResponseStatus.NotFound();
 
-            return JsonResponseStatus.Success();
+                    case LoginUserResult.NotActivated:
+                        return JsonResponseStatus.Error(new { message=Resources.ErrorMessages.UserNotActivated});
+
+                    case LoginUserResult.Success:
+                        var user = await _userService.GetPersonByEmail(login.EmailAddress);
+                        var secretKy = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration.GetSection(key: "JWT").GetSection(key: "SecurityKey").Value));
+                        var signingCredentials = new SigningCredentials(secretKy, SecurityAlgorithms.HmacSha256);
+                        var tokenOptions = new JwtSecurityToken
+                            (
+                            issuer: Configuration.GetSection(key: "JWT").GetSection(key: "ValidIssuer").Value,
+                            claims: new List<Claim>
+                            {
+                                new Claim(ClaimTypes.Name,user.EmailAddress),
+                                new Claim(ClaimTypes.NameIdentifier,user.Id.ToString()),
+
+                            },
+                            expires: DateTime.Now.AddDays(20),
+                            signingCredentials:signingCredentials
+
+                            );
+                        var tokenstring = new JwtSecurityTokenHandler().WriteToken(tokenOptions);
+
+
+                        return JsonResponseStatus.Success(new { token=tokenstring,expireTime=30,firstName=user.FirstName,lastName=user.LastName,userId=user.Id});
+                   
+                }
+            }
+            return JsonResponseStatus.Error();
         }
         #endregion
     }

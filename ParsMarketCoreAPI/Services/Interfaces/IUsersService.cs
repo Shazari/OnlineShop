@@ -5,6 +5,8 @@ using System.Threading.Tasks;
 using Models;
 using Data;
 using ViewModels;
+
+
 namespace ParsMarketCoreAPI
 {
     public interface IUserService
@@ -18,5 +20,7 @@ namespace ParsMarketCoreAPI
 
         Task<RegisterUserResult> RegisterUser(RegisterViewModel register);
         bool IsUserExistByEmail(string email);
+        Task<LoginUserResult> LoginUser(LoginViewModel login);
+        Task<Person> GetPersonByEmail(string email);
     }
 }

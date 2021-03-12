@@ -10,7 +10,7 @@ namespace ParsMarketCoreAPI
 
     public class ProductService:IProductService
     {
-        public IUnitOfWork unitOfWork { get; }
+        private IUnitOfWork unitOfWork;
         public ProductService(IUnitOfWork UnitOfWork)
         {
             unitOfWork = UnitOfWork;

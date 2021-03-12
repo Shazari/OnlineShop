@@ -15,7 +15,7 @@ namespace ViewModels
           (length: Constant.Length.EMAIL_ADDRESS,
           ErrorMessageResourceType = typeof(Resources.ErrorMessages),
           ErrorMessageResourceName = nameof(Resources.ErrorMessages.MaxLength))]
-        public string  EmailAddress { get; set; }
+        public string EmailAddress { get; set; }
 
 
         [DataType(DataType.Password)]
@@ -25,10 +25,18 @@ namespace ViewModels
           ErrorMessageResourceName = nameof(Resources.ErrorMessages.MaxLength))]
         [MinLength(6, ErrorMessageResourceType = typeof(Resources.ErrorMessages),
           ErrorMessageResourceName = nameof(Resources.ErrorMessages.Minlegth))]
-        public string  Password { get; set; }
+        public string Password { get; set; }
 
         [Display(ResourceType = typeof(Resources.DataDictionary),
           Name = nameof(Resources.DataDictionary.RememberMe))]
         public bool RememberMe { get; set; }
+        
+       
+    }
+    public enum LoginUserResult
+    {
+        Success,
+        IncorrectData,
+        NotActivated
     }
 }

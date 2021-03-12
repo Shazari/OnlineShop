@@ -135,4 +135,7 @@
   <data name="Required" xml:space="preserve">
     <value>{0} is Riquierd</value>
   </data>
+  <data name="UserNotActivated" xml:space="preserve">
+    <value>User is not Activated</value>
+  </data>
 </root>

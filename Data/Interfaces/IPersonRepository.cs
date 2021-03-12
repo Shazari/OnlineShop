@@ -9,6 +9,7 @@ namespace Data
     {
         bool IsPersonExist(long id);
        bool IsUserExistByEmail(string email);
-
+        Task<Person> GetPersonForLogin(string email,string password);
+        Task<Person> GetPersonByEmail(string email);
     }
 }

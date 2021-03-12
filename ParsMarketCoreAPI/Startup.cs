@@ -63,6 +63,7 @@ namespace ParsMarketCoreAPI
             services.AddTransient<IUserService,UserService>();
             services.AddTransient<ISliderService,SliderService>();
             services.AddTransient<IProductService, ProductService>();
+            services.AddTransient<IPasswordHelper,PasswordHelper>();
             services.AddDbContext<Data.ParsMarketDbContext>(options =>
                     options.UseSqlServer(Configuration.GetConnectionString("parsdbcontext")));
 

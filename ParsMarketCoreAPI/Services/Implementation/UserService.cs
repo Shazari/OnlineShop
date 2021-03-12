@@ -9,9 +9,11 @@ namespace ParsMarketCoreAPI
 {
     public class UserService : IUserService
     {
-        private IUnitOfWork unitOfWork { get; }
-        public UserService(IUnitOfWork UnitOfWork)
+        private IUnitOfWork unitOfWork;
+        private IPasswordHelper _passwordHelper;
+        public UserService(IUnitOfWork UnitOfWork,IPasswordHelper PasswordHelper)
         {
+            _passwordHelper = PasswordHelper;
             unitOfWork = UnitOfWork;
         }
         public Task AddUser(User user)
@@ -45,8 +47,9 @@ namespace ParsMarketCoreAPI
             if (IsUserExistByEmail(register.EmailAddress))
                 return RegisterUserResult.EmailExist;
             var user = new Person() {
-                EmailAddress = register.EmailAddress,
-                Password = register.Password,
+
+                EmailAddress = register.EmailAddress.SanitizeText(),
+                Password = _passwordHelper.EncodePasswordMd5(register.Password),
                 Address = null,
                 Address2 = null,
                 City = null,
@@ -67,6 +70,25 @@ namespace ParsMarketCoreAPI
         public bool IsUserExistByEmail(string email)
         {
             var res = unitOfWork.PersonRepository.IsUserExistByEmail(email);
+            return res;
+        }
+
+        public async Task<LoginUserResult> LoginUser(LoginViewModel login)
+        {
+            var password = _passwordHelper.EncodePasswordMd5(login.Password);
+            var user = await unitOfWork.PersonRepository.GetPersonForLogin(login.EmailAddress,login.Password);
+            if (user == null) return LoginUserResult.IncorrectData;
+            if (!user.IsActive)
+            {
+                return LoginUserResult.NotActivated;
+            }
+            
+            return LoginUserResult.Success;
+        }
+
+        public  async Task<Person> GetPersonByEmail(string email)
+        {
+            var res = await unitOfWork.PersonRepository.GetPersonByEmail(email);
             return res;
         }
     }

@@ -113,5 +113,14 @@ namespace Resources {
                 return ResourceManager.GetString("Required", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to User is not Activated.
+        /// </summary>
+        public static string UserNotActivated {
+            get {
+                return ResourceManager.GetString("UserNotActivated", resourceCulture);
+            }
+        }
     }
 }

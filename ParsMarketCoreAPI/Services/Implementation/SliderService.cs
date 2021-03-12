@@ -13,7 +13,7 @@ namespace ParsMarketCoreAPI
         {
             UnitOfWork = unitOfWork;
         }
-        public IUnitOfWork UnitOfWork { get; set; }
+        private IUnitOfWork UnitOfWork;
 
         public async Task AddSlider(Slider slider)
         {
