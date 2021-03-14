@@ -16,8 +16,17 @@ namespace Data
 
         public virtual async Task<Person> GetPersonForLogin(string email, string password)
         {
-            var user = await DbSet.SingleOrDefaultAsync(e => e.EmailAddress == email.ToLower().Trim() && e.Password == password);
-            return user;
+            try
+            {
+                var user = await DbSet.SingleOrDefaultAsync(e => e.EmailAddress == email.ToLower().Trim() && e.Password == password);
+                return user;
+            }
+            catch (Exception e)
+            {
+
+                throw new Exception(e.Message);
+            }
+            
         }
         public virtual async Task<Person> GetPersonByEmail(string email)
         {

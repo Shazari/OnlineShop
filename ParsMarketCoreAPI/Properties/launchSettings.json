@@ -11,7 +11,7 @@
   "profiles": {
     "IIS Express": {
       "commandName": "IISExpress",
-      "launchBrowser": true,
+      "launchBrowser": false,
       "inspectUri": "{wsProtocol}://{url.hostname}:{url.port}/_framework/debug/ws-proxy?browser={browserInspectUri}",
       //"launchUrl": "People",
       "environmentVariables": {
@@ -21,7 +21,7 @@
     "ParsMarketCoreAPI": {
       "commandName": "Project",
       "dotnetRunMessages": "true",
-      "launchBrowser": true,
+      "launchBrowser": false,
       "inspectUri": "{wsProtocol}://{url.hostname}:{url.port}/_framework/debug/ws-proxy?browser={browserInspectUri}",
       //"launchUrl": "People",
       "applicationUrl": "https://localhost:5001;http://localhost:5000",

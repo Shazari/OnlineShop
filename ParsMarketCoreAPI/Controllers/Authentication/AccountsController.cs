@@ -25,18 +25,18 @@ namespace ParsMarketCoreAPI.Controllers
     [Route("[controller]")]
     public class AccountsController : ControllerBase
     {
-        private readonly UserManager<Person> _UserManager;
-        private readonly RoleManager<Roles> _RoleManager;
-        private readonly SignInManager<Person> _SignInManager;
+        //private readonly UserManager<Person> _UserManager;
+        //private readonly RoleManager<Roles> _RoleManager;
+        //private readonly SignInManager<Person> _SignInManager;
         private IUserService _userService;
 
         public AccountsController
-        (IUserService UserService, UserManager<Person> userManager, RoleManager<Roles> roleManager, SignInManager<Person> signInManager, IConfiguration configuration)
+        (IUserService UserService, /*UserManager<Person> userManager, RoleManager<Roles> roleManager, SignInManager<Person> signInManager, */IConfiguration configuration)
         {
             _userService = UserService;
-            _UserManager = userManager;
-            _RoleManager = roleManager;
-            _SignInManager = signInManager;
+            //_UserManager = userManager;
+            //_RoleManager = roleManager;
+            //_SignInManager = signInManager;
             Configuration = configuration;
         }
         public IConfiguration Configuration { get; }

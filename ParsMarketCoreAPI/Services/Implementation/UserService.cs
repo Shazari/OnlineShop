@@ -64,6 +64,7 @@ namespace ParsMarketCoreAPI
                
             };
             await unitOfWork.PersonRepository.Insert(user);
+            await unitOfWork.SaveAsync();
             return RegisterUserResult.Success;
         }
 
@@ -75,6 +76,7 @@ namespace ParsMarketCoreAPI
 
         public async Task<LoginUserResult> LoginUser(LoginViewModel login)
         {
+
             var password = _passwordHelper.EncodePasswordMd5(login.Password);
             var user = await unitOfWork.PersonRepository.GetPersonForLogin(login.EmailAddress,login.Password);
             if (user == null) return LoginUserResult.IncorrectData;

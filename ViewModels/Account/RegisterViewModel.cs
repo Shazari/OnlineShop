@@ -38,6 +38,7 @@ namespace ViewModels
         [DataType(DataType.Password)]
         public string ConfirmPassword { get; set; }
 
+
     }
     public enum RegisterUserResult
     {

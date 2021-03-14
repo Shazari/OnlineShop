@@ -55,27 +55,27 @@ namespace ParsMarkt.Shared.Header
             }
         }
 
-        //public async Task Register()
-        //{
-        //    var isRegistered = personInfo.Any(p => p.EmailAddress.ToLower() == registerViewModel.EmailAddress.ToLower());
-        //    if (!isRegistered)
-        //    {
-        //        if (registerViewModel.EmailAddress != null && registerViewModel.Password != null)
-        //        {
-        //            await PersonService.PostAsync(new LoginViewModel { EmailAddress = registerViewModel.EmailAddress, Password = registerViewModel.Password });
-        //            registerdeMessage = "login kon";
+        public async Task Register()
+        {
+            var isRegistered = personInfo.Any(p => p.EmailAddress.ToLower() == registerViewModel.EmailAddress.ToLower());
+            if (!isRegistered)
+            {
+                if (registerViewModel.EmailAddress != null && registerViewModel.Password != null)
+                {
+                    await PersonService.PostAsync(new PersonViewModel { EmailAddress = registerViewModel.EmailAddress, Password = registerViewModel.Password });
+                    registerdeMessage = "login kon";
 
 
-        //        }
-                
-        //    }
-        //    registerdeMessage = "register hassi Amoo boro be login";
+                }
 
-        //    NavigationManager.NavigateTo("Home");
+            }
+            registerdeMessage = "register hassi Amoo boro be login";
+
+            NavigationManager.NavigateTo("Home");
 
 
 
-        //}
+        }
         public void Login()
         {
             var passCheck = personInfo.Any(p=>p.Password==loginViewModel.Password);
