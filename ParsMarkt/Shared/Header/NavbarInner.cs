@@ -17,6 +17,7 @@ namespace ParsMarkt.Shared.Header
         }
         [Inject]
         public IMenuServices menuServices { get; set; }
+        
         [Inject]
         protected System.Net.Http.HttpClient Http { get; set; }
         protected override async Task OnInitializedAsync()

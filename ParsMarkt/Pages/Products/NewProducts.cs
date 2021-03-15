@@ -20,10 +20,13 @@ namespace ParsMarkt.Pages.Products
              Products = new List<ProductViewModel>();
         }
         ParsMarkt.Pages.Basket.BasketView basketView = new Basket.BasketView();
+        
         [Inject]
         public IBasketServices BasketServices { get; set; }
+       
         [Inject]
         public IMenuServices menuServices { get; set; }
+        
         [Inject]
         public ILocalStorageService LocalStorage { get; set; }
 
@@ -45,7 +48,7 @@ namespace ParsMarkt.Pages.Products
         public List<BasketItem> BasketItems;
 
         [Parameter]
-        public int ProductId { get; set; }
+        public long ProductId { get; set; }
 
         public ProductViewModel productViewModel;
 
@@ -91,7 +94,7 @@ namespace ParsMarkt.Pages.Products
 
       public void  MoreDetails(ProductViewModel productViewModel)
         {
-            ProductId = (int)productViewModel.Id;
+            ProductId = productViewModel.Id;
             Navigation.NavigateTo($"/ProductDetails/{ProductId}");
         }
 

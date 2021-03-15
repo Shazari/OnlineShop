@@ -18,11 +18,13 @@ namespace ParsMarkt.Pages.Basket
 
 
         }
+        
         [Inject]
         public IBasketServices BasketServices { get; set; }
 
         [Inject]
         public ILocalStorageService LocalStorage { get; set; }
+        
         [Inject]
         public IJSRuntime Js { get; set; }
 

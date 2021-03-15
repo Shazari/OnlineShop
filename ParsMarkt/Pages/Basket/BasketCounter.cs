@@ -17,6 +17,7 @@ namespace ParsMarkt.Pages.Basket
 
         [Inject]
         public ILocalStorageService LocalStorage { get; set; }
+        
         [Inject]
         public IJSRuntime Js { get; set; }
 
@@ -33,12 +34,14 @@ namespace ParsMarkt.Pages.Basket
 
 
             BasketItems = new List<BasketItem>();
+            
             var options = new JsonSerializerOptions
             {
                 PropertyNameCaseInsensitive = true,
             };
 
             var content = await LocalStorage.GetItemAsStringAsync("Basket");
+            
             var deserializedBasket = JsonSerializer.Deserialize<List<BasketItem>>(content, options);
 
             deserializedBasket.ForEach(b => BasketItems.Add(b));
@@ -50,6 +53,7 @@ namespace ParsMarkt.Pages.Basket
             {
                 PropertyNameCaseInsensitive = true,
             };
+           
             var content = await LocalStorage.GetItemAsStringAsync("Basket");
             var deserializedBasket = JsonSerializer.Deserialize<List<BasketItem>>(content, options);
 
@@ -60,6 +64,7 @@ namespace ParsMarkt.Pages.Basket
 
             var serializedBasket = JsonSerializer.Serialize<List<BasketItem>>(BasketItems);
             await LocalStorage.SetItemAsync("Basket", serializedBasket);
+        
         }
 
         public async Task Minus(BasketItem item)
@@ -69,6 +74,7 @@ namespace ParsMarkt.Pages.Basket
             {
                 PropertyNameCaseInsensitive = true,
             };
+            
             var content = await LocalStorage.GetItemAsStringAsync("Basket");
             var deserializedBasket = JsonSerializer.Deserialize<List<BasketItem>>(content, options);
 
@@ -91,6 +97,7 @@ namespace ParsMarkt.Pages.Basket
             {
                 PropertyNameCaseInsensitive = true,
             };
+            
             var content = await LocalStorage.GetItemAsStringAsync("Basket");
             var deserializedBasket = JsonSerializer.Deserialize<List<BasketItem>>(content, options);
 

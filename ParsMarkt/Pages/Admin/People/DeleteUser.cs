@@ -12,9 +12,12 @@ namespace ParsMarkt.Pages.Admin.People
         [Parameter] public int Id { get; set; }
 
         public IList<PersonViewModel> Users;
+
         public PersonViewModel User;
+
         [Inject]
         public IPersonServices PersonService { get; set; }
+        
         [Inject]
         public NavigationManager NavigationService { get; set; }
         protected override async Task OnInitializedAsync()

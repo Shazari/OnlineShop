@@ -1,6 +1,6 @@
 function LoadCustome() {
 
-    console.log('alert');
+   // console.log('alert');
     function readURL(input) {
         if (input.files && input.files[0]) {
             var reader = new FileReader();

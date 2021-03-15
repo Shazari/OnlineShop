@@ -16,7 +16,7 @@ namespace ParsMarkt.Auth
                 new Claim("Key1","Value1"),
                 new Claim(ClaimTypes.Name,"Askar"),
                 new Claim(ClaimTypes.Role,"Admin")
-            },"test");
+            }, "test");
             return await Task.FromResult(new AuthenticationState(new ClaimsPrincipal(anonymouse)));
         }
     }

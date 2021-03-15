@@ -28,7 +28,7 @@ namespace ParsMarkt
                 options.UseWasmSharedBuffer = true;
             });
             builder.Services.AddLocalization(options => options.ResourcesPath = "Resources");
-            //builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
+            builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
            
             builder.Services.AddScoped<IMenuServices,MenuServices>();
             builder.Services.AddScoped<IBasketServices,BasketServices>();
@@ -49,7 +49,7 @@ namespace ParsMarkt
             builder.Services.AddAuthorizationCore();
             builder.Services.AddHttpClient("Identity.ServerAPI", client => client.BaseAddress = new Uri(builder.HostEnvironment.BaseAddress))
                .AddHttpMessageHandler<BaseAddressAuthorizationMessageHandler>();
-            builder.Services.AddScoped<AuthenticationStateProvider, ApiAuthenticationStateProvider>();
+           builder.Services.AddScoped<AuthenticationStateProvider, ApiAuthenticationStateProvider>();
 
             await builder.Build().RunAsync();
         }
