@@ -5,7 +5,7 @@ using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 
-namespace ParsMarkt.Auth
+namespace ParsMarkt
 {
     public class ApiAuthenticationStateProvider : AuthenticationStateProvider
     {

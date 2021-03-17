@@ -11,9 +11,9 @@ using ViewModels;
 namespace ParsMarketCoreAPI.Controllers
 {
     
-    public class RolesController : BaseApiControllerWithDatabase
+    public class AuthController : BaseApiControllerWithDatabase
     {
-        public RolesController(IUnitOfWork UnitOfWork) : base(UnitOfWork)
+        public AuthController(IUnitOfWork UnitOfWork) : base(UnitOfWork)
         { }
         public async Task<ActionResult<IEnumerable<RoleViewModel>>> GetRole()
         {
@@ -46,7 +46,7 @@ namespace ParsMarketCoreAPI.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPut]
-        public async Task<IActionResult> PutRolet(RoleViewModel viewModel)
+        public async Task<IActionResult> PutRole(RoleViewModel viewModel)
         {
 
             var role = await UnitOfWork.RoleRepository.GetById(viewModel.Id);
@@ -88,8 +88,8 @@ namespace ParsMarketCoreAPI.Controllers
         // POST: api/People
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
-        [HttpPost]
-        public async Task<ActionResult<RoleViewModel>> PostRole(RoleViewModel viewModel)
+        [HttpPost("SignIn")]
+        public async Task<ActionResult<LoginViewModel>> PostRole(RoleViewModel viewModel)
         {
 
             var Role = new Models.Roles()
@@ -104,7 +104,7 @@ namespace ParsMarketCoreAPI.Controllers
             //_context.People.Add(person);
             await UnitOfWork.SaveAsync();
 
-            return CreatedAtAction("GetRole", new { id = viewModel.Id }, viewModel);
+            return CreatedAtAction("GetRole", new { viewModel });
         }
 
         // DELETE: api/People/5

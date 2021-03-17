@@ -1,0 +1,86 @@
+﻿@page "/Register"
+<div class="darker-stripe">
+    <div class="container">
+        <div class="row">
+            <div class="span12">
+                <ul class="breadcrumb">
+                    <li>
+                        <a href="#">ParsMarkt</a>
+                    </li>
+                    <li><span class="icon-chevron-right"></span></li>
+                    <li>
+                        <a href="#">Register</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="push-up top-equal blocks-spacer-last">
+        <div class="row">
+            <EditForm Model="@registerViewModel" OnValidSubmit="@HandleValidSubmit">
+
+                <div class="control-group">
+                    <label class="control-label hidden shown-ie8" for="inputEmailRegister">@(Resources.DataDictionary.Email)</label>
+                    <div class="controls">
+                        <InputText @bind-Value="@registerViewModel.Email" type="email" class="input-block-level" id="inputEmailRegister" placeholder="@(Resources.DataDictionary.Email)" />
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label hidden shown-ie8" for="inputEmailRegister">@(Resources.DataDictionary.FirstName)</label>
+                    <div class="controls">
+                        <InputText @bind-Value="@registerViewModel.FirstName"  class="input-block-level" placeholder="@(Resources.DataDictionary.FirstName)" />
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label hidden shown-ie8" for="inputEmailRegister">@(Resources.DataDictionary.LastName)</label>
+                    <div class="controls">
+                        <InputText @bind-Value="@registerViewModel.LastName"  class="input-block-level"  placeholder="@(Resources.DataDictionary.LastName)" />
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label class="control-label hidden shown-ie8" for="inputEmailRegister">@(Resources.DataDictionary.PhoneNumber)</label>
+                    <div class="controls">
+                        <InputText @bind-Value="@registerViewModel.PhoneNumber" class="input-block-level" placeholder="@(Resources.DataDictionary.PhoneNumber)" />
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label class="control-label hidden shown-ie8" for="inputPasswordRegister">@(Resources.DataDictionary.Password)</label>
+                    <div class="controls">
+                        <InputText @bind-Value="@registerViewModel.Password" type="password" class="input-block-level" id="inputPasswordRegister" placeholder="@(Resources.DataDictionary.Password)" />
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label hidden shown-ie8" for="inputConfirmPasswordRegister">@(Resources.DataDictionary.ConfirmPassword)</label>
+                    <div class="controls">
+                        <InputText @bind-Value="@registerViewModel.ConfirmPassword" type="password" class="input-block-level" id="inputConfirmPasswordRegister" placeholder="@(Resources.DataDictionary.ConfirmPassword)" />
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label hidden shown-ie8" for="inputEmailRegister">@(Resources.DataDictionary.Address)</label>
+                    <div class="controls">
+                        <InputText @bind-Value="@registerViewModel.Street_Number"  class="input-block-level"  placeholder="@(Resources.DataDictionary.Address)" />
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label hidden shown-ie8" for="inputEmailRegister">@(Resources.DataDictionary.City)</label>
+                    <div class="controls">
+                        <InputText @bind-Value="@registerViewModel.City"  class="input-block-level"  placeholder="@(Resources.DataDictionary.City)" />
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label hidden shown-ie8" for="inputEmailRegister">@(Resources.DataDictionary.CountryName)</label>
+                    <div class="controls">
+                        <InputText @bind-Value="@registerViewModel.Countries"  class="input-block-level"  placeholder="@(Resources.DataDictionary.CountryName)" />
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-danger input-block-level bold higher">
+                    @(Resources.Buttons.Register)
+                </button>
+            </EditForm>
+        </div>
+    </div>
+</div>

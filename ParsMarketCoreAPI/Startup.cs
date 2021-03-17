@@ -46,7 +46,7 @@ namespace ParsMarketCoreAPI
                         builder
                             .AllowAnyOrigin()
                             .AllowAnyHeader()
-                            .AllowAnyMethod().Build();
+                            .AllowAnyMethod();
                     });
             });
 
@@ -87,27 +87,27 @@ namespace ParsMarketCoreAPI
 
                          return new UnitOfWork(options: options);
                      });
-            //services.AddIdentity<User, Role>(options =>
-            // {
-            //     options.SignIn.RequireConfirmedEmail = true;
-            //     options.User.RequireUniqueEmail = true;
+            services.AddIdentity<IdentityUser,IdentityRole>(options =>
+             {
+                 options.SignIn.RequireConfirmedEmail = false;
+                 options.User.RequireUniqueEmail = false;
 
-            //     //options.Password.RequiredLength = 8;
-            //     //options.Password.RequireNonAlphanumeric = true;
-            //     //options.Password.RequireUppercase = true;
-            //     //options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(1d);
-            //     //options.Lockout.MaxFailedAccessAttempts = 5;
+                 //options.Password.RequiredLength = 8;
+                 //options.Password.RequireNonAlphanumeric = true;
+                 //options.Password.RequireUppercase = true;
+                 //options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(1d);
+                 //options.Lockout.MaxFailedAccessAttempts = 5;
 
-            // })
-            //    .AddEntityFrameworkStores<ParsMarketDbContext>()
-            //    .AddDefaultTokenProviders();
+             })
+                .AddEntityFrameworkStores<ParsMarketDbContext>()
+                .AddDefaultTokenProviders();
 
             //services.AddDefaultIdentity<Models.Person>
             //    (
-            //    options=>options.SignIn.RequireConfirmedAccount=true
+            //    options => options.SignIn.RequireConfirmedAccount = true
             //    ).AddEntityFrameworkStores<ParsMarketDbContext>();
 
-           
+
 
             services.AddAuthentication(options =>
             {

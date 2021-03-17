@@ -152,7 +152,7 @@ namespace ParsMarketCoreAPI.Controllers
         // POST: api/People
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
-        [HttpPost]
+        [HttpPost("register")]
         public async Task<ActionResult<PersonViewModel>> PostPerson([FromBody] PersonViewModel viewModel)
         {
             var person = new Person()

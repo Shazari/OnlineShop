@@ -17,7 +17,7 @@ namespace ParsMarkt
 
         }
        
-        public string Url = "https://localhost:44380/Users";
+        public string Url = "https://localhost:44380/users";
         protected override string GetApiUrl()
         {
             return "Users";

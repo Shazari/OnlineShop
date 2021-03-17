@@ -11,7 +11,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Localization;
 using Blazored.LocalStorage;
 using Tewr.Blazor.FileReader;
-using ParsMarkt.Auth;
+
 using Microsoft.AspNetCore.Components.Authorization;
 
 namespace ParsMarkt
@@ -41,6 +41,7 @@ namespace ParsMarkt
             builder.Services.AddScoped<IWeekDayServices , WeekDayServices>();
             builder.Services.AddScoped<IOrderServices, OrderServices>();
             builder.Services.AddScoped<IRoleServices, RoleServices>();
+            builder.Services.AddScoped<IAccountsServices,AccountsServices>();
             builder.Services.AddBlazoredLocalStorage();
             builder.Services.AddBlazoredLocalStorage(config=>
             config.JsonSerializerOptions.WriteIndented=false);
@@ -48,9 +49,18 @@ namespace ParsMarkt
             builder.Services.AddApiAuthorization();
             builder.Services.AddAuthorizationCore();
             builder.Services.AddHttpClient("Identity.ServerAPI", client => client.BaseAddress = new Uri(builder.HostEnvironment.BaseAddress))
-               .AddHttpMessageHandler<BaseAddressAuthorizationMessageHandler>();
+               /*.AddHttpMessageHandler<BaseAddressAuthorizationMessageHandler>()*/;
            builder.Services.AddScoped<AuthenticationStateProvider, ApiAuthenticationStateProvider>();
+           
 
+            builder.Services.AddScoped<JWTAuthenticationStateProvider>();
+            builder.Services.AddScoped<AuthenticationStateProvider, JWTAuthenticationStateProvider>(
+                provider => provider.GetRequiredService<JWTAuthenticationStateProvider>()
+                );
+
+            builder.Services.AddScoped<ILoginServices, JWTAuthenticationStateProvider>(
+                provider => provider.GetRequiredService<JWTAuthenticationStateProvider>()
+                );
             await builder.Build().RunAsync();
         }
     }

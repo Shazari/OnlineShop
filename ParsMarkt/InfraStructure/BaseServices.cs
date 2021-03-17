@@ -118,13 +118,15 @@ namespace ParsMarkt
         }
         protected virtual async System.Threading.Tasks.Task<O> PostAsync<I, O>(I viewModel)
         {
+          
+          
             System.Net.Http.HttpResponseMessage response = null;
 
             try
             {
-               // var content = new StringContent(JsonSerializer.Serialize(viewModel), Encoding.UTF8, "application/json");
-              // response = await Http.PostAsync(RequestUri, content);
-                 response = await Http.PostAsJsonAsync(RequestUri, viewModel);
+               //var content = new StringContent(JsonSerializer.Serialize(viewModel), Encoding.UTF8, "application/json");
+              //response = await Http.PostAsync(RequestUri, content);
+                response = await Http.PostAsJsonAsync(RequestUri, viewModel);
 
                 //response.EnsureSuccessStatusCode();
 

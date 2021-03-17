@@ -55,8 +55,8 @@
                     </div>
                     <div class="register">
                         @*<LoginDisplay />*@
-                        <a href="#" role="button" data-toggle="modal">ورود</a> یا
-                        <a href="#" role="button" data-toggle="modal">ثبت نام</a>
+                        <a href="/Login" class="btn btn-sm btn-success">ورود</a> یا
+                        <a href="/Register" class="btn btn-sm btn-danger">ثبت نام</a>
                     </div>
                 </div>
             </div> <!-- /social icons -->
@@ -74,20 +74,20 @@
         <h3 id="loginModalLabel"><span class="light">@(Resources.InformationMessages.LoginInSite)</span></h3>
     </div>
     <div class="modal-body">
-        <EditForm Model="@loginViewModel" OnInvalidSubmit="Login">
+        <EditForm Model="@loginViewModel" OnValidSubmit="@Login">
            
           
             <div class="control-group">
                 <label class="control-label hidden shown-ie8" for="inputEmail">@(Resources.DataDictionary.Email)</label>
                 <div class="controls">
-                    <InputText @bind-Value="@loginViewModel.EmailAddress"  type="text" class="input-block-level" id="inputEmail" placeholder="@(Resources.DataDictionary.Email)"/>
+                    <InputText @bind-Value="@loginViewModel.Email"  type="text" class="input-block-level" id="inputEmail" placeholder="@(Resources.DataDictionary.Email)"/>
                 </div>
                 
             </div>
             <div class="control-group">
                 <label class="control-label hidden shown-ie8" for="inputPassword">@(Resources.DataDictionary.Password)</label>
                 <div class="controls">
-                    <InputText @bind-Value="@loginViewModel.Password"  type="password" class="input-block-level" id="inputPassword" placeholder="@(Resources.DataDictionary.Password)"/>
+                    <InputText @bind-Value="@loginViewModel.PasswordHash"  type="password" class="input-block-level" id="inputPassword" placeholder="@(Resources.DataDictionary.Password)"/>
                 </div>
             </div>
             <div class="control-group">
@@ -121,7 +121,7 @@
             <div class="control-group">
                 <label class="control-label hidden shown-ie8" for="inputEmailRegister">@(Resources.DataDictionary.Email)</label>
                 <div class="controls">
-                    <InputText @bind-Value="@registerViewModel.EmailAddress"  type="email" class="input-block-level" id="inputEmailRegister" placeholder="@(Resources.DataDictionary.Email)"/>
+                    <InputText @bind-Value="@registerViewModel.Email"  type="email" class="input-block-level" id="inputEmailRegister" placeholder="@(Resources.DataDictionary.Email)"/>
                 </div>
             </div>
             <div class="control-group">

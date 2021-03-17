@@ -41,10 +41,10 @@ namespace ParsMarkt.Shared.Header
         
         protected async Task HandleValidSubmit()
         {
-            var isRegistered = personInfo.Any(p => p.EmailAddress.ToLower() == registerViewModel.EmailAddress.ToLower());
+            var isRegistered = personInfo.Any(p => p.EmailAddress.ToLower() == registerViewModel.Email.ToLower());
             if (!isRegistered)
             {
-                if (registerViewModel.EmailAddress != null && registerViewModel.Password != null)
+                if (registerViewModel.Email != null && registerViewModel.Password != null)
                 {
                     //await PersonService.PostAsync();
                     registerdeMessage = "login kon";
@@ -57,12 +57,12 @@ namespace ParsMarkt.Shared.Header
 
         public async Task Register()
         {
-            var isRegistered = personInfo.Any(p => p.EmailAddress.ToLower() == registerViewModel.EmailAddress.ToLower());
+            var isRegistered = personInfo.Any(p => p.EmailAddress.ToLower() == registerViewModel.Email.ToLower());
             if (!isRegistered)
             {
-                if (registerViewModel.EmailAddress != null && registerViewModel.Password != null)
+                if (registerViewModel.Email != null && registerViewModel.Password != null)
                 {
-                    await PersonService.PostAsync(new PersonViewModel { EmailAddress = registerViewModel.EmailAddress, Password = registerViewModel.Password });
+                    await PersonService.PostAsync(new PersonViewModel { EmailAddress = registerViewModel.Email, Password = registerViewModel.Password });
                     registerdeMessage = "login kon";
 
 
@@ -78,8 +78,8 @@ namespace ParsMarkt.Shared.Header
         }
         public void Login()
         {
-            var passCheck = personInfo.Any(p=>p.Password==loginViewModel.Password);
-            var checkEmail = personInfo.Any(p=>p.EmailAddress==loginViewModel.EmailAddress);
+            var passCheck = personInfo.Any(p=>p.Password==loginViewModel.PasswordHash);
+            var checkEmail = personInfo.Any(p=>p.EmailAddress==loginViewModel.Email);
             if (passCheck&&checkEmail)
             {
                 loginMessage = "login shodid";

@@ -44,11 +44,11 @@ namespace ParsMarketCoreAPI
 
         public async Task<RegisterUserResult> RegisterUser(RegisterViewModel register)
         {
-            if (IsUserExistByEmail(register.EmailAddress))
+            if (IsUserExistByEmail(register.Email))
                 return RegisterUserResult.EmailExist;
             var user = new Person() {
 
-                EmailAddress = register.EmailAddress.SanitizeText(),
+                EmailAddress = register.Email.SanitizeText(),
                 Password = _passwordHelper.EncodePasswordMd5(register.Password),
                 Address = null,
                 Address2 = null,
@@ -77,8 +77,8 @@ namespace ParsMarketCoreAPI
         public async Task<LoginUserResult> LoginUser(LoginViewModel login)
         {
 
-            var password = _passwordHelper.EncodePasswordMd5(login.Password);
-            var user = await unitOfWork.PersonRepository.GetPersonForLogin(login.EmailAddress,login.Password);
+            var password = _passwordHelper.EncodePasswordMd5(login.PasswordHash);
+            var user = await unitOfWork.PersonRepository.GetPersonForLogin(login.Email,login.PasswordHash);
             if (user == null) return LoginUserResult.IncorrectData;
             if (!user.IsActive)
             {

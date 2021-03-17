@@ -50,11 +50,11 @@ namespace ParsMarketCoreAPI.Controllers
                 
                 var person = new Models.Person()
                 {
-                    
-                    FirstName = viewModel.FirstName,
-                    LastName = viewModel.LastName,
                     EmailAddress = viewModel.EmailAddress,
                     Password = viewModel.Password,
+                    FirstName = viewModel.FirstName,
+                    LastName = viewModel.LastName,
+
                     Address = viewModel.Address,
                     //Id = viewModel.Id,
                     City = viewModel.City,
@@ -64,8 +64,9 @@ namespace ParsMarketCoreAPI.Controllers
                     IsAdmin = viewModel.IsAdmin,
                     PhoneNumber = viewModel.PhoneNumber,
                     PostCode = viewModel.PostCode,
-                    Orders=null,
-                    Role=null,
+                    Orders = null,
+                    Role = null,
+
 
                 };
 
