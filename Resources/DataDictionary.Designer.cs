@@ -430,6 +430,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Title of Link.
+        /// </summary>
+        public static string UrlTitle {
+            get {
+                return ResourceManager.GetString("UrlTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to UserImage.
         /// </summary>
         public static string UserImage {
