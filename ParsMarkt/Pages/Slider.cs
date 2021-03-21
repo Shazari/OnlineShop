@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Components;
-using Microsoft.JSInterop;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,19 +19,7 @@ namespace ParsMarkt.Pages
         [Inject]
         public NavigationManager NavigationManager { get; set; }
 
-        [Inject]
-        public IJSRuntime JsRuntime { get; set; }
-
-
         public List<SliderViewModel> sliderViewModel { get; set; }
-        protected override async Task OnAfterRenderAsync(bool firstRender)
-        {
-
-            await JsRuntime.InvokeVoidAsync("LoadCustome");
-
-        }
-
-
         protected override async Task OnInitializedAsync()
         {
             try

@@ -10,11 +10,7 @@ namespace Models
         [Required(ErrorMessageResourceType = typeof(Resources.ErrorMessages), ErrorMessageResourceName = nameof(Resources.ErrorMessages.Required))]
         [MaxLength(250, ErrorMessageResourceType = typeof(Resources.ErrorMessages), ErrorMessageResourceName = nameof(Resources.ErrorMessages.MaxLength))]
         public string Title { get; set; }
-
-        [Display(ResourceType = typeof(Resources.DataDictionary), Name = nameof(Resources.DataDictionary.UrlTitle))]
-        [Required(ErrorMessageResourceType = typeof(Resources.ErrorMessages), ErrorMessageResourceName = nameof(Resources.ErrorMessages.Required))]
-        [MaxLength(250, ErrorMessageResourceType = typeof(Resources.ErrorMessages), ErrorMessageResourceName = nameof(Resources.ErrorMessages.MaxLength))]
-        public string UrlTitle { get; set; }
+        public string Description { get; set; }
 
        
         [Display(ResourceType = typeof(Resources.DataDictionary),
