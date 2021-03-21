@@ -5,11 +5,11 @@
             <div class="span12">
                 <ul class="breadcrumb">
                     <li>
-                        <a href="#">ParsMarkt</a>
+                        <a href="#">@(Resources.DataDictionary.ParsMarkt)</a>
                     </li>
                     <li><span class="icon-chevron-right"></span></li>
                     <li>
-                        <a href="#">Login</a>
+                        <a href="#">@(Resources.DataDictionary.Login)</a>
                     </li>
                 </ul>
             </div>
@@ -19,44 +19,54 @@
 <div class="container">
     <div class="push-up top-equal blocks-spacer-last">
         <div class="row">
-            <div class="modal-body">
-                <EditForm Model="@loginViewModel" OnValidSubmit="@SignIn">
-
-
-                    <div class="control-group">
-                        <label class="control-label hidden shown-ie8" for="inputEmail">@(Resources.DataDictionary.Email)</label>
-                        <div class="controls">
-                            <InputText @bind-Value="@loginViewModel.Email" type="text" class="input-block-level" id="inputEmail" placeholder="@(Resources.DataDictionary.Email)" />
-                        </div>
-
-                    </div>
-                    <div class="control-group">
-                        <label class="control-label hidden shown-ie8" for="inputPassword">@(Resources.DataDictionary.Password)</label>
-                        <div class="controls">
-                            <InputText @bind-Value="@loginViewModel.PasswordHash" type="password" class="input-block-level" id="inputPassword" placeholder="@(Resources.DataDictionary.Password)" />
-                        </div>
-                    </div>
-                    <div class="control-group">
-                        <div class="controls">
-                            <label class="checkbox">
-                                <InputCheckbox @bind-Value="@loginViewModel.RememberMe" type="checkbox" />
-                               
-                                @(Resources.DataDictionary.RememberMe)
-                            </label>
-                        </div>
-                    </div>
-                    <button type="submit" class="btn btn-primary input-block-level bold higher">
-                        @(Resources.Buttons.Login)
-                    </button>
-                </EditForm>
-                <p>
-                    @(LoginMessage)
-                </p>
-                <p class="center-align push-down-0">
-                    <a href="#" data-dismiss="modal">@(Resources.LinkCaptions.ForgotPassword)</a>
-                </p>
+            <div class="span12">
+                <div class="title-area">
+                   
+                </div>
             </div>
+            <section class="span8 single single-page">
+
+                @*<hr />*@
+                <section class="contact-form-container">
+                    <EditForm Model="@loginViewModel" OnValidSubmit="@SignIn">
+
+
+                        <div class="control-group">
+                            <label class="control-label shown-ie8" for="inputEmail">@(Resources.DataDictionary.Email)</label>
+                            <div class="controls">
+                                <InputText @bind-Value="@loginViewModel.Email" type="text" class="input-block-level" id="inputEmail" placeholder="@(Resources.DataDictionary.Email)" />
+                            </div>
+
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label shown-ie8" for="inputPassword">@(Resources.DataDictionary.Password)</label>
+                            <div class="controls">
+                                <InputText @bind-Value="@loginViewModel.PasswordHash" type="password" class="input-block-level" id="inputPassword" placeholder="@(Resources.DataDictionary.Password)" />
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <div class="controls">
+                                <label class="checkbox">
+                                    <InputCheckbox @bind-Value="@loginViewModel.RememberMe" type="checkbox" />
+
+                                    @(Resources.DataDictionary.RememberMe)
+                                </label>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary bold higher">
+                            @(Resources.Buttons.Login)
+                        </button>
+                    </EditForm>
+                    <p>
+                        @(LoginMessage)
+                    </p>
+                    <p class="center-align push-down-0">
+                        <a href="#" data-dismiss="modal">@(Resources.LinkCaptions.ForgotPassword)</a>
+                    </p>
+                    </section>
+
+                </section>
+        </div>
 
         </div>
     </div>
-</div>

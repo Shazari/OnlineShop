@@ -142,10 +142,10 @@
     <value>Off</value>
   </data>
   <data name="Email" xml:space="preserve">
-    <value>Email Address</value>
+    <value>Email</value>
   </data>
   <data name="FirstName" xml:space="preserve">
-    <value>First Name</value>
+    <value>FirstNAme</value>
   </data>
   <data name="ImageName" xml:space="preserve">
     <value>ImageName</value>
@@ -171,11 +171,17 @@
   <data name="Link" xml:space="preserve">
     <value>Link</value>
   </data>
+  <data name="Login" xml:space="preserve">
+    <value>Sign In</value>
+  </data>
   <data name="LongDescription" xml:space="preserve">
     <value>Long Description</value>
   </data>
   <data name="Name" xml:space="preserve">
     <value>Name</value>
+  </data>
+  <data name="ParsMarkt" xml:space="preserve">
+    <value>ParsMarkt</value>
   </data>
   <data name="Password" xml:space="preserve">
     <value>Password</value>
@@ -202,6 +208,9 @@
     <value>Off for all</value>
     <comment>tetadi ke shamele takhfif misshavad</comment>
   </data>
+  <data name="Register" xml:space="preserve">
+    <value>Register</value>
+  </data>
   <data name="RegisterDate" xml:space="preserve">
     <value>Date Of Register</value>
   </data>
@@ -210,6 +219,12 @@
   </data>
   <data name="ShortDescription" xml:space="preserve">
     <value>Short Description</value>
+  </data>
+  <data name="SliderImage" xml:space="preserve">
+    <value>Slider Image</value>
+  </data>
+  <data name="SmallSliderImage" xml:space="preserve">
+    <value>Small Slider Image</value>
   </data>
   <data name="Street_HousNumber" xml:space="preserve">
     <value>Street Name and House Number</value>

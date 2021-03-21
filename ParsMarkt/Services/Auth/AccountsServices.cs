@@ -16,12 +16,11 @@ namespace ParsMarkt
         {
 
         }
-        protected override string GetApiUrl()
-        {
-            return "accounts/signin";
-        }
+        public string Url;
         public Task<LoginViewModel> Login(LoginViewModel viewModel)
         {
+            Url = "signin";
+            RequestUri = $"{BaseUrl}/{GetApiUrl()}/{Url}";
             try
             {
                 var res = PostAsync<LoginViewModel,LoginViewModel>(viewModel);
@@ -45,6 +44,8 @@ namespace ParsMarkt
 
         public async Task<RegisterViewModel> Resister(RegisterViewModel viewModel)
         {
+            Url = "Create";
+            RequestUri = $"{BaseUrl}/{GetApiUrl()}/{Url}";
            // var content = new StringContent(JsonSerializer.Serialize(viewModel), Encoding.UTF8, "application/json");
             //string verb = "register";
             //RequestUri =$"{ BaseUrl}/{GetApiUrl()}/{verb}";
@@ -56,6 +57,10 @@ namespace ParsMarkt
                 return viewModel;
             }
             return viewModel;
+        }
+        protected override string GetApiUrl()
+        {
+            return $"accounts";
         }
     }
 }

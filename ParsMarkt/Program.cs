@@ -42,6 +42,8 @@ namespace ParsMarkt
             builder.Services.AddScoped<IOrderServices, OrderServices>();
             builder.Services.AddScoped<IRoleServices, RoleServices>();
             builder.Services.AddScoped<IAccountsServices,AccountsServices>();
+            builder.Services.AddScoped<ISliderServices, SliderServices>();
+
             builder.Services.AddBlazoredLocalStorage();
             builder.Services.AddBlazoredLocalStorage(config=>
             config.JsonSerializerOptions.WriteIndented=false);

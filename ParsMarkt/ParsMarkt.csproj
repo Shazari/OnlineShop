@@ -47,6 +47,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Pages\Admin\Sliders\Edit\" />
+    <Folder Include="Pages\Admin\Sliders\Delete\" />
+    <Folder Include="Pages\Admin\Sliders\Show\" />
     <Folder Include="wwwroot\images\Products\" />
   </ItemGroup>
 

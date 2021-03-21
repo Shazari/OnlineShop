@@ -40,7 +40,7 @@ namespace ParsMarkt.Pages.Auth
                     }
                     else
                     {
-                        NavigationManager.NavigateTo("/");
+                        
                     }
 
                 }

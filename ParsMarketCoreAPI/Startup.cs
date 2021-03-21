@@ -92,9 +92,9 @@ namespace ParsMarketCoreAPI
                  options.SignIn.RequireConfirmedEmail = false;
                  options.User.RequireUniqueEmail = false;
 
-                 //options.Password.RequiredLength = 8;
-                 //options.Password.RequireNonAlphanumeric = true;
-                 //options.Password.RequireUppercase = true;
+                 options.Password.RequiredLength = 3;
+                 options.Password.RequireNonAlphanumeric = false;
+                 options.Password.RequireUppercase = false;
                  //options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(1d);
                  //options.Lockout.MaxFailedAccessAttempts = 5;
 

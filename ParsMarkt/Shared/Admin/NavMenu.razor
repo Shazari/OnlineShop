@@ -25,7 +25,7 @@
                                         <NavLink href="/UsersPasswordManagement"><i class="icon-caret-left pull-right visible-desktop"></i> تغییر رمز عبور</NavLink>
 
                                     </li>
-                                    
+
                                 </ul>
                                 <ul class="dropdown-menu">
 
@@ -47,16 +47,25 @@
 
                                 </ul>
                             </li>
-                            <li><NavLink href="/MenusManagement">مدیریت منو ها</NavLink></li>
+                            <li class="dropdown">
+                                <NavLink href="/ProductsManagement" class="dropdown-toggle"> مدیریت محتوی <b class="caret"></b> </NavLink>
+                                <ul class="dropdown-menu">
+                                    <li><NavLink href="/MenusManagement">مدیریت منو ها</NavLink></li>
+                                    <li><NavLink href="/AddNewSlider">مدیریت اسلایدرها</NavLink></li>
+                                    <li><NavLink href="/AboutUSManagement">مدیریت درباره ما</NavLink></li>
+                                    <li><NavLink href="/ContactsManagement" class="dropdown-toggle">مدیریت پیام ها  </NavLink></li>
+                                </ul>
+                            </li>
+                            
                             <li class="dropdown active">
-                                <NavLink href="/ContactsManagement" class="dropdown-toggle">مدیریت پیام ها <b class="caret"></b> </NavLink>
+                                
 
                             </li>
 
-                            <li><NavLink href="/AboutUSManagement">مدیریت درباره ما</NavLink></li>
+                            
 
                         </ul>
-
+                        
                         <!--  ==========  -->
                         <!--  = Search form =  -->
                         <!--  ==========  -->

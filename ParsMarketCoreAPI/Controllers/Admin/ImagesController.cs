@@ -19,8 +19,8 @@ namespace ParsMarketCoreAPI.Controllers.Admin
         }
         private readonly IHostEnvironment _env;
 
-        [HttpPost]
-        public async Task<IActionResult> PostImage([FromForm] IFormFile image)
+        [HttpPost("ProductImage")]
+        public async Task<IActionResult> PostProductImage([FromForm] IFormFile image)
         {
             if (image==null||image.Length==0)
             {
@@ -35,13 +35,40 @@ namespace ParsMarketCoreAPI.Controllers.Admin
                 return BadRequest("file is  not a valid image");
             }
             string fileName = $"{Guid.NewGuid()}{extention}";
-            string filePath = Path.Combine(_env.ContentRootPath,"wwwroot","Images",fileName);
+            string filePath = Path.Combine(_env.ContentRootPath,"wwwroot","Images/Product",fileName);
             using (var fileStream=new FileStream(filePath,FileMode.Create,FileAccess.Write))
             {
                 await image.CopyToAsync(fileStream);
                 
             }
-            string u = "Images";
+            string u = "Images/Product";
+            return Ok($"{u}/{fileName}");
+
+        }
+        [HttpPost("SliderImage")]
+        public async Task<IActionResult> PostSliderImage([FromForm] IFormFile image)
+        {
+            if (image == null || image.Length == 0)
+            {
+                return BadRequest("upload a file");
+            }
+            
+            string name = image.FileName;
+            string extention = Path.GetExtension(name);
+            string[] allowExtentions = { ".jpg", ".png", ".bmp", ".jpeg" };
+
+            if (!allowExtentions.Contains(extention))
+            {
+                return BadRequest("file is  not a valid image");
+            }
+            string fileName = $"{Guid.NewGuid()}{extention}";
+            string filePath = Path.Combine(_env.ContentRootPath, "wwwroot", "Images/sliders", fileName);
+            using (var fileStream = new FileStream(filePath, FileMode.Create, FileAccess.Write))
+            {
+                await image.CopyToAsync(fileStream);
+
+            }
+            string u = "Images/Sliders";
             return Ok($"{u}/{fileName}");
 
         }

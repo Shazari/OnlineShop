@@ -67,6 +67,7 @@ namespace ViewModels
            Name = nameof(Resources.DataDictionary.City))]
         public string City { get; set; }
 
+
         [Display(ResourceType = typeof(Resources.DataDictionary),
            Name = nameof(Resources.DataDictionary.PostCode))]
         public int PostCode { get; set; }

@@ -27,15 +27,26 @@ namespace ParsMarkt.Pages.Auth
         }
         public async Task SignIn()
         {
-            var res = await AccountServices.Login(loginViewModel);
-            if (res!=null)
+            try
             {
-                LoginMessage = "login succeded";
+                var res = await AccountServices.Login(loginViewModel);
+                if (res != null)
+                {
+                    LoginMessage = "login succeded";
+                    NavigationManager.NavigateTo($"{NavigationManager.Uri}", forceLoad: false);
+                }
+                else
+                {
+                    LoginMessage = "Login Faild";
+                    NavigationManager.NavigateTo($"{NavigationManager.BaseUri}", forceLoad: false);
+                }
             }
-            else
+            catch (Exception e)
             {
-                LoginMessage = "Login Faild";
+
+                Console.WriteLine(e.Message);
             }
+           
         }
 
     }

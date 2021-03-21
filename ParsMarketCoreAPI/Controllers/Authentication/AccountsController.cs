@@ -43,7 +43,7 @@ namespace ParsMarketCoreAPI
         
         
         [HttpPost("signin")]
-        public async Task<ActionResult> SignIn([FromBody]LoginViewModel loginViewModel)
+        public async Task<IActionResult> SignIn([FromBody]LoginViewModel loginViewModel)
         {
             var user = await _UserManager.FindByEmailAsync(loginViewModel.Email);
             if (user == null)
@@ -67,6 +67,7 @@ namespace ParsMarketCoreAPI
                 }
                 var authSighinKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(
                 Configuration.GetSection(key: "JWT").GetSection(key: "SecurityKey").Value));
+               
                 var token = new JwtSecurityToken(
                 issuer: Configuration.GetSection(key: "JWT").GetSection(key: "ValidIssuer").Value,
                 audience: Configuration.GetSection(key: "JWT").GetSection(key: "ValidAudience").Value,
@@ -74,6 +75,7 @@ namespace ParsMarketCoreAPI
                 claims: authClaims,
                 signingCredentials: new SigningCredentials(authSighinKey, SecurityAlgorithms.HmacSha256)
                 );
+               
                 return Ok(new
                 {
                     token = new JwtSecurityTokenHandler().WriteToken(token),

@@ -92,7 +92,7 @@ namespace ParsMarkt.Pages.Admin.Products
            
             
             var url = "https://localhost:44380";
-            var respons = await client.PostAsync($"{url}/Images",content);
+            var respons = await client.PostAsync($"{url}/Images/ProductImage",content);
             if (respons.IsSuccessStatusCode)
             {
                 var uploadedFileName =await respons.Content.ReadAsStringAsync();

@@ -133,7 +133,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Email Address.
+        ///   Looks up a localized string similar to Email.
         /// </summary>
         public static string Email {
             get {
@@ -142,7 +142,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to First Name.
+        ///   Looks up a localized string similar to FirstNAme.
         /// </summary>
         public static string FirstName {
             get {
@@ -223,6 +223,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Sign In.
+        /// </summary>
+        public static string Login {
+            get {
+                return ResourceManager.GetString("Login", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Long Description.
         /// </summary>
         public static string LongDescription {
@@ -237,6 +246,15 @@ namespace Resources {
         public static string Name {
             get {
                 return ResourceManager.GetString("Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ParsMarkt.
+        /// </summary>
+        public static string ParsMarkt {
+            get {
+                return ResourceManager.GetString("ParsMarkt", resourceCulture);
             }
         }
         
@@ -313,6 +331,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Register.
+        /// </summary>
+        public static string Register {
+            get {
+                return ResourceManager.GetString("Register", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Date Of Register.
         /// </summary>
         public static string RegisterDate {
@@ -336,6 +363,24 @@ namespace Resources {
         public static string ShortDescription {
             get {
                 return ResourceManager.GetString("ShortDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Slider Image.
+        /// </summary>
+        public static string SliderImage {
+            get {
+                return ResourceManager.GetString("SliderImage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Small Slider Image.
+        /// </summary>
+        public static string SmallSliderImage {
+            get {
+                return ResourceManager.GetString("SmallSliderImage", resourceCulture);
             }
         }
         
