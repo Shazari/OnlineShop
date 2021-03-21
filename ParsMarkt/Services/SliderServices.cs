@@ -21,7 +21,7 @@ namespace ParsMarkt
             var result =await  GetAsync<List<SliderViewModel>>();
             if (result==null)
             {
-                Console.WriteLine("ErrorSLider");
+                Console.WriteLine("Error SLider");
             }
             return result;
         }

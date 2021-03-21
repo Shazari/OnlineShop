@@ -23,7 +23,7 @@ namespace ParsMarketCoreAPI
         public async Task<ActionResult<IEnumerable<SliderViewModel>>> GetActiveSliders()
         {
             var sliders = await sliderService.GetActiveSliders();
-            return JsonResponseStatus.Success(sliders);
+            return Ok(sliders);
         }
 
         [HttpPost("AddSlider")]
