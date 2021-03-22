@@ -7,9 +7,10 @@ namespace Data
     public interface IUnitOfWork : Base.IUnitOfWork
     {
         IMenuRepository MenuRepository { get; }
-        ICartRepository CartRepository { get; }
-        // ICartItemRepository CartItemRepository { get; }
+     
+      
         IOrderRepository OrderRepository { get; }
+        IOrderDetailsRepository OrderDetailsRepository { get; }
         IProductRepository ProductRepository { get; }
         ICategoryRepository CategoryRepository { get; }
         //ICategotryToProductRepository CategotryToProductRepository { get; }

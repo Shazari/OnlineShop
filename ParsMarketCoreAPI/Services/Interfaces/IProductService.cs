@@ -12,8 +12,9 @@ namespace ParsMarketCoreAPI
         #region Product
         Task<IEnumerable<Product>> GetAllProduct();
         Task AddProduct(Product Product);
-        Task UpdatePRoduct(Product Product);
+        Task UpdateProduct(Product Product);
         Task DeleteProduct(Product Product);
+        Task<FilterProduct> FilterProduct(FilterProduct filter);
         #endregion
     }
 }

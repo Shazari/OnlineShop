@@ -21,19 +21,19 @@ namespace Data
         {
         }
 
-        public DbSet<User> users { get; set; }
-        public DbSet<Role> Roles { get; set; }
-        public DbSet<Cart> Carts { get; set; }
-        // public DbSet<CartItem> CartItems { get; set; }
+        public DbSet<User> Users { get; set; }
+
+
+
         public DbSet<Person> People { get; set; }
         public DbSet<Product> Products { get; set; }
-        // public DbSet<Role> Roles { get; set; }
+
         public DbSet<Category> Categories { get; set; }
         public DbSet<Menu> Menus { get; set; }
         public DbSet<Order> Orders { get; set; }
-        // public DbSet<CategoryToProduct> CategoryToProducts { get; set; }
+        public DbSet<OrderDetail> OrderDetails { get; set; }
         public DbSet<OffCodes> OffCodes { get; set; }
-        //public DbSet<CodeProduct> CodeProducts { get; set; }
+
         public DbSet<Contact> Contacts { get; set; }
         public DbSet<AboutUs> AboutUs { get; set; }
         public DbSet<DayWeek> DayWeeks { get; set; }
@@ -43,7 +43,7 @@ namespace Data
 
         public DbSet<ProductVisit> productVisits { get; set; }
         public DbSet<ProductSelectedCategory> ProductSelectedCategories { get; set; }
-
+        public DbSet<ProductComment> ProductComments { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

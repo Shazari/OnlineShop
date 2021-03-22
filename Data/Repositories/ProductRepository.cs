@@ -11,6 +11,13 @@ namespace Data
     {
         internal ProductRepository(ParsMarketDbContext databaseContex) : base(databaseContex)
         { }
+
+        public IQueryable<Product> GetEntitiesQuery()
+        {
+            var result = DbSet.AsQueryable();
+            return result;
+        }
+
         public async Task<IEnumerable<Product>> GetProductAsync()
         {
             var product = await DbSet.Include(p=>p.Codes).Include(p=>p.Categories).ToListAsync();

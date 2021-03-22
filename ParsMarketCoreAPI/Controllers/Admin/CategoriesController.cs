@@ -31,7 +31,7 @@ namespace ParsMarketCoreAPI.Controllers
 
             var categoryView = new CategoriesViewModel
             {
-                Description = category.Description,
+                Description = category.UrlTitle,
                 Name = category.Title,
                 Id = category.Id
             };
@@ -51,7 +51,7 @@ namespace ParsMarketCoreAPI.Controllers
         {
             var category = await UnitOfWork.CategoryRepository.GetById(viewModel.Id);
 
-            category.Description = viewModel.Description;
+            category.UrlTitle = viewModel.Description;
             category.Title = viewModel.Name;
             category.Id = viewModel.Id;
 
@@ -95,7 +95,7 @@ namespace ParsMarketCoreAPI.Controllers
                 Id = viewModel.Id,
                 Title = viewModel.Name,
                 CreateDate = DateTime.Now,
-                Description = viewModel.Description
+                UrlTitle = viewModel.Description
             };
             await UnitOfWork.CategoryRepository.Insert(category);
             //_context.People.Add(person);

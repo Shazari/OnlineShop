@@ -241,6 +241,9 @@
   <data name="Type" xml:space="preserve">
     <value>Type</value>
   </data>
+  <data name="UrlTitle" xml:space="preserve">
+    <value>Title of Url</value>
+  </data>
   <data name="UserImage" xml:space="preserve">
     <value>UserImage</value>
   </data>

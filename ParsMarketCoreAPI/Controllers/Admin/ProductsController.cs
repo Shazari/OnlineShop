@@ -13,14 +13,22 @@ namespace ParsMarketCoreAPI.Controllers
 {
     public class ProductsController : BaseApiControllerWithDatabase
     {
-        public ProductsController(IUnitOfWork UnitOfWork, IWebHostEnvironment Env) : base(UnitOfWork)
+        private IProductService _productService;
+
+        public ProductsController(IUnitOfWork UnitOfWork, IWebHostEnvironment Env,IProductService productService) : base(UnitOfWork)
         {
+            _productService = productService;
             env = Env;
         }
         private readonly IWebHostEnvironment env;
 
-
-        public async Task<ActionResult<IEnumerable<ProductViewModel>>> GetProduct()
+        [HttpGet("GetProducts")]
+        public async Task<ActionResult<IEnumerable<ProductViewModel>>> GetProducts([FromQuery]FilterProduct filter)
+        {
+            var products = await _productService.FilterProduct(filter);
+            return Ok(products);
+        }
+        public async Task<ActionResult<IEnumerable<ProductViewModel>>> Get()
         {
             var result = await UnitOfWork.ProductRepository.GetAllAsync();
             return Ok(value: result);
@@ -28,7 +36,7 @@ namespace ParsMarketCoreAPI.Controllers
 
         //GET: api/People/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<ProductViewModel>> GetProduct(int id)
+        public async Task<ActionResult<ProductViewModel>> Get(int id)
         {
             var product = await UnitOfWork.ProductRepository.GetProductById(id);
 

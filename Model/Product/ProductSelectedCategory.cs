@@ -8,8 +8,9 @@ namespace Models
 {
    public class ProductSelectedCategory:BaseEntity
     {
-        public long  Id { get; set; }
         #region Properties
+      
+        
         public long ProductId { get; set; }
 
         public long CategoryId { get; set; }

@@ -89,7 +89,7 @@ namespace Models
            Name = nameof(Resources.DataDictionary.CountryName))]
         public string Countries { get; set; }
 
-        public List<Order> Orders { get; set; }
+        public List<Cart> Orders { get; set; }
 
         [Display(ResourceType = typeof(Resources.DataDictionary),
             Name = nameof(Resources.DataDictionary.Type))]

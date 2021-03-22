@@ -54,8 +54,8 @@ namespace Models
         public List<OffCodes> Codes { get; set; }
 
         public List<Category> Categories { get; set; }
-
-        public List<Cart> Carts { get; set; }
+        public ICollection<ProductComment> ProductComments { get; set; }
+        public List<OrderDetail> OrderDetails { get; set; }
 
 
         #endregion
