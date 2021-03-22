@@ -62,6 +62,22 @@ namespace Data
             }
         }
 
+        private IOrderDetailsRepository _orderDetailRepository;
+
+        public IOrderDetailsRepository OrderDetailsRepository
+        {
+            get
+            {
+                if (_orderDetailRepository == null)
+                {
+                    _orderDetailRepository = new OrderDetailsRepository(DatabaseContext);
+
+                }
+
+                return _orderDetailRepository;
+            }
+        }
+
         private IProductRepository _productRepository;
 
         public IProductRepository ProductRepository
@@ -77,6 +93,22 @@ namespace Data
                 return _productRepository;
             }
         }
+        private IProductCommentRepository _productCommentRepository;
+
+        public IProductCommentRepository ProductCommentRepository
+        {
+            get
+            {
+                if (_productCommentRepository == null)
+                {
+                    _productCommentRepository =
+                        new ProductCommentRepository(DatabaseContext);
+                }
+
+                return _productCommentRepository;
+            }
+        }
+
 
         private ICategoryRepository _categotryRepository;
 

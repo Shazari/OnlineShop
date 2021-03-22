@@ -22,6 +22,7 @@ namespace Data
         IAboutUsRepository AboutUsRepository { get; }
         ISliderRepository SliderRepository { get; }
         public IProductGalleryRepository ProductGalleryRepository { get; }
+        public IProductCommentRepository ProductCommentRepository { get; }
         public IProductVisitRepository ProductVisitRepository { get;  }
         public IProductSelectedCategoryRepository ProductSelectedCategoryRepository { get; }
        
