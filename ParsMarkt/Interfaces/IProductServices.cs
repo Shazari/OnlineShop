@@ -8,6 +8,7 @@ namespace ParsMarkt
    public interface IProductServices
     {
         Task<IList<ProductViewModel>> GetAsync();
+        Task<FilterProduct> GetFilterProduct();
         Task<ProductViewModel> GetAsyncById(int id);
         Task<ProductViewModel> PostAsync(ProductViewModel viewModel);
         Task<ProductViewModel> PutAsync(ProductViewModel viewModel);

@@ -110,7 +110,7 @@ namespace ParsMarketCoreAPI.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutPerson(PersonViewModel viewModel, int id)
+        public async Task<IActionResult> PutPerson(PersonViewModel viewModel, long id)
         {
             var person = await UnitOfWork.PersonRepository.GetById(viewModel.Id);
 

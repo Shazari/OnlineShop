@@ -36,16 +36,15 @@ namespace ParsMarkt
             var result = await PostAsync<PersonViewModel, PersonViewModel>(viewModel);
             return result;
         }
-        public async Task<PersonViewModel> PutPersonAsync<PersonViewModel>(PersonViewModel viewModel,int id)
+        public async Task<PersonViewModel> PutPersonAsync<PersonViewModel>(PersonViewModel viewModel,long id)
         {
-           // var result = await PutAsync<PersonViewModel, PersonViewModel>(viewModel);
-            //var content = new StringContent(JsonSerializer.Serialize(viewModel), Encoding.UTF8, "application/json");
+            string requestUrl = $"{BaseUrl}/{GetApiUrl()}/{id}";
             var result = await Http.PutAsJsonAsync($"{Url}/{id}", viewModel);
             if (result.IsSuccessStatusCode)
             {
                 try
                 {
-                    PersonViewModel res = await result.Content.ReadFromJsonAsync<PersonViewModel>();
+                    var res = await result.Content.ReadFromJsonAsync<PersonViewModel>();
                     return res;
                 }
                 catch (System.Text.Json.JsonException)
@@ -71,12 +70,18 @@ namespace ParsMarkt
             return res;
         }
 
-        public async Task<PersonViewModel> GetByIdAsync(int id)
+        public async Task<PersonViewModel> GetByIdAsync(long id)
         {
-            var result = await Http.GetAsync($"{Url}/{id}");
-            //var result = await GetAsync<PersonViewModel>();
-            var respons= await result.Content.ReadFromJsonAsync<PersonViewModel>();
-            return respons;
+            
+            string requestUrl = $"{BaseUrl}/{GetApiUrl()}/{id}";
+           var  response = await Http.GetAsync(requestUri: requestUrl);
+            if (!response.IsSuccessStatusCode)
+            {
+                return null;
+            }
+            var result=await response.Content.ReadFromJsonAsync<PersonViewModel>();
+            return result;
+                      
         }
 
         public async Task<PersonViewModel> PostPersonAsync(PersonViewModel viewModel)

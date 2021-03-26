@@ -7,7 +7,7 @@ namespace ViewModels
 {
     public class PersonViewModel
     {
-        public int Id { get; set; }
+        public long Id { get; set; }
 
     
         public bool IsActive { get; set; }

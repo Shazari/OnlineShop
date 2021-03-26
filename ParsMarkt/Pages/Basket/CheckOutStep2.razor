@@ -61,58 +61,60 @@
                         <!--  = Shipping addr form =  -->
                         <!--  ==========  -->
 
-                        <EditForm Model="@Order" OnValidSubmit="@SubmitValidForm" class="form-horizontal form-checkout">
+                        <EditForm Model="@person" OnValidSubmit="@SubmitValidForm" class="form-horizontal form-checkout">
                             <div class="control-group">
                                 <label class="control-label" for="firstName">نام<span class="red-clr bold">*</span></label>
                                 <div class="controls">
                                     
-                                    <InputText @bind-Value="Order.Person.FirstName" type="text" id="firstName" class="span4" required></InputText>
+                                    <InputText @bind-Value="person.FirstName" type="text" id="firstName" class="span4" required></InputText>
                                 </div>
                             </div>
                             <div class="control-group">
                                 <label class="control-label" for="lastName">نام خانوادگی<span class="red-clr bold">*</span></label>
                                 <div class="controls">
-                                    <InputText @bind-Value="Order.Person.LastName" id="lastName" class="span4" required />
+                                    <InputText @bind-Value="person.LastName" id="lastName" class="span4" required />
                                 </div>
                             </div>
                             <div class="control-group">
                                 <label class="control-label" for="telephone">تلفن<span class="red-clr bold">*</span></label>
                                 <div class="controls">
-                                    <InputNumber @bind-Value="Order.Person.PhoneNumber" id="telephone" class="span4" required />
+                                    <InputNumber @bind-Value="person.PhoneNumber" id="telephone" class="span4" required />
                                 </div>
                             </div>
                             <div class="control-group">
                                 <label class="control-label" for="email">ایمیل<span class="red-clr bold">*</span></label>
                                 <div class="controls">
-                                    <InputText @bind-Value="Order.Person.EmailAddress" id="email" class="span4" required />
+                                    <InputText @bind-Value="person.EmailAddress" id="email" class="span4" required />
                                 </div>
                             </div>
                             <div class="control-group">
                                 <label class="control-label" for="addr1">ادرس 1<span class="red-clr bold">*</span></label>
                                 <div class="controls">
-                                    <InputText @bind-Value="Order.Person.Address" id="addr1" class="span4" required />
+                                    <InputText @bind-Value="person.Address" id="addr1" class="span4" required />
                                 </div>
                             </div>
                             <div class="control-group">
                                 <label class="control-label" for="addr2">آدرس 2</label>
-                                
+                                <div class="controls">
+                                    <InputText @bind-Value="person.Address" id="addr1" class="span4" required />
+                                </div>
                             </div>
                             <div class="control-group">
                                 <label class="control-label" for="city">شهر<span class="red-clr bold">*</span></label>
                                 <div class="controls">
-                                    <InputText @bind-Value="Order.Person.City" type="text" id="city" class="span4" />
+                                    <InputText @bind-Value="person.City" type="text" id="city" class="span4" />
                                 </div>
                             </div>
                             <div class="control-group">
                                 <label class="control-label" for="zip">کد پستی<span class="red-clr bold">*</span></label>
                                 <div class="controls">
-                                    <InputNumber @bind-Value="Order.Person.PostCode" type="text" id="zip" class="span4" />
+                                    <InputNumber @bind-Value="person.PostCode" type="text" id="zip" class="span4" />
                                 </div>
                             </div>
                             <div class="control-group">
                                 <label class="control-label" for="zip">کشور<span class="red-clr bold">*</span></label>
                                 <div class="controls">
-                                    <InputText @bind-Value="Order.Person.Countries" type="text" id="zip" class="span4" />
+                                    <InputText @bind-Value="person.Countries" type="text" id="zip" class="span4" />
                                 </div>
                             </div>
                             <input type="submit" class="btn btn-primary" value="ادامه" />
@@ -140,6 +142,4 @@
 
 
 
-@code {
 
-}

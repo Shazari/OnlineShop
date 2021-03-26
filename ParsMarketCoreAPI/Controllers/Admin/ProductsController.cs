@@ -23,7 +23,7 @@ namespace ParsMarketCoreAPI.Controllers
         private readonly IWebHostEnvironment env;
 
         [HttpGet("GetProducts")]
-        public async Task<ActionResult<IEnumerable<ProductViewModel>>> GetProducts([FromQuery]FilterProduct filter)
+        public async Task<ActionResult<FilterProduct>> GetProducts([FromQuery]FilterProduct filter)
         {
             var products = await _productService.FilterProduct(filter);
             return Ok(products);

@@ -7,6 +7,7 @@ using Data;
 using ViewModels;
 using Microsoft.AspNetCore.Http;
 using Models;
+using Microsoft.EntityFrameworkCore;
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace ParsMarketCoreAPI.Controllers
@@ -28,13 +29,33 @@ namespace ParsMarketCoreAPI.Controllers
 
         // GET api/<UsersController>/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public async Task<ActionResult<PersonViewModel>> GetPerson(long id)
         {
-            return "value";
-        }
+            var person = await UnitOfWork.PersonRepository.GetById(id);
+            if (person == null&&!person.IsActive)
+            {
+                return BadRequest("person null");
+            }
+            var Person = new PersonViewModel()
+            {
+                 Id = person.Id,
+                EmailAddress = person.EmailAddress,
+                Address = person.Address,
+                City = person.City,
 
-        // POST api/<UsersController>
-        [HttpPost]
+                Countries = person.Countries,
+                FirstName = person.FirstName,
+               
+               
+                PhoneNumber = person.PhoneNumber,
+                PostCode = person.PostCode,
+            };
+           
+
+            return Ok(Person);
+        }
+            // POST api/<UsersController>
+            [HttpPost]
         public async Task<ActionResult<PersonViewModel>> PostUsers(PersonViewModel viewModel)
         {
           
@@ -90,8 +111,44 @@ namespace ParsMarketCoreAPI.Controllers
 
         // PUT api/<UsersController>/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public async Task<IActionResult> PutPerson(PersonViewModel viewModel, long id)
         {
+            var person = await UnitOfWork.PersonRepository.GetById(viewModel.Id);
+
+            person.FirstName = viewModel.FirstName;
+            person.LastName = viewModel.LastName;
+            person.Address = viewModel.Address;
+            person.Address2 = viewModel.Address;
+            person.PostCode = viewModel.PostCode;
+            person.City = viewModel.City;
+            person.Countries = viewModel.Countries;
+            person.IsActive = viewModel.IsActive;
+            person.IsAdmin = viewModel.IsAdmin;
+            person.EmailAddress = viewModel.EmailAddress;
+            person.PhoneNumber = viewModel.PhoneNumber;
+            person.Password = viewModel.Password;
+
+            await UnitOfWork.PersonRepository.Update(person);
+
+            //_context.Entry(person).State = EntityState.Modified;
+
+            try
+            {
+                await UnitOfWork.SaveAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                //if (!IsExists(person.Id))
+                //{
+                //    return NotFound();
+                //}
+                //else
+                //{
+                //    throw;
+                //}
+            }
+
+            return Ok(viewModel);
         }
 
         // DELETE api/<UsersController>/5

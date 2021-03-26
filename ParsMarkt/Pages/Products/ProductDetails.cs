@@ -18,7 +18,7 @@ namespace ParsMarkt.Pages.Products
         [Inject]
         public NavigationManager Navigate { get; set; }
         [Parameter]
-        public int ProductId { get; set; }
+        public long ProductId { get; set; }
 
         public List<BasketItem> BasketItems;
 

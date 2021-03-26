@@ -21,6 +21,7 @@ namespace ParsMarkt.Pages.Basket
 
         public OrderViewModel Order;
         public List<BasketItem> BasketItems;
+        public PersonViewModel person =new PersonViewModel();
 
         protected override async Task OnInitializedAsync()
         {
@@ -33,16 +34,28 @@ namespace ParsMarkt.Pages.Basket
             });
 
             deserializedBasket.ForEach(b => BasketItems.Add(b));
-            var people = await PersonService.GetAsync();
+            //var people = await PersonService.GetAsync();
 
-            var person = people.Where(p => p.Id == 3).FirstOrDefault();
-            var p = person;
+            person = new PersonViewModel {
+                Id = 1002,
+                Address = "wupp",
+                City = "wupp",
+                FirstName = "askar",
+                LastName = "rostami",
+                PostCode = 12345,
+                Countries = "de",
+                EmailAddress = "askar@gmail.com",
+                PhoneNumber = 12345,
+
+            };
+           
             Order = new OrderViewModel
             {
                 Person = person,
                 BasketItems = BasketItems,
                 CreateDate = DateTime.Now,
                 IsFinaly = false,
+                
             };
             var serializedOrder = JsonSerializer.Serialize<OrderViewModel>(Order);
             await LocalStorage.SetItemAsync("Order", serializedOrder);
@@ -61,6 +74,11 @@ namespace ParsMarkt.Pages.Basket
 
         public async Task SubmitValidForm()
         {
+            if (person==null)
+            {
+                //var res = await PersonService.PutPersonAsync(person,person.Id);   
+                if (person == null) return;
+            }
             Navigation.NavigateTo("/CheckOutStep3");
         }
     }

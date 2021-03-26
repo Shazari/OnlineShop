@@ -29,6 +29,8 @@
 
   <ItemGroup>
     <Folder Include="Images\" />
+    <Folder Include="Utilities\Extentions\" />
+    <Folder Include="Utilities\Paging\" />
   </ItemGroup>
 
 

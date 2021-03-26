@@ -46,7 +46,11 @@ namespace ParsMarketCoreAPI
             if (!string.IsNullOrEmpty(filter.Title))
                 productQuery = productQuery.Where(s => s.Name.Contains(filter.Title));
 
-            productQuery = productQuery.Where(s => s.Price >= filter.StartPrice && s.Price <= filter.EndPrice);
+            productQuery = productQuery.Where(s => s.Price >= filter.StartPrice);
+            if (filter.EndPrice!=0)
+            {
+                productQuery = productQuery.Where( s=>s.Price <= filter.EndPrice);
+            }
 
             var count = (int)Math.Ceiling(productQuery.Count() / (double)filter.TakeEntity);
             var pager = Pager.Build(count, filter.PageID, filter.TakeEntity);

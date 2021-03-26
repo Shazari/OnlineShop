@@ -61,5 +61,13 @@ namespace ParsMarkt
 
             return res;
         }
+
+        public async Task<FilterProduct> GetFilterProduct()
+        {
+            string Url = "GetProducts";
+            RequestUri = $"{BaseUrl}/{GetApiUrl()}/{Url}";
+            var res = await GetAsync<FilterProduct>();
+            return res;
+        }
     }
 }

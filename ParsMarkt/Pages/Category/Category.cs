@@ -27,7 +27,18 @@ namespace ParsMarkt.Pages.Category
 
         protected override async Task OnInitializedAsync()
         {
-            Categories = await CategoryService.GetAsync();
+            try
+            {
+                Categories = await CategoryService.GetAsync();
+
+            }
+            catch (Exception ex)
+            {
+
+                Console.WriteLine(ex.Message);
+            }
+           
+
         }
         private int id;
         private void IdChanged(int newId)

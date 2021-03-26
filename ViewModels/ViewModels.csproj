@@ -11,11 +11,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Model\Models.csproj" />
     <ProjectReference Include="..\Resources\Resources.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Products\" />
   </ItemGroup>
 
 </Project>
