@@ -20,33 +20,26 @@ namespace ParsMarkt.Pages.Auth
         [Inject]
         public IAccountsServices AccountServices { get; set; }
 
+        [Inject]
+        public ILoginServices LoginServices { get; set; }
         private string LoginMessage = "";
         protected override async Task OnInitializedAsync()
         {
-            
         }
         public async Task SignIn()
         {
             try
             {
-                var res = await AccountServices.Login(loginViewModel);
-                if (res != null)
-                {
-                    LoginMessage = "login succeded";
-                    NavigationManager.NavigateTo($"{NavigationManager.Uri}", forceLoad: false);
-                }
-                else
-                {
-                    LoginMessage = "Login Faild";
-                    NavigationManager.NavigateTo($"{NavigationManager.BaseUri}", forceLoad: false);
-                }
+                var userToken = await AccountServices.Login(loginViewModel);
+                await LoginServices.Login(userToken.Token);
+                NavigationManager.NavigateTo("/");
             }
             catch (Exception e)
             {
 
                 Console.WriteLine(e.Message);
             }
-           
+
         }
 
     }

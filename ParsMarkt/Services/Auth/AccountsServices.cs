@@ -17,13 +17,13 @@ namespace ParsMarkt
 
         }
         public string Url;
-        public Task<LoginViewModel> Login(LoginViewModel viewModel)
+        public Task<UserToken> Login(LoginViewModel viewModel)
         {
             Url = "signin";
             RequestUri = $"{BaseUrl}/{GetApiUrl()}/{Url}";
             try
             {
-                var res = PostAsync<LoginViewModel,LoginViewModel>(viewModel);
+                var res = PostAsync<LoginViewModel,UserToken>(viewModel);
                 if (res!=null)
                 {
                     return res;
@@ -46,12 +46,8 @@ namespace ParsMarkt
         {
             Url = "Create";
             RequestUri = $"{BaseUrl}/{GetApiUrl()}/{Url}";
-           // var content = new StringContent(JsonSerializer.Serialize(viewModel), Encoding.UTF8, "application/json");
-            //string verb = "register";
-            //RequestUri =$"{ BaseUrl}/{GetApiUrl()}/{verb}";
-            //HttpClient client = new HttpClient();
-           // var res=await client.PostAsync(RequestUri,content);
-            var res = await PostAsync<RegisterViewModel,RegisterViewModel>(viewModel);
+           
+            var res = await PostAsync<RegisterViewModel,UserToken>(viewModel);
             if (res==null)
             {
                 return viewModel;

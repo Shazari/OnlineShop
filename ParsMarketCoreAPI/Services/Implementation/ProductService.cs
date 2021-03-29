@@ -12,6 +12,7 @@ namespace ParsMarketCoreAPI
 
     public class ProductService : IProductService
     {
+      
         private IUnitOfWork unitOfWork;
         public ProductService(IUnitOfWork UnitOfWork)
         {
@@ -42,20 +43,35 @@ namespace ParsMarketCoreAPI
         public async Task<FilterProduct> FilterProduct(FilterProduct filter)
         {
             var productQuery = unitOfWork.ProductRepository.GetEntitiesQuery();
-           
+            
+
             if (!string.IsNullOrEmpty(filter.Title))
                 productQuery = productQuery.Where(s => s.Name.Contains(filter.Title));
 
             productQuery = productQuery.Where(s => s.Price >= filter.StartPrice);
-            if (filter.EndPrice!=0)
+
+
+            if (filter.Categories!=null&&filter.Categories.Any())
             {
-                productQuery = productQuery.Where( s=>s.Price <= filter.EndPrice);
+                productQuery = productQuery.SelectMany(s=>s.ProductSelectedCategories.Where(f=>filter.Categories.Contains(f.CategoryId)).Select(t=>t.product));
+            }
+
+
+            if (filter.EndPrice != 0)
+            {
+                productQuery = productQuery.Where(s => s.Price <= filter.EndPrice);
             }
 
             var count = (int)Math.Ceiling(productQuery.Count() / (double)filter.TakeEntity);
-            var pager = Pager.Build(count, filter.PageID, filter.TakeEntity);
+            var pager = Pager.Build(count, filter.PageId, filter.TakeEntity);
             var products = await productQuery.Paging(pager).ToListAsync();
             return filter.SetProducts(products).SetPaging(pager);
+        }
+
+        public async Task<List<Category>> GetAllActiveProductCategories()
+        {
+            var result = await unitOfWork.CategoryRepository.GetAllAsync();
+            return result.Where(s=>!s.IsDelete).ToList();
         }
     }
 }

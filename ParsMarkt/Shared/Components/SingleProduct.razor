@@ -1,0 +1,70 @@
+﻿
+<div class="product">
+    @if (Product.IsExist)
+    {
+        <div class="stamp green">جدید</div>
+    }
+
+
+    <div class="product-img">
+        <div class="picture">
+            <img width="400" height="300" alt="" src="@(Product.Image)" />
+            <div class="img-overlay">
+                <a class="btn more btn-primary" href="/ProductDetails/@(Product.Id)">توضیحات بیشتر</a>
+                <a class="btn buy btn-danger" href="#">اضافه به سبد خرید</a>
+            </div>
+        </div>
+    </div>
+    <div class="main-titles no-margin">
+        <h4 class="title">@(Product.Price)</h4>
+        <h5 class="no-margin isotope--title">@(Product.Name)</h5>
+    </div>
+    <p class="center-align stars">
+        <span class="icon-star stars-clr"></span>
+        <span class="icon-star"></span>
+        <span class="icon-star"></span>
+        <span class="icon-star"></span>
+        <span class="icon-star"></span>
+
+    </p>
+</div>
+
+@code {
+
+    [Inject]
+    public IBasketServices BasketServices { get; set; }
+
+    [Inject]
+    public ILocalStorageService LocalStorage { get; set; }
+    [Inject]
+    public NavigationManager Navigate { get; set; }
+
+    [Parameter]
+    public ViewModels.ProductViewModel Product { get; set; }
+
+    public List<ViewModels.BasketItem> BasketItems;
+
+    [Inject]
+    public IProductServices ProductService { get; set; }
+
+    private ViewModels.FilterProduct filterproduct { get; set; }
+    protected override async Task OnInitializedAsync()
+    {
+        BasketItems = new List<ViewModels.BasketItem>();
+        filterproduct = new ViewModels.FilterProduct();
+        try
+        {
+            filterproduct = await ProductService.GetFilterProduct();
+
+        }
+        catch (Exception ex)
+        {
+
+            Console.WriteLine(ex.Message);
+        }
+
+
+
+    }
+
+}

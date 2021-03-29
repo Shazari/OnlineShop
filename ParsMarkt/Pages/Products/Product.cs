@@ -27,19 +27,28 @@ namespace ParsMarkt.Pages.Products
 
         public List<BasketItem> BasketItems;
 
+        public List<ProductViewModel> Products { get; set; } = new List<ProductViewModel>();
+
         [Inject]
         public IProductServices ProductService { get; set; }
 
+
+        [Inject]
+        public ICategoryServices CategoryService { get; set; }
+
         private FilterProduct filterproduct { get; set; }
 
+        private IList<CategoriesViewModel> Categories = new List<CategoriesViewModel>();
         protected override async Task OnInitializedAsync()
         {
             BasketItems = new List<BasketItem>();
             filterproduct = new FilterProduct();
             try
             {
-                filterproduct = await ProductService.GetFilterProduct();
-
+                Categories = await CategoryService.GetAsync();
+                //filterproduct = await ProductService.GetFilterProduct();
+                var res = await ProductService.GetAsync();
+                Products = res.ToList();
             }
             catch (Exception ex)
             {
@@ -51,6 +60,14 @@ namespace ParsMarkt.Pages.Products
            
         }
 
+        private void CheckboxChanged(ChangeEventArgs e, long key)
+        {
+            var i = this.Categories.FirstOrDefault(i => i.Id == key);
+            if (i != null)
+            {
+                i.Selected = (bool)e.Value;
+            }
+        }
         public async Task AddToBasket(ProductViewModel productViewModel)
         {
 

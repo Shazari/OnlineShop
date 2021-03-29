@@ -8,7 +8,7 @@ namespace ParsMarkt
     public interface IAccountsServices
     {
         Task<RegisterViewModel> Resister(RegisterViewModel viewModel);
-        Task<LoginViewModel> Login(LoginViewModel viewModel);
+        Task<UserToken> Login(LoginViewModel viewModel);
         Task Logout();
     }
 }

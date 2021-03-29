@@ -57,7 +57,8 @@ namespace ParsMarketCoreAPI
                 var userRoles = await _UserManager.GetRolesAsync(user);
                 var authClaims = new List<Claim>
                     {
-                       new Claim(ClaimTypes.Name,user.Email),
+                       new Claim(ClaimTypes.Email,user.Email),
+                     
                        new Claim(ClaimTypes.NameIdentifier,user.Id.ToString()),
                         new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
                     };
@@ -84,6 +85,7 @@ namespace ParsMarketCoreAPI
             }
             return Unauthorized();
         }
+
         [HttpPost("Create")]
         public async Task<ActionResult> CreateAsync(RegisterViewModel model) 
         {

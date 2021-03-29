@@ -7,7 +7,7 @@ namespace ParsMarkt
 {
    public interface ILoginServices
     {
-        Task Login(UserToken userToken);
+        Task Login(string Token);
         Task LogOut();
         Task TryRenewToken();
     }

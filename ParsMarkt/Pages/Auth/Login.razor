@@ -30,7 +30,7 @@
                 <section class="contact-form-container">
                     <EditForm Model="@loginViewModel" OnValidSubmit="@SignIn">
 
-
+                        <ValidationSummary/>
                         <div class="control-group">
                             <label class="control-label shown-ie8" for="inputEmail">@(Resources.DataDictionary.Email)</label>
                             <div class="controls">

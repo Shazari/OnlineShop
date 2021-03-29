@@ -48,19 +48,35 @@
                         </div>
                         <div id="filterOne" class="accordion-body collapse in">
                             <div class="accordion-inner">
-                                <a href="#" data-target=".filter--accessories" class="selectable"><i class="box"></i> لوازم شخصی</a>
-                                <a href="#" data-target=".filter--bags, .filter--hats" class="selectable"><i class="box"></i>کیف و کلاه</a>
-                                <a href="#" data-target=".filter--polo-shirts" class="selectable"><i class="box"></i> تی شرت های پولو</a>
-                                <a href="#" data-target=".filter--shirts" class="selectable"><i class="box"></i> پیراهن</a>
-                                <a href="#" data-target=".filter--shoes, .filter--boots, .filter--trainers" class="selectable"><i class="box"></i> کفش اسپورت و رسمی</a>
-                                <a href="#" data-target=".filter--shorts" class="selectable"><i class="box"></i> لوازم جانبی</a>
-                                <a href="#" data-target=".filter--suits, .filter--blazers" class="selectable"><i class="box"></i> لباس رسمی</a>
-                                <a href="#" data-target=".filter--sunglasses" class="selectable"><i class="box"></i> عینک آفتابی</a>
-                                <a href="#" data-target=".filter--swimwear" class="selectable"><i class="box"></i> لباس شنا</a>
-                                <a href="#" data-target=".filter--trousers, .filter--chinos" class="selectable"><i class="box"></i> شلوار</a>
-                                <a href="#" data-target=".filter--t-shirts, .filter--vests" class="selectable"><i class="box"></i> تی شرت و جلیقه</a>
-                                <a href="#" data-target=".filter--bags" class="selectable"><i class="box"></i> کیف</a>
-                                <a href="#" data-target=".filter--underwear, .filter--socks" class="selectable"><i class="box"></i> زیر پوش و جوراب</a>
+                                @{
+                                                <ul style="list-style: none;">
+                                                    @foreach (var item in Categories)
+                                                    {
+                                        <li style="padding: 5px 10px 0px 0px;">
+                                            @if (item.Selected)
+                                            {
+                            <input type="checkbox" id="@item.Id" checked="checked" @onchange="@((e) => CheckboxChanged(e, item.Id))" /> }
+                                            else
+                                            {
+                            <input type="checkbox" id="@item.Id" @onchange="@((e) => CheckboxChanged(e, item.Id))" />}
+                                            @item.Title
+
+                                        </li>}
+                                                </ul> }
+
+                                @*<a href="#" data-target=".filter--accessories" class="selectable"><i class="box"></i> لوازم شخصی</a>
+        <a href="#" data-target=".filter--bags, .filter--hats" class="selectable"><i class="box"></i>کیف و کلاه</a>
+        <a href="#" data-target=".filter--polo-shirts" class="selectable"><i class="box"></i> تی شرت های پولو</a>
+        <a href="#" data-target=".filter--shirts" class="selectable"><i class="box"></i> پیراهن</a>
+        <a href="#" data-target=".filter--shoes, .filter--boots, .filter--trainers" class="selectable"><i class="box"></i> کفش اسپورت و رسمی</a>
+        <a href="#" data-target=".filter--shorts" class="selectable"><i class="box"></i> لوازم جانبی</a>
+        <a href="#" data-target=".filter--suits, .filter--blazers" class="selectable"><i class="box"></i> لباس رسمی</a>
+        <a href="#" data-target=".filter--sunglasses" class="selectable"><i class="box"></i> عینک آفتابی</a>
+        <a href="#" data-target=".filter--swimwear" class="selectable"><i class="box"></i> لباس شنا</a>
+        <a href="#" data-target=".filter--trousers, .filter--chinos" class="selectable"><i class="box"></i> شلوار</a>
+        <a href="#" data-target=".filter--t-shirts, .filter--vests" class="selectable"><i class="box"></i> تی شرت و جلیقه</a>
+        <a href="#" data-target=".filter--bags" class="selectable"><i class="box"></i> کیف</a>
+        <a href="#" data-target=".filter--underwear, .filter--socks" class="selectable"><i class="box"></i> زیر پوش و جوراب</a>*@
 
                             </div>
                         </div>
@@ -183,41 +199,18 @@
                         <!--  ==========  -->
                         <!--  = Single Product =  -->
                         <!--  ==========  -->
+
+                        @foreach (var item in Products)
+                        {
                         <div class="span3 filter--shoes" data-price="1435" data-popularity="1" data-size="xs|m" data-color="blue" data-brand="shred">
-                            <div class="product">
+                            <SingleProduct Product="item"></SingleProduct>
+                        </div>
+                        }
 
-                                <div class="stamp green">جدید</div>
+                    </div> <!-- /single product --> <!--  ==========  --> <!--  = Single Product =  --> <!--  ==========  --> <!--  ==========  -->
 
-                                <div class="product-img">
-                                    <div class="picture">
-                                        <img width="540" height="374" alt="" src="images/dummy/products/product-10.jpg" />
-                                        <div class="img-overlay">
-                                            <a class="btn more btn-primary" href="#">توضیحات بیشتر</a>
-                                            <a class="btn buy btn-danger" href="#">اضافه به سبد خرید</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="main-titles no-margin">
-                                    <h4 class="title">$1435</h4>
-                                    <h5 class="no-margin isotope--title">Lorem Amet Felis</h5>
-                                </div>
-                                <p class="center-align stars">
-                                    <span class="icon-star stars-clr"></span>
-                                    <span class="icon-star"></span>
-                                    <span class="icon-star"></span>
-                                    <span class="icon-star"></span>
-                                    <span class="icon-star"></span>
 
-                                </p>
-                            </div>
-                        </div> <!-- /single product -->
-                        <!--  ==========  -->
-                        <!--  = Single Product =  -->
-                        <!--  ==========  -->
-                        <!--  ==========  -->
-                       
-
-                    </div>
+                                                                                               
                 </div>
                 <hr />
             </section> <!-- /main content -->

@@ -39,6 +39,8 @@ namespace ParsMarkt
 
         public async Task<ProductViewModel> PutAsync(ProductViewModel viewModel)
         {
+            string Url = "EditProduct";
+            RequestUri = $"{BaseUrl}/{GetApiUrl()}/{Url}";
             var result = await PutAsync<ProductViewModel, ProductViewModel>(viewModel);
             return result;
         }

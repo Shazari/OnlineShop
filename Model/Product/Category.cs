@@ -18,7 +18,7 @@ namespace Models
         [Required(ErrorMessageResourceType = typeof(Resources.ErrorMessages), ErrorMessageResourceName = nameof(Resources.ErrorMessages.Required))]
         [MaxLength(250, ErrorMessageResourceType = typeof(Resources.ErrorMessages), ErrorMessageResourceName = nameof(Resources.ErrorMessages.MaxLength))]
         public string UrlTitle { get; set; }
-        public string? Description { get; set; }
+        
 
         [ForeignKey("ParentId")]
         public long? ParentId{ get; set; }

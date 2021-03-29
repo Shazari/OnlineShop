@@ -27,7 +27,7 @@
                         #
                     </td>
                     <td>
-                        @(item.Name)
+                        @(item.Title)
                     </td>
                     <td>
                         @(item.Description)
@@ -60,7 +60,7 @@
             <div class="control-group">
                 <label class="control-label hidden shown-ie8" for="inputEmailRegister">@(Resources.DataDictionary.Name)</label>
                 <div class="controls">
-                    <InputText @bind-Value="@categoryViewModel.Name"  class="input-block-level" id="inputEmailRegister" placeholder="@(Resources.DataDictionary.Name)" />
+                    <InputText @bind-Value="@categoryViewModel.Title"  class="input-block-level" id="inputEmailRegister" placeholder="@(Resources.DataDictionary.Name)" />
                 </div>
             </div>
             <div class="control-group">
@@ -94,7 +94,7 @@
             <div class="control-group">
                 <label class="control-label hidden shown-ie8" >@(Resources.DataDictionary.Name)</label>
                 <div class="controls">
-                    <InputText @bind-Value="@categoryViewModel.Name" class="input-block-level"  placeholder="@(Resources.DataDictionary.Name)" />
+                    <InputText @bind-Value="@categoryViewModel.Title" class="input-block-level"  placeholder="@(Resources.DataDictionary.Name)" />
                 </div>
             </div>
             <div class="control-group">
@@ -127,7 +127,7 @@
             <div class="control-group">
                 <label class="control-label hidden shown-ie8" >@(Resources.DataDictionary.Name)</label>
                 <div class="controls">
-                    <InputText @bind-Value="@categoryViewModel.Name"   class="input-block-level" placeholder="@(Resources.DataDictionary.Email)" />
+                    <InputText @bind-Value="@categoryViewModel.Title"   class="input-block-level" placeholder="@(Resources.DataDictionary.TitleOff)" />
                 </div>
             </div>
             <div class="control-group">

@@ -21,6 +21,7 @@ namespace ParsMarkt
 
         public async Task<IList<CategoriesViewModel>> GetAsync()
         {
+            RequestUri = $"{BaseUrl}/{GetApiUrl()}/GetActiveCategories";
             var result = await GetAsync<IList<CategoriesViewModel>>();
             return result;
         }

@@ -16,7 +16,7 @@ namespace ViewModels
 
                 ActivePage = pageNumber,
                 PageCount = pageCount,
-                PageID = pageNumber,
+                PageId = pageNumber,
                 TakeEntity = take,
                 SkipEntity = (pageNumber - 1) * take,
                 StartPage = pageNumber - 3 <= 0 ? 1 : pageNumber - 3,

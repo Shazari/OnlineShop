@@ -20,12 +20,12 @@ namespace Data
 
         public async Task<IEnumerable<Product>> GetProductAsync()
         {
-            var product = await DbSet.Include(p=>p.Codes).Include(p=>p.Categories).ToListAsync();
+            var product = await DbSet.Include(p=>p.Codes).Include(p=>p.ProductSelectedCategories).ToListAsync();
             return product;
         }
         public Task<Product> GetProductById(int id)
         {
-            var product =  DbSet.Include(p => p.Codes).Include(p => p.Categories).FirstAsync(p=>p.Id==id);
+            var product =  DbSet.Include(p => p.Codes).Include(p => p.ProductSelectedCategories).FirstAsync(p=>p.Id==id);
             return product;
         }
     }

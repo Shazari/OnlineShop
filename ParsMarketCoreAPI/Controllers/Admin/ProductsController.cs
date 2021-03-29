@@ -15,19 +15,24 @@ namespace ParsMarketCoreAPI.Controllers
     {
         private IProductService _productService;
 
-        public ProductsController(IUnitOfWork UnitOfWork, IWebHostEnvironment Env,IProductService productService) : base(UnitOfWork)
+        public ProductsController(IUnitOfWork UnitOfWork, IWebHostEnvironment Env, IProductService productService) : base(UnitOfWork)
         {
             _productService = productService;
             env = Env;
         }
         private readonly IWebHostEnvironment env;
 
+       
+
         [HttpGet("GetProducts")]
-        public async Task<ActionResult<FilterProduct>> GetProducts([FromQuery]FilterProduct filter)
+        public async Task<ActionResult<FilterProduct>> GetProducts([FromQuery] FilterProduct filter)
         {
             var products = await _productService.FilterProduct(filter);
             return Ok(products);
         }
+
+       
+
         public async Task<ActionResult<IEnumerable<ProductViewModel>>> Get()
         {
             var result = await UnitOfWork.ProductRepository.GetAllAsync();
@@ -63,7 +68,7 @@ namespace ParsMarketCoreAPI.Controllers
         // PUT: api/People/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
-        [HttpPut]
+        [HttpPut("EditProduct")]
         public async Task<IActionResult> PutProduct(ProductViewModel viewModel)
         {
             var product = await UnitOfWork.ProductRepository.GetById(viewModel.Id);
@@ -73,8 +78,9 @@ namespace ParsMarketCoreAPI.Controllers
             product.LongDescription = viewModel.LongDescription;
             product.Name = viewModel.Name;
             product.Price = viewModel.Price;
-            var categories = await UnitOfWork.CategoryRepository.GetAllAsync();
-            product.Categories = categories.Where(cat => viewModel.CategoriesId.Contains(cat.Id)).ToList();
+             var categories = await UnitOfWork.CategoryRepository.GetAllAsync();
+            var selectedCategory = await UnitOfWork.ProductSelectedCategoryRepository.GetAllAsync();
+            product.ProductSelectedCategories = selectedCategory.Where(cat => viewModel.CategoriesId.Contains(cat.Id)).ToList();
 
             if (product.Id != viewModel.Id)
             {
@@ -88,6 +94,7 @@ namespace ParsMarketCoreAPI.Controllers
             try
             {
                 UnitOfWork.Save();
+                return Ok();
             }
             catch (DbUpdateConcurrencyException)
             {
@@ -111,8 +118,6 @@ namespace ParsMarketCoreAPI.Controllers
         public async Task<ActionResult<ProductViewModel>> PostProduct([FromBody] ProductViewModel viewModel)
         {
 
-
-
             var product = new Models.Product()
             {
 
@@ -122,7 +127,8 @@ namespace ParsMarketCoreAPI.Controllers
                 LongDescription = viewModel.LongDescription,
                 Price = viewModel.Price,
                 ShortDescription = viewModel.ShortDescription,
-
+                IsExist=viewModel.IsExist,
+                
 
             };
             //var categiories = new List<Category>();
@@ -135,11 +141,15 @@ namespace ParsMarketCoreAPI.Controllers
             //    }
             //    ));
             //product.Categories = categiories;
-            var categories = await UnitOfWork.CategoryRepository.GetAllAsync();
-            product.Categories = categories.Where(cat => viewModel.CategoriesId.Contains(cat.Id)).ToList();
-            await UnitOfWork.ProductRepository.Insert(product);
+            //var categories = await UnitOfWork.CategoryRepository.GetAllAsync();
+            //product.Categories = categories.Where(cat => viewModel.CategoriesId.Contains(cat.Id)).ToList();
 
-            //_context.People.Add(person);
+            var selectedCategory = await UnitOfWork.ProductSelectedCategoryRepository.GetAllAsync();
+            product.ProductSelectedCategories = selectedCategory.Where(cat => viewModel.CategoriesId.Contains(cat.Id)).ToList();
+
+            await UnitOfWork.ProductRepository.Insert(product);
+            
+
             await UnitOfWork.SaveAsync();
 
             return CreatedAtAction("GetProduct", new { id = viewModel.Id }, viewModel);
@@ -166,6 +176,8 @@ namespace ParsMarketCoreAPI.Controllers
             var res = UnitOfWork.ProductRepository.IsExist(id);
             return res;
         }
+
+        
 
     }
 }

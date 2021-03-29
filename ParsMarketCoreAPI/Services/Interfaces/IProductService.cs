@@ -15,6 +15,15 @@ namespace ParsMarketCoreAPI
         Task UpdateProduct(Product Product);
         Task DeleteProduct(Product Product);
         Task<FilterProduct> FilterProduct(FilterProduct filter);
+
+
+        #endregion
+
+
+        #region Product Category
+
+       Task<List<Category>> GetAllActiveProductCategories();
+
         #endregion
     }
 }

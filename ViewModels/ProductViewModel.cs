@@ -32,7 +32,8 @@ namespace ViewModels
 
         [Display(ResourceType = typeof(Resources.DataDictionary),
            Name = nameof(Resources.DataDictionary.ProductImage))]
-       
+
+        public bool IsExist { get; set; }
         public string Image { get; set; }
         // public IFormFile Picture { get; set; }
        

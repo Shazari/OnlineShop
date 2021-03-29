@@ -16,10 +16,11 @@ namespace ParsMarketCoreAPI.Controllers
         {
 
         }
-        [HttpGet]
+        [HttpGet("GetActiveCategories")]
         public async Task<ActionResult<IEnumerable<CategoriesViewModel>>> Getcategory()
         {
-            var result = await UnitOfWork.CategoryRepository.GetAllAsync();
+            var category = await UnitOfWork.CategoryRepository.GetAllAsync();
+            var result = category.Where(c => !c.IsDelete).ToList();
             return Ok(value: result);
         }
 
@@ -28,31 +29,33 @@ namespace ParsMarketCoreAPI.Controllers
         public async Task<ActionResult<CategoriesViewModel>> GetCategory(int id)
         {
             var category = await UnitOfWork.CategoryRepository.GetById(id);
-
+         
             var categoryView = new CategoriesViewModel
             {
                 Description = category.UrlTitle,
-                Name = category.Title,
-                Id = category.Id
+                Title = category.Title,
+                Id = category.Id,
+                
             };
             if (category == null)
             {
                 return NotFound();
             }
 
-            return categoryView;
+            return Ok(categoryView);
         }
 
         // PUT: api/People/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
+
         [HttpPut]
         public async Task<IActionResult> PutCategory(CategoriesViewModel viewModel)
         {
             var category = await UnitOfWork.CategoryRepository.GetById(viewModel.Id);
 
             category.UrlTitle = viewModel.Description;
-            category.Title = viewModel.Name;
+            category.Title = viewModel.Title;
             category.Id = viewModel.Id;
 
 
@@ -93,7 +96,7 @@ namespace ParsMarketCoreAPI.Controllers
             var category = new Models.Category()
             {
                 Id = viewModel.Id,
-                Title = viewModel.Name,
+                Title = viewModel.Title,
                 CreateDate = DateTime.Now,
                 UrlTitle = viewModel.Description
             };

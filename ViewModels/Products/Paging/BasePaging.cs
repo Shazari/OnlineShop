@@ -10,10 +10,10 @@ namespace ViewModels
     {
         public BasePaging()
         {
-            PageID = 1;
+            PageId = 1;
             TakeEntity = 10;
         }
-        public int PageID { get; set; }
+        public int PageId { get; set; }
         public int  PageCount { get; set; }
         public int  ActivePage { get; set; }
         public int StartPage { get; set; }

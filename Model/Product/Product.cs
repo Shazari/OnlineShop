@@ -53,7 +53,7 @@ namespace Models
         public ICollection<ProductVisit> productVisits { get; set; }
         public List<OffCodes> Codes { get; set; }
 
-        public List<Category> Categories { get; set; }
+        public List<ProductSelectedCategory> ProductSelectedCategories { get; set; }
         public ICollection<ProductComment> ProductComments { get; set; }
         public List<OrderDetail> OrderDetails { get; set; }
 
