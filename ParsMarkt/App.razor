@@ -17,29 +17,8 @@
         </NotFound>
     </Router>
     </CascadingAuthenticationState>*@
-<!--<CascadingValue Value="AppMode.WebAssembly">
-    <Router AppAssembly="@typeof(Program).Assembly"
-            AdditionalAssemblies="new[] { typeof(Component1).Assembly }">
-        <Found Context="routeData">
-            <AuthorizeRouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)">
-                <Authorizing>
-                    <text>Custom authorizing...</text>
-                </Authorizing>
-                <NotAuthorized>
-                    <text>Custom not authorized</text>
-                </NotAuthorized>
-            </AuthorizeRouteView>
-        </Found>
-        <NotFound>
-            <CascadingAuthenticationState>-->
-@*<LayoutView Layout="@typeof(MainLayout)">
-        <CustomNotFound />
-    </LayoutView>*@
-<!--</CascadingAuthenticationState>
-        </NotFound>
-    </Router>
-</CascadingValue>-->
-@*<CascadingAuthenticationState>
+
+<CascadingAuthenticationState>
         <Router AppAssembly="@typeof(Program).Assembly">
             <Found Context="routeData">
                 <AuthorizeRouteView RouteData="@routeData"
@@ -65,10 +44,10 @@
                 </LayoutView>
             </NotFound>
         </Router>
-    </CascadingAuthenticationState>*@
+    </CascadingAuthenticationState>
 
 
-<Router AppAssembly="@typeof(Program).Assembly">
+@*<Router AppAssembly="@typeof(Program).Assembly">
         <Found Context="routeData">
             <RouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)" />
         </Found>
@@ -77,4 +56,4 @@
                 <p>Sorry, there's nothing at this address.</p>
             </LayoutView>
         </NotFound>
-    </Router>
+    </Router>*@
